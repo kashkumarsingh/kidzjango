@@ -1,6 +1,7 @@
 Django 
 django-browser-reload 
 python-dotenv
+python-decouple
 django-tinymce
 autopep8
 pytest 

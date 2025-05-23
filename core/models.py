@@ -111,7 +111,7 @@ class EmailConfiguration(models.Model):
 
     @classmethod
     def get_active_config(cls):
-        """Return the first active email configuration or fallback to settings.py if none exists."""
+        """Return the first active email configuration or use settings from environment variables."""
         config = cls.objects.filter(is_active=True).first()
         if config:
             return {
@@ -125,16 +125,16 @@ class EmailConfiguration(models.Model):
                 'ADMIN_EMAIL': config.admin_email,
             }
         else:
-            logger.warning("No active EmailConfiguration found. Falling back to settings.py defaults.")
+            logger.warning("No active EmailConfiguration found. Using settings from environment variables.")
             return {
                 'EMAIL_BACKEND': 'django.core.mail.backends.smtp.EmailBackend',
-                'EMAIL_HOST': 'sandbox.smtp.mailtrap.io',
-                'EMAIL_PORT': 2525,
-                'EMAIL_USE_TLS': True,
-                'EMAIL_HOST_USER': '246fdbf58feafd',
-                'EMAIL_HOST_PASSWORD': '6fc40fcdbbf0ee',
-                'DEFAULT_FROM_EMAIL': 'noreply@kidzrunz.com',
-                'ADMIN_EMAIL': 'admin@kidzrunz.com',
+                'EMAIL_HOST': config('EMAIL_HOST'),
+                'EMAIL_PORT': config('EMAIL_PORT', default=587, cast=int),
+                'EMAIL_USE_TLS': config('EMAIL_USE_TLS', default=True, cast=bool),
+                'EMAIL_HOST_USER': config('EMAIL_HOST_USER'),
+                'EMAIL_HOST_PASSWORD': config('EMAIL_HOST_PASSWORD'),
+                'DEFAULT_FROM_EMAIL': config('DEFAULT_FROM_EMAIL', default='noreply@kidzrunz.com'),
+                'ADMIN_EMAIL': config('ADMIN_EMAIL', default='admin@kidzrunz.com'),
             }
 
     def __str__(self):
