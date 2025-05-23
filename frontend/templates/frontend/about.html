@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}About Us - Kidz Runz{% endblock %}
+{% block meta_description %}Learn more about Kidz Runz, our mission, story, and commitment to supporting children and families.{% endblock %}
+{% block og_title %}About Us - Kidz Runz{% endblock %}
+{% block og_description %}Discover the story behind Kidz Runz and our dedication to children’s growth and safety.{% endblock %}
+{% block twitter_title %}About Us - Kidz Runz{% endblock %}
+{% block twitter_description %}Learn about Kidz Runz’s mission, story, and support for kids and parents.{% endblock %}
+
+{% block content %}
+    <section class="about__section about__section--intro text-center py-5">
+        <div class="container">
+            <h1 class="display-4 fw-bold about__title">About Us</h1>
+            <p class="lead about__text">Get to know Kidz Runz and our commitment to enriching children’s lives.</p>
+        </div>
+    </section>
+
+    <section class="about__section about__section--content py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card about__card">
+                        <div class="card-body about__card-body text-center">
+                            <h3 class="card-title about__card-title">Welcome to Kidz Runz</h3>
+                            <p class="about__card-text">Learn about who we are and what we do.</p>
+                            <a href="{% url 'frontend:welcome' %}" class="btn btn-primary about__card-button">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card about__card">
+                        <div class="card-body about__card-body text-center">
+                            <h3 class="card-title about__card-title">Our Mission Statements</h3>
+                            <p class="about__card-text">Discover our goals and values.</p>
+                            <a href="{% url 'frontend:mission' %}" class="btn btn-primary about__card-button">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card about__card">
+                        <div class="card-body about__card-body text-center">
+                            <h3 class="card-title about__card-title">Once Upon A Time Story</h3>
+                            <p class="about__card-text">Explore the story of how Kidz Runz began.</p>
+                            <a href="{% url 'frontend:story' %}" class="btn btn-primary about__card-button">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card about__card">
+                        <div class="card-body about__card-body text-center">
+                            <h3 class="card-title about__card-title">Communication and Feedback</h3>
+                            <p class="about__card-text">Learn how we stay connected with families.</p>
+                            <a href="{% url 'frontend:communication' %}" class="btn btn-primary about__card-button">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card about__card">
+                        <div class="card-body about__card-body text-center">
+                            <h3 class="card-title about__card-title">Parent Tips and Support</h3>
+                            <p class="about__card-text">Get tips and resources for supporting your child.</p>
+                            <a href="{% url 'frontend:parent_tips' %}" class="btn btn-primary about__card-button">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card about__card">
+                        <div class="card-body about__card-body text-center">
+                            <h3 class="card-title about__card-title">Our Commitment to Safeguarding</h3>
+                            <p class="about__card-text">Understand our dedication to child safety.</p>
+                            <a href="{% url 'frontend:safeguarding' %}" class="btn btn-primary about__card-button">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

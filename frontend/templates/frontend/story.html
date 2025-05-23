@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Once Upon A Time Story - Kidz Runz{% endblock %}
+{% block meta_description %}Learn the story of how Kidz Runz began, dedicated to children’s growth and joy.{% endblock %}
+{% block og_title %}Once Upon A Time Story - Kidz Runz{% endblock %}
+{% block og_description %}Discover the origins of Kidz Runz and our journey to support kids.{% endblock %}
+{% block twitter_title %}Once Upon A Time Story - Kidz Runz{% endblock %}
+{% block twitter_description %}Read the story of how Kidz Runz started, bringing joy to children.{% endblock %}
+
+{% block content %}
+    <section class="container story__section story__section--intro text-center py-5">
+        <h1 class="display-4 fw-bold story__title">Once Upon A Time Story</h1>
+        <p class="lead story__text">The journey of Kidz Runz from vision to reality.</p>
+    </section>
+
+    <section class="container story__section story__section--content py-5">
+        <p class="story__paragraph">Once upon a time, a group of passionate educators and caregivers dreamed of a place where children could explore their potential through play and adventure. That dream became Kidz Runz, a community dedicated to creating magical experiences for kids. From our humble beginnings to today, we’ve been committed to making every child’s journey unforgettable.</p>
+        <div class="text-center story__cta">
+            <a href="{% url 'frontend:about' %}" class="btn btn-primary story__cta-button">Back to About Us</a>
+        </div>
+    </section>
+{% endblock %}

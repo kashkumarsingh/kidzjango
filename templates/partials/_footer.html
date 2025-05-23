@@ -1,0 +1,79 @@
+{% load static %}
+<footer class="bg-light py-5 footer" aria-label="Footer">
+    <div class="container">
+        <div class="row">
+            <!-- Brand -->
+            <div class="col-12 col-md-4 col-lg-3 mb-4 footer__section">
+                <h3 class="h5 mb-2 footer__title">
+                    <a href="{% url 'frontend:home' %}" class="text-primary text-decoration-none footer__brand-link">
+                        <img src="{% static 'images/logo-large.webp' %}" alt="Kidz Runz Logo" height="120" class="d-inline-block align-text-top header__logo" onerror="this.onerror=null; this.parentElement.innerHTML='Kidz Runz';">
+                    </a>
+                </h3>
+            </div>
+            <!-- Company Links -->
+            <div class="col-12 col-md-4 col-lg-3 mb-4 footer__section">
+                <h4 class="h6 mb-3 footer__title">Company</h4>
+                <ul class="list-unstyled footer__list">
+                    <li class="mb-2 footer__item"><a href="{% url 'frontend:about' %}" class="link-secondary text-decoration-none footer__link">About Us</a></li>
+                    <li class="mb-2 footer__item"><a href="{% url 'frontend:contact' %}" class="link-secondary text-decoration-none footer__link">Contact Us</a></li>
+                    <li class="mb-2 footer__item"><a href="{% url 'frontend:testimonials' %}" class="link-secondary text-decoration-none footer__link">Testimonials</a></li>
+                </ul>
+            </div>
+            <!-- Services Links -->
+            <div class="col-12 col-md-4 col-lg-3 mb-4 footer__section">
+                <h4 class="h6 mb-3 footer__title">Services</h4>
+                <ul class="list-unstyled footer__list">
+                    <li class="mb-2 footer__item"><a href="{% url 'frontend:cams' %}" class="link-secondary text-decoration-none footer__link">CAMS</a></li>
+                    <li class="mb-2 footer__item"><a href="{% url 'frontend:activities' %}" class="link-secondary text-decoration-none footer__link">Activities</a></li>
+                    <li class="mb-2 footer__item"><a href="{% url 'frontend:bookings' %}" class="link-secondary text-decoration-none footer__link">Bookings</a></li>
+                </ul>
+            </div>
+            <!-- Support Links -->
+            <div class="col-12 col-md-4 col-lg-3 mb-4 footer__section">
+                <h4 class="h6 mb-3 footer__title">Support</h4>
+                <ul class="list-unstyled footer__list">
+                    <li class="mb-2 footer__item"><a href="{% url 'frontend:faqs' %}" class="link-secondary text-decoration-none footer__link">FAQs</a></li>
+                    <li class="mb-2 footer__item"><a href="{% url 'frontend:contact' %}" class="link-secondary text-decoration-none footer__link">Help Center</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr class="my-4 footer__divider">
+        <div class="row align-items-center">
+            <!-- Copyright -->
+            <div class="col-12 col-md-6 mb-3 mb-md-0 footer__section">
+                <p class="text-muted mb-0 footer__copyright">© 2025-2026 Kidz Runz. All rights reserved.</p>
+            </div>
+            <!-- Legal and Contact -->
+            <div class="col-12 col-md-6 text-md-end footer__section">
+                <ul class="list-inline mb-0 footer__list footer__list--social">
+                    <li class="list-inline-item me-3 footer__item">
+                        <a href="{% url 'frontend:contact' %}#privacy" class="link-secondary text-decoration-none footer__link">Privacy Policy</a>
+                    </li>
+                    <li class="list-inline-item me-3 footer__item">
+                        <a href="{% url 'frontend:contact' %}#terms" class="link-secondary text-decoration-none footer__link">Terms of Service</a>
+                    </li>
+                    <li class="list-inline-item me-3 footer__item">
+                        <a href="mailto:info@kidzrunz.com" class="link-secondary text-decoration-none footer__link" aria-label="Contact us via email">
+                            <i class="bi bi-envelope me-1"></i>Contact us
+                        </a>
+                    </li>
+                    <li class="list-inline-item me-3 footer__item">
+                        <a href="https://facebook.com/kidzrunz" target="_blank" rel="noopener noreferrer" class="link-secondary footer__link footer__social" aria-label="Follow us on Facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item me-3 footer__item">
+                        <a href="https://x.com/kidzrunz" target="_blank" rel="noopener noreferrer" class="link-secondary footer__link footer__social" aria-label="Follow us on X">
+                            <i class="bi bi-twitter-x"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item me-0 footer__item">
+                        <a href="https://linkedin.com/company/kidzrunz" target="_blank" rel="noopener noreferrer" class="link-secondary footer__link footer__social" aria-label="Follow us on LinkedIn">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>

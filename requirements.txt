@@ -1,0 +1,7 @@
+Django 
+django-browser-reload 
+python-dotenv
+django-tinymce
+autopep8
+pytest 
+pytest-django

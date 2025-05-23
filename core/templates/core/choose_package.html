@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Choose Package - Kidz Runz{% endblock %}
+{% block meta_description %}Provide your details to book your selected Kidz Runz package.{% endblock %}
+{% block og_title %}Choose Package - Kidz Runz{% endblock %}
+{% block og_description %}Book your Kidz Runz package by providing your details.{% endblock %}
+{% block twitter_title %}Choose Package - Kidz Runz{% endblock %}
+{% block twitter_description %}Enter your details to confirm your Kidz Runz package booking.{% endblock %}
+
+{% block content %}
+    <section class="choose-package__section choose-package__section--intro text-center py-5">
+        <div class="container">
+            <h1 class="display-4 fw-bold choose-package__title">Make an Appointment</h1>
+            <p class="lead choose-package__text">Please provide your details to book the <strong>{{ package.name }}</strong> package.</p>
+        </div>
+    </section>
+
+    <section class="choose-package__section choose-package__section--content py-5">
+        <div class="container">
+            <div class="card choose-package__card">
+                <div class="card-body choose-package__card-body">
+                    <h2 class="h3 mb-4 choose-package__subtitle">Booking Details</h2>
+                    <form method="POST" action="{% url 'core:bookings' %}" class="choose-package__form">
+                        {% csrf_token %}
+                        <input type="hidden" name="package_id" value="{{ package.id }}">
+                        <div class="mb-3">
+                            <label for="name" class="form-label choose-package__form-label">Full Name</label>
+                            <input type="text" class="form-control choose-package__form-input" id="name" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label choose-package__form-label">Email</label>
+                            <input type="email" class="form-control choose-package__form-input" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label choose-package__form-label">Phone Number</label>
+                            <input type="tel" class="form-control choose-package__form-input" id="phone" name="phone" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="date_time" class="form-label choose-package__form-label">Preferred Date and Time</label>
+                            <input type="datetime-local" class="form-control choose-package__form-input" id="date_time" name="date_time" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label choose-package__form-label">Additional Information (Optional)</label>
+                            <textarea class="form-control choose-package__form-input" id="description" name="description" rows="3" placeholder="Allergies, special needs, or other notes"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary choose-package__form-button">Confirm Booking</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

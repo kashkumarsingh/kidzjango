@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}FAQs - Kidz Runz{% endblock %}
+{% block meta_description %}Get answers to frequently asked questions about Kidz Runz services and support for children.{% endblock %}
+{% block og_title %}FAQs - Kidz Runz{% endblock %}
+{% block og_description %}Find answers to common questions about Kidz Runz and our child support services.{% endblock %}
+{% block twitter_title %}FAQs - Kidz Runz{% endblock %}
+{% block twitter_description %}Explore FAQs about Kidz Runz services for children and families.{% endblock %}
+
+{% block content %}
+    <section class="faqs__section faqs__section--intro text-center py-5">
+        <div class="container">
+            <h1 class="display-4 fw-bold faqs__title">Frequently Asked Questions</h1>
+            <p class="lead faqs__text">Find answers to your questions about Kidz Runz services.</p>
+        </div>
+    </section>
+
+    <section class="faqs__section faqs__section--content py-5">
+        <div class="container">
+            <div class="accordion" id="faqAccordion">
+                {% for faq in faqs %}
+                    <div class="accordion-item faqs__item">
+                        <h2 class="accordion-header faqs__header" id="faq-heading-{{ forloop.counter }}">
+                            <button class="accordion-button faqs__button {% if forloop.first %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-{{ forloop.counter }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="faq-collapse-{{ forloop.counter }}">
+                                {{ faq.question }}
+                            </button>
+                        </h2>
+                        <div id="faq-collapse-{{ forloop.counter }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" aria-labelledby="faq-heading-{{ forloop.counter }}" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body faqs__body">
+                                {{ faq.answer }}
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="col-12 text-center">
+                        <p class="faqs__empty-text">No FAQs available at the moment. Please contact us with your questions!</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

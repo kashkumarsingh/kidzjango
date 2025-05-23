@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Our Commitment to Safeguarding - Kidz Runz{% endblock %}
+{% block meta_description %}Learn about Kidz Runz’s commitment to safeguarding children’s safety and well-being.{% endblock %}
+{% block og_title %}Our Commitment to Safeguarding - Kidz Runz{% endblock %}
+{% block og_description %}Discover how Kidz Runz ensures the safety and well-being of every child.{% endblock %}
+{% block twitter_title %}Our Commitment to Safeguarding - Kidz Runz{% endblock %}
+{% block twitter_description %}Kidz Runz is dedicated to keeping children safe and supported.{% endblock %}
+
+{% block content %}
+    <section class="container safeguarding__section safeguarding__section--intro text-center py-5">
+        <h1 class="display-4 fw-bold safeguarding__title">Our Commitment to Safeguarding</h1>
+        <p class="lead safeguarding__text">Your child’s safety is our top priority.</p>
+    </section>
+
+    <section class="container safeguarding__section safeguarding__section--content py-5">
+        <p class="safeguarding__paragraph">At Kidz Runz, we are deeply committed to safeguarding every child in our care. Our staff undergo rigorous DBS checks, and we follow strict safety protocols to ensure a secure environment. We also provide training to recognize and respond to any concerns, ensuring your child is always protected and supported.</p>
+        <div class="text-center safeguarding__cta">
+            <a href="{% url 'frontend:about' %}" class="btn btn-primary safeguarding__cta-button">Back to About Us</a>
+        </div>
+    </section>
+{% endblock %}

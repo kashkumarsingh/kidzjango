@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Thank You - Kidz Runz{% endblock %}
+{% block meta_description %}Thank you for booking with Kidz Runz! Check your email for confirmation.{% endblock %}
+{% block og_title %}Thank You - Kidz Runz{% endblock %}
+{% block og_description %}Your Kidz Runz booking is confirmed. See you soon!{% endblock %}
+{% block twitter_title %}Thank You - Kidz Runz{% endblock %}
+{% block twitter_description %}Booking confirmed with Kidz Runz! Check your email for details.{% endblock %}
+
+{% block content %}
+    <section class="thank-you__section thank-you__section--intro text-center py-5">
+        <div class="container">
+            <h1 class="display-4 fw-bold thank-you__title">Thank You for Booking!</h1>
+            <p class="lead thank-you__text">Your booking has been confirmed. We've sent a confirmation email to {{ booking.email }}.</p>
+        </div>
+    </section>
+
+    <section class="thank-you__section thank-you__section--content py-5">
+        <div class="container">
+            <div class="card thank-you__card">
+                <div class="card-body thank-you__card-body">
+                    <h2 class="h3 mb-4 thank-you__subtitle">Booking Details</h2>
+                    <ul class="list-unstyled thank-you__details">
+                        <li class="thank-you__detail-item"><strong>Reference ID:</strong> {{ booking.reference_id }}</li>
+                        <li class="thank-you__detail-item"><strong>Name:</strong> {{ booking.name }}</li>
+                        <li class="thank-you__detail-item"><strong>Email:</strong> {{ booking.email }}</li>
+                        <li class="thank-you__detail-item"><strong>Phone:</strong> {{ booking.phone }}</li>
+                        <li class="thank-you__detail-item"><strong>Package:</strong> {{ booking.package.name }}</li>
+                        <li class="thank-you__detail-item"><strong>Date and Time:</strong> {{ booking.start_date }}</li>
+                        <li class="thank-you__detail-item"><strong>Additional Information:</strong> {{ booking.description|default:"None" }}</li>
+                    </ul>
+                    <div class="text-center mt-4">
+                        <a href="{% url 'frontend:home' %}" class="btn btn-primary thank-you__button">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

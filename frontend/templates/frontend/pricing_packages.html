@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Pricing Packages - Kidz Runz{% endblock %}
+{% block meta_description %}Explore all pricing packages at Kidz Runz for single and multi-session child activities with expert support.{% endblock %}
+{% block og_title %}Pricing Packages - Kidz Runz{% endblock %}
+{% block og_description %}View all Kidz Runz pricing packages for fun, safe child activities with professional mentors.{% endblock %}
+{% block twitter_title %}Pricing Packages - Kidz Runz{% endblock %}
+{% block twitter_description %}Check out Kidz Runz pricing for single and multi-session packages for kids.{% endblock %}
+
+{% block content %}
+    <section class="pricing-packages py-5" aria-labelledby="pricing-packages-heading">
+        <div class="container">
+            <h1 id="pricing-packages-heading" class="display-4 fw-bold mb-4 text-center">All Pricing Packages</h1>
+            <p class="mb-4 text-center">Find the perfect package for your child’s activities and needs.</p>
+
+            <!-- Tabs Navigation -->
+            <ul class="nav nav-tabs mb-4 pricing__tabs" id="pricingTabs" role="tablist">
+                <li class="nav-item pricing__tab" role="presentation">
+                    <button class="nav-link active pricing__tab-link" id="all-single-session-tab" data-bs-toggle="tab" data-bs-target="#all-single-session" type="button" role="tab" aria-controls="all-single-session" aria-selected="true">Single Sessions</button>
+                </li>
+                <li class="nav-item pricing__tab" role="presentation">
+                    <button class="nav-link pricing__tab-link" id="all-multi-session-tab" data-bs-toggle="tab" data-bs-target="#all-multi-session" type="button" role="tab" aria-controls="all-multi-session" aria-selected="false">Multi-Sessions</button>
+                </li>
+            </ul>
+
+            <!-- Tabs Content -->
+            <div class="tab-content pricing__content" id="pricingTabsContent">
+                <!-- Single Session Packages -->
+                <div class="tab-pane fade show active pricing__pane" id="all-single-session" role="tabpanel" aria-labelledby="all-single-session-tab">
+                    <div class="row">
+                        {% for package in pricing_packages %}
+                            {% if package.type == 'single' %}
+                                <div class="col-12 col-md-4 mb-4">
+                                    <div class="card pricing__card">
+                                        <div class="card-body pricing__card-body">
+                                            <h3 class="pricing__card-title">{{ package.name }}</h3>
+                                            <p class="pricing__card-price">{{ package.price }}</p>
+                                            <p class="pricing__card-description">{{ package.description }}</p>
+                                            <div class="pricing__card-features">
+                                                {{ package.features|safe }}
+                                            </div>
+                                            <a href="{% url 'frontend:bookings' %}" class="btn btn-primary pricing__card-button">Book Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% empty %}
+                            <div class="col-12 text-center">
+                                <p class="pricing__empty-text">No single-session packages available at the moment.</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Multi-Session Packages -->
+                <div class="tab-pane fade pricing__pane" id="all-multi-session" role="tabpanel" aria-labelledby="all-multi-session-tab">
+                    <div class="row">
+                        {% for package in pricing_packages %}
+                            {% if package.type == 'multi' %}
+                                <div class="col-12 col-md-4 mb-4">
+                                    <div class="card pricing__card">
+                                        <div class="card-body pricing__card-body">
+                                            <h3 class="pricing__card-title">{{ package.name }}</h3>
+                                            <p class="pricing__card-price">{{ package.price }}</p>
+                                            <p class="pricing__card-description">{{ package.description }}</p>
+                                            <div class="pricing__card-features">
+                                                {{ package.features|safe }}
+                                            </div>
+                                            <a href="{% url 'frontend:bookings' %}" class="btn btn-primary pricing__card-button">Book Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% empty %}
+                            <div class="col-12 text-center">
+                                <p class="pricing__empty-text">No multi-session packages available at the moment.</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

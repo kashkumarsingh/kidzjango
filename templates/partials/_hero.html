@@ -1,0 +1,9 @@
+{% load static %}
+<section class="hero" aria-labelledby="hero-heading" style="background-image: url('{% static 'images/hero-bg.jpg' %}'); background-size: cover; background-position: center; min-height: 400px; width: 100%;">
+    <div class="hero__content" style="min-height: 400px; display: flex; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.5); width: 100%;">
+        <div class="text-center text-white">
+            <h1 id="hero-heading" class="display-4 fw-bold mb-4">{{ hero_title|default:"Welcome to Kidz Runz" }}</h1>
+            <p class="lead mb-4">{{ hero_subtitle|default:"Providing professional Children's Activity-based Mentoring and Support services (CAMS)" }}</p>
+        </div>
+    </div>
+</section>

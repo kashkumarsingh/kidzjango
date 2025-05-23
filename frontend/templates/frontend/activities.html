@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Activities - Kidz Runz{% endblock %}
+{% block meta_description %}Explore exciting activities and the benefits of sports for children with Kidz Runz’s supportive programs.{% endblock %}
+{% block og_title %}Activities - Kidz Runz{% endblock %}
+{% block og_description %}Discover the benefits of sports and fun activities for kids with Kidz Runz’s expert support.{% endblock %}
+{% block twitter_title %}Activities - Kidz Runz{% endblock %}
+{% block twitter_description %}Learn about sports benefits and explore activities with Kidz Runz for your child’s growth.{% endblock %}
+
+{% block content %}
+    <section class="container activities__section activities__section--intro text-center py-5">
+        <h1 class="display-4 fw-bold activities__title">Activities at Kidz Runz</h1>
+        <p class="lead activities__text">Unlock a world of fun and development for your child!</p>
+    </section>
+
+    <section class="container activities__section activities__section--content py-5">
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card activities__card">
+                    <div class="card-body activities__card-body text-center">
+                        <h3 class="card-title activities__card-title">Benefits of Sports</h3>
+                        <p class="activities__card-text">Discover how sports can enhance your child’s physical, social, and emotional growth.</p>
+                        <a href="{% url 'frontend:benefits' %}" class="btn btn-primary activities__card-button">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card activities__card">
+                    <div class="card-body activities__card-body text-center">
+                        <h3 class="card-title activities__card-title">Explore Activities</h3>
+                        <p class="activities__card-text">Join us for exciting adventures that spark imagination and create lasting memories.</p>
+                        <a href="{% url 'frontend:explore' %}" class="btn btn-primary activities__card-button">Discover More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

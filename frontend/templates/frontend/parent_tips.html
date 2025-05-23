@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Parent Tips and Support - Kidz Runz{% endblock %}
+{% block meta_description %}Get tips and support for parents from Kidz Runz to help your child thrive.{% endblock %}
+{% block og_title %}Parent Tips and Support - Kidz Runz{% endblock %}
+{% block og_description %}Find helpful parenting tips and support resources from Kidz Runz.{% endblock %}
+{% block twitter_title %}Parent Tips and Support - Kidz Runz{% endblock %}
+{% block twitter_description %}Kidz Runz offers tips and support for parents to help kids grow.{% endblock %}
+
+{% block content %}
+    <section class="container parent-tips__section parent-tips__section--intro text-center py-5">
+        <h1 class="display-4 fw-bold parent-tips__title">Parent Tips and Support</h1>
+        <p class="lead parent-tips__text">Resources to help you support your child’s growth.</p>
+    </section>
+
+    <section class="container parent-tips__section parent-tips__section--content py-5">
+        <p class="parent-tips__paragraph">Kidz Runz is here to support parents with practical tips and resources. From encouraging healthy habits to fostering creativity at home, we provide guidance to help your child thrive. Explore our tips on managing screen time, promoting physical activity, and building strong family connections.</p>
+        <div class="text-center parent-tips__cta">
+            <a href="{% url 'frontend:about' %}" class="btn btn-primary parent-tips__cta-button">Back to About Us</a>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Bookings - Kidz Runz{% endblock %}
+{% block meta_description %}Book your child’s activity session with Kidz Runz. Choose a package and schedule with ease.{% endblock %}
+{% block og_title %}Bookings - Kidz Runz{% endblock %}
+{% block og_description %}Secure your child’s spot with Kidz Runz. Select a package and book now!{% endblock %}
+{% block twitter_title %}Bookings - Kidz Runz{% endblock %}
+{% block twitter_description %}Book a fun session for your child with Kidz Runz packages today!{% endblock %}
+
+{% block content %}
+    <section class="booking__section booking__section--intro text-center py-5">
+        <div class="container">
+            <h1 class="display-4 fw-bold booking__title">Book Your Child’s Adventure</h1>
+            <p class="lead booking__text">Select a package and schedule a session with ease.</p>
+        </div>
+    </section>
+
+    <section class="booking__section booking__section--content py-5">
+        <div class="container">
+            <div class="card booking__card">
+                <div class="card-body booking__card-body">
+                    <h2 class="h3 mb-4 booking__subtitle">Choose a Package</h2>
+                    <div class="row">
+                        {% for package in pricing_packages %}
+                            <div class="col-12 col-md-4 mb-4">
+                                <div class="card booking__package-card">
+                                    <div class="card-body booking__package-card-body">
+                                        <h3 class="booking__package-title">{{ package.name }}</h3>
+                                        <p class="booking__package-price">{{ package.price }}</p>
+                                        <p class="booking__package-description">{{ package.description }}</p>
+                                        <div class="booking__package-features">
+                                            {{ package.features|safe }}
+                                        </div>
+                                        <a href="{% url 'core:choose_package' package.id %}" class="btn btn-primary booking__package-button" aria-label="Choose this package">Choose Package</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% empty %}
+                            <div class="col-12 text-center">
+                                <p class="booking__empty-text">No packages available. Please check back later.</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="booking__section booking__section--cta py-5 bg-light text-center">
+        <div class="container">
+            <p class="mb-4 booking__cta-text">Need help choosing? Contact our team for personalized advice.</p>
+            <a href="{% url 'frontend:contact' %}" class="btn btn-outline-primary booking__cta-button">Contact Us</a>
+        </div>
+    </section>
+{% endblock %}

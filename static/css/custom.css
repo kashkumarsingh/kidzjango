@@ -1,0 +1,866 @@
+/* BEM-structured custom styles for Kidz Runz */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Open+Sans:wght@400;700&display=swap');
+
+/* Page styles */
+.page {
+    font-family: "Open Sans", sans-serif;
+    background: linear-gradient(180deg, #F5F5F5 0%, #FAFAFA 100%);
+    color: #333333;
+}
+
+.page__body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.page__main {
+    flex: 1;
+}
+
+.page__section {
+    padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Header styles */
+.header {
+    background-color: #1A3C5A;
+}
+
+.header__nav {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1000;
+}
+
+.header__brand {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.header__logo {
+    transition: opacity 0.3s ease;
+}
+
+.header__logo:hover {
+    opacity: 0.8;
+}
+
+.nav__toggler {
+    border: none;
+    background-color: transparent;
+}
+
+.nav__list {
+    gap: 1rem;
+}
+
+.nav__item {
+    transition: background-color 0.2s ease;
+}
+
+.nav__link {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: #FFFFFF;
+    padding: 0.5rem 1rem;
+}
+
+.nav__link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    color: #FFFFFF;
+}
+
+.nav--offcanvas .nav__link {
+    font-size: 1.2rem;
+    padding: 0.75rem;
+}
+
+.nav__dropdown-item .nav__link {
+    color: #FFFFFF;
+}
+
+.nav__dropdown-item .nav__link:hover {
+    background-color: #00B140;
+    color: #FFFFFF;
+}
+
+.nav__link--button {
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+}
+
+/* Footer styles */
+.footer {
+    background-color: #F5F5F5;
+    border-top: 1px solid #E0E0E0;
+}
+
+.footer__section {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #00AEEF;
+}
+
+.footer__list {
+    padding: 0;
+}
+
+.footer__item {
+    line-height: 1.6;
+}
+
+.footer__link {
+    font-family: "Open Sans", sans-serif;
+    color: #00B140;
+    transition: color 0.2s ease;
+}
+
+.footer__link:hover {
+    color: #007B2F;
+}
+
+.footer__list--social .footer__link {
+    font-size: 1.2rem;
+}
+
+.footer__divider {
+    border-color: #E0E0E0;
+}
+
+.footer__copyright {
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.9rem;
+    color: #666666;
+}
+
+.footer__brand-link {
+    color: #00AEEF;
+}
+
+/* Signin and Signup styles */
+.signin__section,
+.signup__section {
+    padding: 2rem 0;
+    background-color: #F5F5F5;
+}
+
+.signin__card,
+.signup__card {
+    max-width: 500px;
+    margin: 0 auto;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.auth__image {
+    background-size: cover;
+    min-height: 400px;
+}
+
+.auth__title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #00AEEF;
+}
+
+.auth__form-label {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #00B140;
+}
+
+.auth__form-input {
+    border-radius: 4px;
+    border: 1px solid #E0E0E0;
+    font-family: "Open Sans", sans-serif;
+}
+
+.auth__form-input:focus {
+    border-color: #00AEEF;
+    box-shadow: 0 0 5px rgba(0, 174, 239, 0.3);
+}
+
+.auth__form-button {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    background-color: #00AEEF;
+    color: #FFFFFF;
+    border: none;
+    padding: 0.5rem 1rem;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.auth__form-button:hover {
+    transform: translateY(-2px);
+    background-color: #0091D0;
+}
+
+.auth__link {
+    color: #00B140;
+    text-decoration: none;
+}
+
+.auth__link:hover {
+    color: #007B2F;
+}
+
+/* Dashboard styles */
+.dashboard__section {
+    padding: 2rem 0;
+}
+
+.dashboard__card {
+    max-width: 500px;
+    margin: 0 auto;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard__card p {
+    font-family: "Open Sans", sans-serif;
+    color: #333333;
+}
+
+/* General Button Styles */
+.btn-primary {
+    background-color: #00AEEF;
+    border-color: #00AEEF;
+}
+
+.btn-primary:hover {
+    background-color: #0091D0;
+    border-color: #0091D0;
+}
+
+.btn-outline-primary {
+    color: #00AEEF;
+    border-color: #00AEEF;
+}
+
+.btn-outline-primary:hover {
+    background-color: #00AEEF;
+    color: #FFFFFF;
+}
+
+/* Home Page Styles */
+.hero {
+    background: linear-gradient(180deg, #F5F7FA 0%, #E0E7FF 100%);
+    padding: 5rem 0;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero__slide {
+    padding: 2rem;
+}
+
+.hero__title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #1A3C5A;
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero__text {
+    font-family: "Open Sans", sans-serif;
+    color: #666666;
+    animation: fadeInUp 1.2s ease-out;
+}
+
+.hero__button {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    transition: transform 0.2s ease;
+}
+
+.hero__button:hover {
+    transform: translateY(-2px);
+}
+
+.why-choose {
+    background: linear-gradient(180deg, #E6F0FA 0%, #B3CDE0 100%);
+}
+
+.why-choose__title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #1A3C5A;
+}
+
+.why-choose__card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.why-choose__card:hover {
+    transform: scale(1.05);
+}
+
+.why-choose__icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.why-choose__card-title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #00AEEF;
+}
+
+.why-choose__card-text {
+    font-family: "Open Sans", sans-serif;
+    color: #666666;
+}
+
+.why-choose__card-button {
+    font-family: "Poppins", sans-serif;
+}
+
+.pricing {
+    background: linear-gradient(180deg, #F0F4F8 0%, #D1E8FF 100%);
+}
+
+.pricing__title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #1A3C5A;
+}
+
+.pricing__description {
+    font-family: "Open Sans", sans-serif;
+    color: #666666;
+}
+
+.pricing__tabs {
+    justify-content: center;
+    border-bottom: 2px solid #E0E0E0;
+}
+
+.pricing__tab-link {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #666666;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    transition: color 0.2s ease;
+}
+
+.pricing__tab-link:hover,
+.pricing__tab-link.active {
+    color: #00AEEF;
+    border-bottom: 2px solid #00AEEF;
+}
+
+.pricing__card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.pricing__card:hover {
+    transform: scale(1.05);
+}
+
+.pricing__card-title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #00AEEF;
+}
+
+.pricing__card-price {
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.5rem;
+    color: #1A3C5A;
+    margin-bottom: 1rem;
+}
+
+.pricing__card-description {
+    font-family: "Open Sans", sans-serif;
+    color: #666666;
+}
+
+.pricing__card-features {
+    font-family: "Open Sans", sans-serif;
+    color: #333333;
+    margin-bottom: 1rem;
+}
+
+.pricing__card-button {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+}
+
+.special-offer {
+    background: linear-gradient(180deg, #E6F3FF 0%, #A3C9FF 100%);
+}
+
+.special-offer__title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #1A3C5A;
+}
+
+.special-offer__text {
+    font-family: "Open Sans", sans-serif;
+    color: #666666;
+}
+
+.special-offer__highlight {
+    font-weight: 700;
+    color: #00B140;
+}
+
+.special-offer__card {
+    border: none;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.special-offer__card:hover {
+    transform: scale(1.05);
+}
+
+.special-offer__button {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+}
+
+.activities {
+    background: linear-gradient(180deg, #F0F8FF 0%, #C0D8EF 100%);
+}
+
+.activities__title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #1A3C5A;
+}
+
+.activities__card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.activities__card:hover {
+    transform: scale(1.05);
+}
+
+.activities__card-title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #00AEEF;
+}
+
+.activities__card-text {
+    font-family: "Open Sans", sans-serif;
+    color: #666666;
+}
+
+.activities__card-button {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+}
+
+.faqs {
+    background: linear-gradient(180deg, #F5F7FA 0%, #E0E7FF 100%);
+}
+
+.faqs__title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #1A3C5A;
+}
+
+.faqs__item {
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.faqs__button {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #1A3C5A;
+}
+
+.faqs__body {
+    font-family: "Open Sans", sans-serif;
+    color: #666666;
+}
+
+.faqs__empty-text,
+.pricing__empty-text {
+    font-family: "Open Sans", sans-serif;
+    color: #666666;
+}
+
+.faqs__more-button {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+}
+
+.cta {
+    background: linear-gradient(180deg, #E6F0FA 0%, #B3CDE0 100%);
+}
+
+.cta__title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #1A3C5A;
+}
+
+.cta__text {
+    font-family: "Open Sans", sans-serif;
+    color: #666666;
+}
+
+.cta__card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.cta__card:hover {
+    transform: scale(1.05);
+}
+
+.cta__button {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+}
+
+/* Booking Page Styles */
+.booking__section--intro {
+    background: linear-gradient(180deg, #F5F7FA 0%, #E0E7FF 100%);
+}
+
+.booking__title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #1A3C5A;
+}
+
+.booking__text {
+    font-family: "Open Sans", sans-serif;
+    color: #666666;
+}
+
+.booking__card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.booking__subtitle {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #00AEEF;
+}
+
+.booking__package-card {
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.booking__package-card:hover {
+    transform: scale(1.05);
+}
+
+.booking__package-title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #00AEEF;
+}
+
+.booking__package-price {
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.5rem;
+    color: #1A3C5A;
+}
+
+.booking__package-description {
+    font-family: "Open Sans", sans-serif;
+    color: #666666;
+}
+
+.booking__package-features {
+    font-family: "Open Sans", sans-serif;
+    color: #333333;
+}
+
+.booking__package-button {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+}
+
+.booking__cta-text {
+    font-family: "Open Sans", sans-serif;
+    color: #666666;
+}
+
+.booking__cta-button {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+}
+
+/* Choose Package Page Styles */
+.choose-package__section--intro {
+    background: linear-gradient(180deg, #F5F7FA 0%, #E0E7FF 100%);
+}
+
+.choose-package__title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #1A3C5A;
+}
+
+.choose-package__text {
+    font-family: "Open Sans", sans-serif;
+    color: #666666;
+}
+
+.choose-package__card {
+    max-width: 600px;
+    margin: 0 auto;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.choose-package__subtitle {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #00AEEF;
+}
+
+.choose-package__form-label {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #00B140;
+}
+
+.choose-package__form-input {
+    border-radius: 4px;
+    border: 1px solid #E0E0E0;
+    font-family: "Open Sans", sans-serif;
+}
+
+.choose-package__form-input:focus {
+    border-color: #00AEEF;
+    box-shadow: 0 0 5px rgba(0, 174, 239, 0.3);
+}
+
+.choose-package__form-button {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+}
+
+/* Thank You Page Styles */
+.thank-you__section--intro {
+    background: linear-gradient(180deg, #F5F7FA 0%, #E0E7FF 100%);
+}
+
+.thank-you__title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #1A3C5A;
+}
+
+.thank-you__text {
+    font-family: "Open Sans", sans-serif;
+    color: #666666;
+}
+
+.thank-you__card {
+    max-width: 600px;
+    margin: 0 auto;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.thank-you__subtitle {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #00AEEF;
+}
+
+.thank-you__details {
+    font-family: "Open Sans", sans-serif;
+    color: #333333;
+}
+
+.thank-you__detail-item {
+    margin-bottom: 0.5rem;
+}
+
+.thank-you__button {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+}
+
+/* Dark Mode Styles */
+.dark-mode .page {
+    background: linear-gradient(180deg, #1A2A44 0%, #2A4060 100%);
+    color: #E0E0E0;
+}
+
+.dark-mode .hero {
+    background: linear-gradient(180deg, #1A2A44 0%, #2A4060 100%);
+}
+
+.dark-mode .why-choose {
+    background: linear-gradient(180deg, #152535 0%, #1F4060 100%);
+}
+
+.dark-mode .pricing {
+    background: linear-gradient(180deg, #1A2A44 0%, #2A4060 100%);
+}
+
+.dark-mode .special-offer {
+    background: linear-gradient(180deg, #1F4060 0%, #152535 100%);
+}
+
+.dark-mode .activities {
+    background: linear-gradient(180deg, #152535 0%, #1F4060 100%);
+}
+
+.dark-mode .faqs {
+    background: linear-gradient(180deg, #1A2A44 0%, #2A4060 100%);
+}
+
+.dark-mode .cta {
+    background: linear-gradient(180deg, #1F4060 0%, #152535 100%);
+}
+
+.dark-mode .booking__section--intro {
+    background: linear-gradient(180deg, #1A2A44 0%, #2A4060 100%);
+}
+
+.dark-mode .choose-package__section--intro {
+    background: linear-gradient(180deg, #1A2A44 0%, #2A4060 100%);
+}
+
+.dark-mode .thank-you__section--intro {
+    background: linear-gradient(180deg, #1A2A44 0%, #2A4060 100%);
+}
+
+.dark-mode .hero__title,
+.dark-mode .why-choose__title,
+.dark-mode .pricing__title,
+.dark-mode .special-offer__title,
+.dark-mode .activities__title,
+.dark-mode .faqs__title,
+.dark-mode .cta__title,
+.dark-mode .why-choose__card-title,
+.dark-mode .pricing__card-title,
+.dark-mode .activities__card-title,
+.dark-mode .booking__title,
+.dark-mode .booking__subtitle,
+.dark-mode .booking__package-title,
+.dark-mode .choose-package__title,
+.dark-mode .choose-package__subtitle,
+.dark-mode .thank-you__title,
+.dark-mode .thank-you__subtitle {
+    color: #FFFFFF;
+}
+
+.dark-mode .hero__text,
+.dark-mode .why-choose__card-text,
+.dark-mode .pricing__description,
+.dark-mode .pricing__card-description,
+.dark-mode .pricing__card-features,
+.dark-mode .special-offer__text,
+.dark-mode .activities__card-text,
+.dark-mode .faqs__body,
+.dark-mode .faqs__empty-text,
+.dark-mode .pricing__empty-text,
+.dark-mode .cta__text,
+.dark-mode .booking__text,
+.dark-mode .booking__package-description,
+.dark-mode .booking__package-features,
+.dark-mode .booking__cta-text,
+.dark-mode .choose-package__text,
+.dark-mode .thank-you__text,
+.dark-mode .thank-you__details {
+    color: #D0D0D0;
+}
+
+.dark-mode .btn-primary {
+    background-color: #0091D0;
+    border-color: #0091D0;
+}
+
+.dark-mode .btn-primary:hover {
+    background-color: #00AEEF;
+    border-color: #00AEEF;
+}
+
+.dark-mode .btn-outline-primary {
+    color: #00AEEF;
+    border-color: #00AEEF;
+}
+
+.dark-mode .btn-outline-primary:hover {
+    background-color: #00AEEF;
+    color: #FFFFFF;
+}
+
+.dark-mode .pricing__tab-link {
+    color: #D0D0D0;
+}
+
+.dark-mode .pricing__tab-link:hover,
+.dark-mode .pricing__tab-link.active {
+    color: #00AEEF;
+}
+
+.dark-mode .faqs__button {
+    color: #FFFFFF;
+}
+
+.dark-mode .special-offer__highlight {
+    color: #00B140;
+}
+
+.dark-mode .choose-package__form-label {
+    color: #00B140;
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.carousel--animated .carousel-item {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.carousel--animated .carousel-item.active {
+    opacity: 1;
+}

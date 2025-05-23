@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Communication and Feedback - Kidz Runz{% endblock %}
+{% block meta_description %}Learn how Kidz Runz communicates with families and values your feedback.{% endblock %}
+{% block og_title %}Communication and Feedback - Kidz Runz{% endblock %}
+{% block og_description %}Discover how Kidz Runz keeps families connected and welcomes feedback.{% endblock %}
+{% block twitter_title %}Communication and Feedback - Kidz Runz{% endblock %}
+{% block twitter_description %}See how Kidz Runz communicates with parents and values their input.{% endblock %}
+
+{% block content %}
+    <section class="container communication__section communication__section--intro text-center py-5">
+        <h1 class="display-4 fw-bold communication__title">Communication and Feedback</h1>
+        <p class="lead communication__text">We value staying connected with our Kidz Runz families.</p>
+    </section>
+
+    <section class="container communication__section communication__section--content py-5">
+        <p class="communication__paragraph">At Kidz Runz, we believe in open communication with parents and caregivers. We provide regular updates on your child’s activities and progress, and we welcome your feedback to continually improve our services. Whether through meetings, reports, or direct conversations, we’re here to ensure you’re always in the loop.</p>
+        <div class="text-center communication__cta">
+            <a href="{% url 'frontend:about' %}" class="btn btn-primary communication__cta-button">Back to About Us</a>
+        </div>
+    </section>
+{% endblock %}

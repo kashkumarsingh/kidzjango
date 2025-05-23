@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}CAMS Staff - Kidz Runz{% endblock %}
+{% block meta_description %}Meet the dedicated Child Activity Mentor Support (CAMS) staff at Kidz Runz, ensuring safety and fun for your child.{% endblock %}
+{% block og_title %}CAMS Staff - Kidz Runz{% endblock %}
+{% block og_description %}Learn about our extraordinary CAMS staff who bring expertise and care to every child’s adventure at Kidz Runz.{% endblock %}
+{% block twitter_title %}CAMS Staff - Kidz Runz{% endblock %}
+{% block twitter_description %}Discover the passionate CAMS team at Kidz Runz, committed to your child’s safety and growth.{% endblock %}
+
+{% block content %}
+    <section class="container cams__section cams__section--intro text-center py-5">
+        <h1 class="display-4 fw-bold cams__title">Meet Our CAMS Staff</h1>
+        <p class="lead cams__text">Discover the dedicated team supporting your child’s journey!</p>
+    </section>
+
+    <section class="container cams__section cams__section--content py-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="cams__subtitle">Who are our CAMS Staff at Kidz Runz?</h2>
+                <p class="cams__paragraph">Prepare to be amazed by the incredible team of Child Activity Mentor Support (CAMS) professionals at Kidz Runz! They are the driving force behind creating unforgettable experiences and shaping your child's journey with joy, growth, and lifelong memories.</p>
+                <p class="cams__paragraph">Our CAMS staff are more than just experts in recreational activities and mentoring; they are dedicated guardians of your child's safety and well-being. With extensive backgrounds in Local Authority Children Homes as Youth Workers and Children's Playworkers, they bring a treasure trove of knowledge and expertise to every interaction. Rest easy knowing that our CAMS staff undergo rigorous background checks, including full DBS Enhanced checks, ensuring the utmost trust and security.</p>
+                <p class="cams__paragraph">Don’t miss out on this extraordinary opportunity! Join us at Kidz Runz and witness the incredible impact our CAMS staff can make in your child's life.</p>
+            </div>
+            <div class="col-md-6">
+                <div class="card cams__card">
+                    <div class="card-body cams__card-body">
+                        <h3 class="card-title cams__card-title">What Makes Our CAMS Staff Special</h3>
+                        <ul class="list-unstyled cams__card-list">
+                            <li class="cams__card-item"><span class="cams__card-icon">🌟</span> <strong>Expertise:</strong> Extensive experience from youth and play settings.</li>
+                            <li class="cams__card-item"><span class="cams__card-icon">🌟</span> <strong>Inclusivity:</strong> Trained to support children with SEND for an enriching environment.</li>
+                            <li class="cams__card-item"><span class="cams__card-icon">🌟</span> <strong>PACE Approach:</strong> Embracing Playfulness, Acceptance, Curiosity, and Empathy.</li>
+                            <li class="cams__card-item"><span class="cams__card-icon">🌟</span> <strong>Passion:</strong> Passionate about sports and thrilling activities.</li>
+                            <li class="cams__card-item"><span class="cams__card-icon">🌟</span> <strong>Safety:</strong> Rigorous DBS checks for peace of mind.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center cams__cta">
+            <a href="{% url 'frontend:contact' %}" class="btn btn-primary cams__cta-button">Contact Us Today</a>
+        </div>
+    </section>
+{% endblock %}

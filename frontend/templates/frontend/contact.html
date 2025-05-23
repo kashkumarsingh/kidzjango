@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contact Us - Kidz Runz{% endblock %}
+{% block meta_description %}Get in touch with Kidz Runz for inquiries, bookings, or support. Find our location, phone, email, and send us a message!{% endblock %}
+{% block og_title %}Contact Us - Kidz Runz{% endblock %}
+{% block og_description %}Reach out to Kidz Runz for any questions or support. View our location and contact details.{% endblock %}
+{% block twitter_title %}Contact Us - Kidz Runz{% endblock %}
+{% block twitter_description %}Contact Kidz Runz for inquiries or support. See our location and get in touch!{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero contact__hero" aria-labelledby="contact-hero-heading">
+        <div class="container text-center">
+            <h1 id="contact-hero-heading" class="display-4 fw-bold mb-4 hero__title">Contact Us</h1>
+            <p class="lead mb-4 hero__text">We'd love to hear from you! Reach out for inquiries, bookings, or support.</p>
+        </div>
+    </section>
+
+    <!-- Contact Information and Form Section -->
+    <section class="contact__section contact__section--info py-5">
+        <div class="container">
+            <!-- Success Message -->
+            {% if success_message %}
+                <div class="alert alert-success alert-dismissible fade show contact__success-message" role="alert">
+                    {{ success_message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+            <div class="row">
+                <!-- Contact Info -->
+                <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+                    <div class="card contact__card">
+                        <div class="card-body contact__card-body">
+                            <h2 class="h3 mb-4 contact__title">Get in Touch</h2>
+                            <ul class="list-unstyled contact__info-list">
+                                <li class="mb-3 contact__info-item">
+                                    <strong class="contact__info-label">Address:</strong>
+                                    <p class="mb-0 contact__info-text">123 Kidz Runz Lane, London, SW1A 1AA, UK</p>
+                                </li>
+                                <li class="mb-3 contact__info-item">
+                                    <strong class="contact__info-label">Phone:</strong>
+                                    <p class="mb-0 contact__info-text"><a href="tel:+19342772" class="contact__info-link">+1 934 2772</a></p>
+                                </li>
+                                <li class="mb-3 contact__info-item">
+                                    <strong class="contact__info-label">Email:</strong>
+                                    <p class="mb-0 contact__info-text"><a href="mailto:info@kidzrunz.com" class="contact__info-link">info@kidzrunz.com</a></p>
+                                </li>
+                            </ul>
+                            <!-- Google Maps -->
+                            <div class="contact__map mt-4">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.905849568214!2d-0.125736684229994!3d51.50136497963521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760520c214a511%3A0x5e6d8a67b6a6e8f2!2sBuckingham%20Palace!5e0!3m2!1sen!2suk!4v1697641234567!5m2!1sen!2suk" 
+                                    width="100%" 
+                                    height="300" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    aria-label="Map showing Kidz Runz location near Buckingham Palace">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Contact Form -->
+                <div class="col-12 col-lg-6">
+                    <div class="card contact__card">
+                        <div class="card-body contact__card-body">
+                            <h2 class="h3 mb-4 contact__title">Send Us a Message</h2>
+                            <form method="POST" action="{% url 'frontend:contact' %}" class="contact__form">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="fullName" class="form-label contact__form-label">Full Name</label>
+                                    <input 
+                                        type="text" 
+                                        class="form-control contact__form-input" 
+                                        id="fullName" 
+                                        name="full_name" 
+                                        placeholder="Enter your full name" 
+                                        value="John Doe" 
+                                        required 
+                                        aria-describedby="fullNameHelp">
+                                    <div id="fullNameHelp" class="form-text contact__form-help">Please provide your full name.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label contact__form-label">Email</label>
+                                    <input 
+                                        type="email" 
+                                        class="form-control contact__form-input" 
+                                        id="email" 
+                                        name="email" 
+                                        placeholder="name@company.com" 
+                                        value="john@company.com" 
+                                        required 
+                                        aria-describedby="emailHelp">
+                                    <div id="emailHelp" class="form-text contact__form-help">We'll never share your email with anyone else.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label contact__form-label">Phone Number</label>
+                                    <input 
+                                        type="tel" 
+                                        class="form-control contact__form-input" 
+                                        id="phone" 
+                                        name="phone" 
+                                        placeholder="+1 934 2772" 
+                                        value="+1 934 2772" 
+                                        required 
+                                        aria-describedby="phoneHelp">
+                                    <div id="phoneHelp" class="form-text contact__form-help">Please include your country code (e.g., +1).</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label contact__form-label">Message</label>
+                                    <textarea 
+                                        class="form-control contact__form-input" 
+                                        id="message" 
+                                        name="message" 
+                                        rows="5" 
+                                        placeholder="Your message here..." 
+                                        required 
+                                        aria-describedby="messageHelp"></textarea>
+                                    <div id="messageHelp" class="form-text contact__form-help">Tell us how we can assist you!</div>
+                                </div>
+                                <button type="submit" class="btn btn-primary contact__form-button">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta contact__cta" aria-labelledby="contact-cta-heading">
+        <div class="container py-5 text-center">
+            <div class="card cta__card">
+                <div class="card-body cta__card-body">
+                    <h2 id="contact-cta-heading" class="h3 mb-4 cta__title">Ready to Book an Activity?</h2>
+                    <p class="mb-4 cta__text">Explore our packages and book a fun-filled session for your child today!</p>
+                    <a href="{% url 'frontend:bookings' %}" class="btn btn-light cta__button">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

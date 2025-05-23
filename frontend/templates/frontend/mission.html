@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Our Mission Statements - Kidz Runz{% endblock %}
+{% block meta_description %}Discover the mission and values that drive Kidz Runz to support children and families.{% endblock %}
+{% block og_title %}Our Mission Statements - Kidz Runz{% endblock %}
+{% block og_description %}Learn about Kidz Runz’s mission to empower children through play and support.{% endblock %}
+{% block twitter_title %}Our Mission Statements - Kidz Runz{% endblock %}
+{% block twitter_description %}Explore Kidz Runz’s mission to create a nurturing environment for kids.{% endblock %}
+
+{% block content %}
+    <section class="container mission__section mission__section--intro text-center py-5">
+        <h1 class="display-4 fw-bold mission__title">Our Mission Statements</h1>
+        <p class="lead mission__text">Our goals to empower and support every child.</p>
+    </section>
+
+    <section class="container mission__section mission__section--content py-5">
+        <p class="mission__paragraph">At Kidz Runz, our mission is to inspire children to reach their full potential through engaging activities and supportive mentorship. We aim to foster a love for learning, promote physical and emotional well-being, and create a community where every child feels valued and included.</p>
+        <div class="text-center mission__cta">
+            <a href="{% url 'frontend:about' %}" class="btn btn-primary mission__cta-button">Back to About Us</a>
+        </div>
+    </section>
+{% endblock %}
