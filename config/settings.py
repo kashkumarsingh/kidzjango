@@ -117,9 +117,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Note: Email settings are now managed via the EmailConfiguration model in the admin panel.
 # No fallback defaults are provided as per requirement.
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-EMAIL_PORT = 2525
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = '246fdbf58feafd'
-EMAIL_HOST_PASSWORD = '6fc40fcdbbf0ee'  # Replace with the actual password
-EMAIL_TIMEOUT = 10
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', 587))
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True').lower() == 'true'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_TIMEOUT = int(os.getenv('EMAIL_TIMEOUT', 10))
