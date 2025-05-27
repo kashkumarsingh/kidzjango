@@ -1,44 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Kidz Runz Booking Confirmation</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-        .container { max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
-        .header { background-color: #007bff; color: white; padding: 10px; text-align: center; }
-        .content { padding: 20px; }
-        .footer { text-align: center; font-size: 12px; color: #777; padding: 10px; }
-        .btn { display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>Kidz Runz Booking Confirmation</h1>
-        </div>
-        <div class="content">
-            <p>Dear {{ booking.name }},</p>
-            <p>Thank you for booking with Kidz Runz!</p>
-            <ul>
-                <li><strong>Reference ID:</strong> {{ booking.reference_id }}</li>
-                <li><strong>Package:</strong> {{ booking.package.name }}</li>
-                <li><strong>Start Date and Time:</strong> {{ booking.start_date|date:"Y-m-d H:i" }}</li>
-                <li><strong>End Date and Time:</strong> 
-                    {% if booking.end_date %}
-                        {{ booking.end_date|date:"Y-m-d H:i" }}
-                    {% else %}
-                        Not calculated
-                    {% endif %}
-                </li>
-                <li><strong>Additional Information:</strong> {{ booking.description|default:"None" }}</li>
-            </ul>
-            <p>We look forward to seeing you!</p>
-            <p>To cancel your booking, <a href="{{ request.scheme }}://{{ request.get_host }}{% url 'core:cancel_booking' booking.reference_id %}" class="btn">click here</a>.</p>
-            <p>Best regards,<br>Kidz Runz Team</p>
-        </div>
-        <div class="footer">
-            <p>© 2025 Kidz Runz. All rights reserved.</p>
-        </div>
-    </div>
-</body>
-</html>
+{% extends "core/base_email.html" %}
+
+{% block title %}Booking Confirmation{% endblock %}
+{% block header %}Kidz Runz Booking Confirmation{% endblock %}
+
+{% block content %}
+    <p>Dear {{ booking.name }},</p>
+    <p>Thank you for booking with Kidz Runz!</p>
+    <ul>
+        <li><strong>Reference ID:</strong> {{ booking.reference_id }}</li>
+        <li><strong>Package:</strong> {{ booking.package.name }}</li>
+        <li><strong>Start Date and Time:</strong> {{ booking.start_date|date:"Y-m-d H:i" }}</li>
+        <li><strong>End Date and Time:</strong>
+            {% if booking.end_date %}
+                {{ booking.end_date|date:"Y-m-d H:i" }}
+            {% else %}
+                Not calculated
+            {% endif %}
+        </li>
+        <li><strong>Additional Information:</strong> {{ booking.description|default:"None" }}</li>
+    </ul>
+    <p>We look forward to seeing you!</p>
+    <p>To cancel your booking, <a href="{{ request.scheme }}://{{ request.get_host }}{% url 'core:cancel_booking' booking.reference_id %}" class="btn">click here</a>.</p>
+    <p>Best regards,<br>Kidz Runz Team</p>
+{% endblock %}

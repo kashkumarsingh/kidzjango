@@ -10,31 +10,70 @@
 {% block twitter_title %}Home - Kidz Runz{% endblock %}
 {% block twitter_description %}Discover Kidz Runz – safe, fun activities for kids with expert mentors. Book a session today!{% endblock %}
 
+{% block extra_head %}
+    <!-- Structured Data for Home Page -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Home - Kidz Runz",
+        "description": "Join Kidz Runz for fun, safe, and supportive children’s activities with expert mentors. Explore our packages and book today!",
+        "url": "{% url 'frontend:home' %}",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "url": "{% url 'frontend:home' %}",
+            "logo": "{% static 'images/logo.webp' %}",
+            "description": "Kidz Runz provides professional Child Activity Mentor Support (CAMS) with fun activities and flexible pricing for children.",
+            "sameAs": [
+                "https://facebook.com/kidzrunz",
+                "https://twitter.com/kidzrunz",
+                "https://instagram.com/kidzrunz"
+            ]
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "{% url 'frontend:home' %}"
+                }
+            ]
+        }
+    }
+    </script>
+    <!-- Preload Hero Image for Faster Loading -->
+    <link rel="preload" href="{% static 'images/hero-image.jpg' %}" as="image">
+{% endblock %}
+
 {% block content %}
-    <!-- Hero Section with Carousel and Animation -->
-    <section class="hero home__hero page__section" aria-labelledby="hero-heading" data-dark-mode-bg="linear-gradient(180deg, #1A2A44 0%, #2A4060 100%)">
-        <div class="container">
+    <!-- Hero Section with Image, Gradient Overlay, and Carousel -->
+    <section class="hero home__hero page__section position-relative" style="background: url('{% static 'images/hero-image.jpg' %}') no-repeat center center/cover; background-attachment: fixed;" aria-labelledby="hero-heading">
+        <div class="position-absolute w-100 h-100" style="background: linear-gradient(180deg, rgba(0, 123, 255, 0.5) 0%, rgba(0, 196, 180, 0.5) 100%); top: 0; left: 0;"></div>
+        <div class="container position-relative">
             <div id="heroCarousel" class="carousel slide carousel--animated" data-bs-ride="carousel" aria-label="Hero carousel showcasing Kidz Runz activities">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <div class="hero__slide text-center">
-                            <h1 id="hero-heading" class="display-4 fw-bold hero__title">Fun & Safe Activities for Your Child</h1>
-                            <p class="lead hero__text">Kidz Runz provides expert Child Activity Mentor Support (CAMS) to help your child thrive.</p>
-                            <a href="{% url 'frontend:bookings' %}" class="btn btn-primary hero__button" role="button" aria-label="Book a session now">Book a Session Now</a>
+                        <div class="hero__slide text-center py-5">
+                            <h1 id="hero-heading" class="display-4 fw-bold hero__title text-white">Fun & Safe Activities for Your Child</h1>
+                            <p class="lead hero__text text-white">Kidz Runz provides expert Child Activity Mentor Support (CAMS) to help your child thrive.</p>
+                            <a href="{% url 'frontend:bookings' %}" class="btn btn-primary hero__button mt-3" role="button" aria-label="Book a session now">Book a Session Now</a>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="hero__slide text-center">
-                            <h1 class="display-4 fw-bold hero__title">Explore Exciting Adventures</h1>
-                            <p class="lead hero__text">From sports to educational outings, we create joyful experiences for kids.</p>
-                            <a href="{% url 'frontend:activities' %}" class="btn btn-primary hero__button" role="button" aria-label="View available activities">See Activities</a>
+                        <div class="hero__slide text-center py-5">
+                            <h1 class="display-4 fw-bold hero__title text-white">Explore Exciting Adventures</h1>
+                            <p class="lead hero__text text-white">From sports to educational outings, we create joyful experiences for kids.</p>
+                            <a href="{% url 'frontend:activities' %}" class="btn btn-primary hero__button mt-3" role="button" aria-label="View available activities">See Activities</a>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="hero__slide text-center">
-                            <h1 class="display-4 fw-bold hero__title">Limited-Time Offer!</h1>
-                            <p class="lead hero__text">Get 10% extra on activity vouchers with any package purchase!</p>
-                            <a href="#special-offer" class="btn btn-primary hero__button" role="button" aria-label="Learn more about the offer">Learn More</a>
+                        <div class="hero__slide text-center py-5">
+                            <h1 class="display-4 fw-bold hero__title text-white">Limited-Time Offer!</h1>
+                            <p class="lead hero__text text-white">Get 10% extra on activity vouchers with any package purchase!</p>
+                            <a href="#special-offer" class="btn btn-primary hero__button mt-3" role="button" aria-label="Learn more about the offer">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -49,35 +88,35 @@
     </section>
 
     <!-- Why Choose Kidz Runz Section -->
-    <section class="why-choose page__section py-5" aria-labelledby="why-choose-heading" data-dark-mode-bg="linear-gradient(180deg, #152535 0%, #1F4060 100%)">
+    <section class="why-choose page__section py-5" style="background: linear-gradient(180deg, #F5F7FA 0%, #E0E7FF 100%);" aria-labelledby="why-choose-heading">
         <div class="container">
             <h2 id="why-choose-heading" class="h3 mb-4 text-center why-choose__title">Why Choose Kidz Runz?</h2>
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <div class="card why-choose__card">
+                    <div class="card why-choose__card shadow-sm">
                         <div class="card-body why-choose__card-body text-center">
-                            <span class="why-choose__icon" aria-hidden="true">👮‍♂️</span>
-                            <h3 class="card-title why-choose__card-title">Safety First</h3>
+                            <i class="fas fa-shield-alt why-choose__icon text-primary" aria-hidden="true"></i>
+                            <h3 class="card-title why-choose__card-title mt-3">Safety First</h3>
                             <p class="why-choose__card-text">Our CAMS staff are DBS-checked and trained to ensure your child’s safety.</p>
                             <a href="{% url 'frontend:safeguarding' %}" class="btn btn-outline-primary why-choose__card-button" aria-label="Learn more about safety measures">Learn More</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="card why-choose__card">
+                    <div class="card why-choose__card shadow-sm">
                         <div class="card-body why-choose__card-body text-center">
-                            <span class="why-choose__icon" aria-hidden="true">🌟</span>
-                            <h3 class="card-title why-choose__card-title">Expert Mentors</h3>
+                            <i class="fas fa-star why-choose__icon text-primary" aria-hidden="true"></i>
+                            <h3 class="card-title why-choose__card-title mt-3">Expert Mentors</h3>
                             <p class="why-choose__card-text">Our team specializes in supporting kids, including those with SEND.</p>
                             <a href="{% url 'frontend:cams' %}" class="btn btn-outline-primary why-choose__card-button" aria-label="Meet our expert mentors">Meet Our Team</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="card why-choose__card">
+                    <div class="card why-choose__card shadow-sm">
                         <div class="card-body why-choose__card-body text-center">
-                            <span class="why-choose__icon" aria-hidden="true">🎉</span>
-                            <h3 class="card-title why-choose__card-title">Fun & Growth</h3>
+                            <i class="fas fa-heart why-choose__icon text-primary" aria-hidden="true"></i>
+                            <h3 class="card-title why-choose__card-title mt-3">Fun & Growth</h3>
                             <p class="why-choose__card-text">Activities designed to promote physical, social, and emotional development.</p>
                             <a href="{% url 'frontend:benefits' %}" class="btn btn-outline-primary why-choose__card-button" aria-label="See the benefits of our activities">See Benefits</a>
                         </div>
@@ -88,7 +127,7 @@
     </section>
 
     <!-- Pricing Packages Section with Tabs -->
-    <section class="pricing page__section py-5" id="pricing" aria-labelledby="pricing-heading" data-dark-mode-bg="linear-gradient(180deg, #1A2A44 0%, #2A4060 100%)">
+    <section class="pricing page__section py-5" id="pricing" style="background: linear-gradient(180deg, #E6F0FA 0%, #B3CDE0 100%);" aria-labelledby="pricing-heading">
         <div class="container">
             <h2 id="pricing-heading" class="h3 mb-4 text-center pricing__title">Choose the Perfect Package for Your Child</h2>
             <p class="mb-4 text-center pricing__description">Flexible pricing to suit your needs, with everything included – from activities to mentor support.</p>
@@ -111,7 +150,7 @@
                         {% for package in pricing_packages %}
                             {% if package.type == 'single' %}
                                 <div class="col-12 col-md-4 mb-4">
-                                    <div class="card pricing__card">
+                                    <div class="card pricing__card shadow-sm">
                                         <div class="card-body pricing__card-body">
                                             <h3 class="pricing__card-title">{{ package.name }}</h3>
                                             <p class="pricing__card-price">{{ package.price }}</p>
@@ -119,7 +158,7 @@
                                             <div class="pricing__card-features">
                                                 {{ package.features|safe }}
                                             </div>
-                                            <a href="{% url 'core:choose_package' package.id %}" class="btn btn-primary pricing__card-button" aria-label="Choose this package">Choose Package</a>
+                                            <a href="{% url 'core:choose_package' package.id %}" class="btn btn-primary pricing__card-button" aria-label="Choose the {{ package.name }} package">Choose Package</a>
                                         </div>
                                     </div>
                                 </div>
@@ -138,7 +177,7 @@
                         {% for package in pricing_packages %}
                             {% if package.type == 'multi' %}
                                 <div class="col-12 col-md-4 mb-4">
-                                    <div class="card pricing__card">
+                                    <div class="card pricing__card shadow-sm">
                                         <div class="card-body pricing__card-body">
                                             <h3 class="pricing__card-title">{{ package.name }}</h3>
                                             <p class="pricing__card-price">{{ package.price }}</p>
@@ -146,7 +185,7 @@
                                             <div class="pricing__card-features">
                                                 {{ package.features|safe }}
                                             </div>
-                                            <a href="{% url 'core:choose_package' package.id %}" class="btn btn-primary pricing__card-button" aria-label="Choose this package">Choose Package</a>
+                                            <a href="{% url 'core:choose_package' package.id %}" class="btn btn-primary pricing__card-button" aria-label="Choose the {{ package.name }} package">Choose Package</a>
                                         </div>
                                     </div>
                                 </div>
@@ -165,12 +204,12 @@
         </div>
     </section>
 
-    <!-- Special Offer Section -->
-    <section class="special-offer page__section py-5 bg-light" id="special-offer" aria-labelledby="special-offer-heading" data-dark-mode-bg="linear-gradient(180deg, #1F4060 0%, #152535 100%)">
+    <!-- Special Offer Section with Text Gradient -->
+    <section class="special-offer page__section py-5" id="special-offer" style="background: linear-gradient(180deg, #F0F8FF 0%, #C0D8EF 100%);" aria-labelledby="special-offer-heading">
         <div class="container">
-            <div class="card special-offer__card">
+            <div class="card special-offer__card shadow-sm">
                 <div class="card-body special-offer__card-body text-center">
-                    <h2 id="special-offer-heading" class="h3 mb-4 special-offer__title">Limited-Time Special Offer</h2>
+                    <h2 id="special-offer-heading" class="h3 mb-4 special-offer__title" style="background: linear-gradient(135deg, #28a745 0%, #00c4b4 100%); -webkit-background-clip: text; color: transparent;">Limited-Time Special Offer</h2>
                     <p class="mb-4 special-offer__text">Get an extra <span class="special-offer__highlight">10% on any Activity Voucher</span> when you purchase a package! For example, a £200 voucher becomes £220.</p>
                     <a href="{% url 'frontend:bookings' %}" class="btn btn-primary special-offer__button" aria-label="Claim this special offer">Claim This Offer</a>
                 </div>
@@ -178,13 +217,14 @@
         </div>
     </section>
 
-    <!-- Activities Highlight Section -->
-    <section class="activities page__section py-5" aria-labelledby="activities-heading" data-dark-mode-bg="linear-gradient(180deg, #152535 0%, #1F4060 100%)">
+    <!-- Activities Highlight Section with Images -->
+    <section class="activities page__section py-5" style="background: linear-gradient(180deg, #E6F0FA 0%, #B3CDE0 100%);" aria-labelledby="activities-heading">
         <div class="container">
             <h2 id="activities-heading" class="h3 mb-4 text-center activities__title">Activities Your Child Will Love</h2>
             <div class="row">
                 <div class="col-md-6 mb-4">
-                    <div class="card activities__card">
+                    <div class="card activities__card shadow-sm">
+                        <img src="{% static 'images/sports.jpg' %}" class="card-img-top" alt="Children playing sports and games at Kidz Runz" style="height: 200px; object-fit: cover;">
                         <div class="card-body activities__card-body">
                             <h3 class="card-title activities__card-title">Sports & Games</h3>
                             <p class="activities__card-text">From football to treasure hunts, we offer a variety of sports and games to keep your child active.</p>
@@ -193,7 +233,8 @@
                     </div>
                 </div>
                 <div class="col-md-6 mb-4">
-                    <div class="card activities__card">
+                    <div class="card activities__card shadow-sm">
+                        <img src="{% static 'images/educational-outings.jpg' %}" class="card-img-top" alt="Children on educational outings to museums and zoos with Kidz Runz" style="height: 200px; object-fit: cover;">
                         <div class="card-body activities__card-body">
                             <h3 class="card-title activities__card-title">Educational Outings</h3>
                             <p class="activities__card-text">Visit museums, zoos, and more to spark your child’s curiosity and learning.</p>
@@ -205,13 +246,47 @@
         </div>
     </section>
 
+    <!-- Testimonials Section with Background Image -->
+    <section class="testimonials page__section py-5 position-relative" style="background: url('{% static 'images/testimonials-bg.jpg' %}') no-repeat center center/cover;" aria-labelledby="testimonials-heading">
+        <div class="position-absolute w-100 h-100" style="background: linear-gradient(180deg, rgba(0, 123, 255, 0.7) 0%, rgba(0, 196, 180, 0.7) 100%); top: 0; left: 0;"></div>
+        <div class="container position-relative">
+            <h2 id="testimonials-heading" class="h3 mb-4 text-center text-white">What Parents Say About Us</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card bg-transparent border-0 text-white">
+                        <div class="card-body">
+                            <p class="card-text">"Kidz Runz has been a game-changer for my son. The mentors are amazing, and he’s thriving!"</p>
+                            <p class="card-subtitle text-light">— Sarah M., Parent</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card bg-transparent border-0 text-white">
+                        <div class="card-body">
+                            <p class="card-text">"I love how safe and fun the activities are. My daughter looks forward to every session."</p>
+                            <p class="card-subtitle text-light">— James R., Parent</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card bg-transparent border-0 text-white">
+                        <div class="card-body">
+                            <p class="card-text">"The team really understands kids with SEND. I feel confident leaving my child in their care."</p>
+                            <p class="card-subtitle text-light">— Emily T., Parent</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- FAQ Section -->
-    <section class="faqs page__section py-5 bg-light" aria-labelledby="faqs-heading" data-dark-mode-bg="linear-gradient(180deg, #1A2A44 0%, #2A4060 100%)">
+    <section class="faqs page__section py-5" style="background: linear-gradient(180deg, #F5F7FA 0%, #E0E7FF 100%);" aria-labelledby="faqs-heading">
         <div class="container">
             <h2 id="faqs-heading" class="h3 mb-4 text-center faqs__title">Common Questions from Parents</h2>
             <div class="accordion" id="faqAccordion">
                 {% for faq in faqs %}
-                    <div class="accordion-item faqs__item">
+                    <div class="accordion-item faqs__item shadow-sm">
                         <h2 class="accordion-header faqs__header" id="faq-heading-{{ forloop.counter }}">
                             <button class="accordion-button faqs__button {% if forloop.first %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-{{ forloop.counter }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="faq-collapse-{{ forloop.counter }}">
                                 {{ faq.question }}
@@ -235,14 +310,14 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta page__section py-5" aria-labelledby="cta-heading" data-dark-mode-bg="linear-gradient(180deg, #1F4060 0%, #152535 100%)">
+    <!-- CTA Section with Gradient Background -->
+    <section class="cta page__section py-5 position-relative" style="background: linear-gradient(135deg, #007bff 0%, #00c4b4 100%);" aria-labelledby="cta-heading">
         <div class="container text-center">
-            <div class="card cta__card">
+            <div class="card cta__card bg-transparent border-0">
                 <div class="card-body cta__card-body">
-                    <h2 id="cta-heading" class="h3 mb-4 cta__title">Ready to Get Started?</h2>
-                    <p class="mb-4 cta__text">Book a session today and let your child experience the joy of Kidz Runz!</p>
-                    <a href="{% url 'frontend:bookings' %}" class="btn btn-primary cta__button" aria-label="Book a session now">Book Now</a>
+                    <h2 id="cta-heading" class="h3 mb-4 cta__title text-white">Ready to Get Started?</h2>
+                    <p class="mb-4 cta__text text-white">Book a session today and let your child experience the joy of Kidz Runz!</p>
+                    <a href="{% url 'frontend:bookings' %}" class="btn btn-light cta__button text-primary" aria-label="Book a session now">Book Now</a>
                 </div>
             </div>
         </div>

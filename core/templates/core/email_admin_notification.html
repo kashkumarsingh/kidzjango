@@ -1,45 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>New Booking Notification - Kidz Runz</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-        .container { max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
-        .header { background-color: #dc3545; color: white; padding: 10px; text-align: center; }
-        .content { padding: 20px; }
-        .footer { text-align: center; font-size: 12px; color: #777; padding: 10px; }
-        .btn { display: inline-block; padding: 10px 20px; background-color: #dc3545; color: white; text-decoration: none; border-radius: 5px; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>New Booking Notification</h1>
-        </div>
-        <div class="content">
-            <p>A new booking has been received:</p>
-            <ul>
-                <li><strong>Reference ID:</strong> {{ booking.reference_id }}</li>
-                <li><strong>Visitor Name:</strong> {{ booking.name }}</li>
-                <li><strong>Email:</strong> {{ booking.email }}</li>
-                <li><strong>Phone:</strong> {{ booking.phone }}</li>
-                <li><strong>Package:</strong> {{ booking.package.name }}</li>
-                <li><strong>Start Date and Time:</strong> {{ booking.start_date|date:"Y-m-d H:i" }}</li>
-                <li><strong>End Date and Time:</strong> 
-                    {% if booking.end_date %}
-                        {{ booking.end_date|date:"Y-m-d H:i" }}
-                    {% else %}
-                        Not calculated
-                    {% endif %}
-                </li>
-                <li><strong>Additional Information:</strong> {{ booking.description|default:"None" }}</li>
-            </ul>
-            <p>Please follow up with the visitor.</p>
-            <p><a href="{{ request.scheme }}://{{ request.get_host }}/admin/core/booking/{{ booking.id }}/change/" class="btn">Manage/View Booking</a></p>
-        </div>
-        <div class="footer">
-            <p>© 2025 Kidz Runz. All rights reserved.</p>
-        </div>
-    </div>
-</body>
-</html>
+{% extends "core/base_email.html" %}
+
+{% block title %}New Booking Notification{% endblock %}
+{% block header_color %}#dc3545{% endblock %}
+{% block button_color %}#dc3545{% endblock %}
+{% block header %}New Booking Notification{% endblock %}
+
+{% block content %}
+    <p>A new booking has been received:</p>
+    <ul>
+        <li><strong>Reference ID:</strong> {{ booking.reference_id }}</li>
+        <li><strong>Visitor Name:</strong> {{ booking.name }}</li>
+        <li><strong>Email:</strong> {{ booking.email }}</li>
+        <li><strong>Phone:</strong> {{ booking.phone }}</li>
+        <li><strong>Package:</strong> {{ booking.package.name }}</li>
+        <li><strong>Start Date and Time:</strong> {{ booking.start_date|date:"Y-m-d H:i" }}</li>
+        <li><strong>End Date and Time:</strong>
+            {% if booking.end_date %}
+                {{ booking.end_date|date:"Y-m-d H:i" }}
+            {% else %}
+                Not calculated
+            {% endif %}
+        </li>
+        <li><strong>Additional Information:</strong> {{ booking.description|default:"None" }}</li>
+    </ul>
+    <p>Please follow up with the visitor.</p>
+    <p><a href="{{ request.scheme }}://{{ request.get_host }}/admin/core/booking/{{ booking.id }}/change/" class="btn">Manage/View Booking</a></p>
+{% endblock %}

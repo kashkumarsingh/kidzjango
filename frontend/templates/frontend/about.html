@@ -1,77 +1,176 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block title %}About Us - Kidz Runz{% endblock %}
-{% block meta_description %}Learn more about Kidz Runz, our mission, story, and commitment to supporting children and families.{% endblock %}
+{% block meta_description %}Learn about Kidz Runz, a trusted provider of fun, safe children’s activities with expert Child Activity Mentor Support (CAMS).{% endblock %}
+{% block canonical_url %}{% url 'frontend:about' %}{% endblock %}
 {% block og_title %}About Us - Kidz Runz{% endblock %}
-{% block og_description %}Discover the story behind Kidz Runz and our dedication to children’s growth and safety.{% endblock %}
+{% block og_description %}Discover Kidz Runz – we provide safe, fun activities for kids with expert mentors. Learn about our mission, team, and values.{% endblock %}
+{% block og_url %}{% url 'frontend:about' %}{% endblock %}
 {% block twitter_title %}About Us - Kidz Runz{% endblock %}
-{% block twitter_description %}Learn about Kidz Runz’s mission, story, and support for kids and parents.{% endblock %}
+{% block twitter_description %}Kidz Runz offers fun, safe activities for kids with expert CAMS support. Learn about our mission and team!{% endblock %}
+
+{% block extra_head %}
+    <!-- Structured Data for About Page -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "About Us - Kidz Runz",
+        "description": "Learn about Kidz Runz, a trusted provider of fun, safe children’s activities with expert Child Activity Mentor Support (CAMS).",
+        "url": "{% url 'frontend:about' %}",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "url": "{% url 'frontend:home' %}",
+            "logo": "{% static 'images/logo.webp' %}",
+            "description": "Kidz Runz provides professional Child Activity Mentor Support (CAMS) with fun activities and flexible pricing for children.",
+            "sameAs": [
+                "https://facebook.com/kidzrunz",
+                "https://twitter.com/kidzrunz",
+                "https://instagram.com/kidzrunz"
+            ]
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "{% url 'frontend:home' %}"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "About Us",
+                    "item": "{% url 'frontend:about' %}"
+                }
+            ]
+        }
+    }
+    </script>
+    <!-- Preload Hero Image for Faster Loading -->
+    <link rel="preload" href="{% static 'images/about-hero.jpg' %}" as="image">
+{% endblock %}
 
 {% block content %}
-    <section class="about__section about__section--intro text-center py-5">
-        <div class="container">
-            <h1 class="display-4 fw-bold about__title">About Us</h1>
-            <p class="lead about__text">Get to know Kidz Runz and our commitment to enriching children’s lives.</p>
+    <!-- Hero Section with Image and Gradient Overlay -->
+    <section class="hero about__hero page__section position-relative" style="background: url('{% static 'images/about-hero.jpg' %}') no-repeat center center/cover; background-attachment: fixed;" aria-labelledby="hero-heading">
+        <div class="position-absolute w-100 h-100" style="background: linear-gradient(135deg, #007bff 0%, #00c4b4 100%); opacity: 0.7; top: 0; left: 0;"></div>
+        <div class="container position-relative text-center py-5">
+            <h1 id="hero-heading" class="display-4 fw-bold hero__title text-white">About Kidz Runz</h1>
+            <p class="lead hero__text text-white">We’re here to provide fun, safe, and supportive activities for your child with expert Child Activity Mentor Support (CAMS).</p>
+            <a href="{% url 'frontend:bookings' %}" class="btn btn-light hero__button mt-3 text-primary" role="button" aria-label="Book a session today">Book a Session Today</a>
         </div>
     </section>
 
-    <section class="about__section about__section--content py-5">
+    <!-- Mission Section with Text Gradient -->
+    <section class="mission page__section py-5" style="background: linear-gradient(180deg, #F5F7FA 0%, #E0E7FF 100%);" aria-labelledby="mission-heading">
         <div class="container">
+            <h2 id="mission-heading" class="h3 mb-4 text-center mission__title" style="background: linear-gradient(135deg, #28a745 0%, #00c4b4 100%); -webkit-background-clip: text; color: transparent;">Our Mission</h2>
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4">
+                    <p class="mission__text">At Kidz Runz, our mission is to create a nurturing environment where children can explore, learn, and grow through fun and safe activities. We aim to support parents by providing expert Child Activity Mentor Support (CAMS) that ensures every child, including those with SEND, can thrive.</p>
+                    <p class="mission__text">We believe in the power of play and mentorship to foster physical, social, and emotional development, making every moment a joyful learning experience.</p>
+                    <a href="{% url 'frontend:mission' %}" class="btn btn-outline-primary mission__button" aria-label="Learn more about our mission">Learn More</a>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <img src="{% static 'images/mission-image.jpg' %}" class="img-fluid rounded shadow-sm" alt="Children enjoying activities with Kidz Runz mentors" style="max-height: 400px; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section with Icons -->
+    <section class="values page__section py-5" style="background: linear-gradient(180deg, #E6F0FA 0%, #B3CDE0 100%);" aria-labelledby="values-heading">
+        <div class="container">
+            <h2 id="values-heading" class="h3 mb-4 text-center values__title">Our Core Values</h2>
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <div class="card about__card">
-                        <div class="card-body about__card-body text-center">
-                            <h3 class="card-title about__card-title">Welcome to Kidz Runz</h3>
-                            <p class="about__card-text">Learn about who we are and what we do.</p>
-                            <a href="{% url 'frontend:welcome' %}" class="btn btn-primary about__card-button">Read More</a>
+                    <div class="card values__card shadow-sm">
+                        <div class="card-body values__card-body text-center">
+                            <i class="fas fa-shield-alt values__icon text-primary" aria-hidden="true"></i>
+                            <h3 class="card-title values__card-title mt-3">Safety</h3>
+                            <p class="values__card-text">We prioritize your child’s safety with DBS-checked staff and rigorous safety protocols.</p>
+                            <a href="{% url 'frontend:safeguarding' %}" class="btn btn-outline-primary values__card-button" aria-label="Learn more about our safety measures">Learn More</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="card about__card">
-                        <div class="card-body about__card-body text-center">
-                            <h3 class="card-title about__card-title">Our Mission Statements</h3>
-                            <p class="about__card-text">Discover our goals and values.</p>
-                            <a href="{% url 'frontend:mission' %}" class="btn btn-primary about__card-button">Read More</a>
+                    <div class="card values__card shadow-sm">
+                        <div class="card-body values__card-body text-center">
+                            <i class="fas fa-heart values__icon text-primary" aria-hidden="true"></i>
+                            <h3 class="card-title values__card-title mt-3">Care</h3>
+                            <p class="values__card-text">Our mentors provide personalized care, ensuring every child feels supported and valued.</p>
+                            <a href="{% url 'frontend:cams' %}" class="btn btn-outline-primary values__card-button" aria-label="Meet our caring mentors">Meet Our Team</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="card about__card">
-                        <div class="card-body about__card-body text-center">
-                            <h3 class="card-title about__card-title">Once Upon A Time Story</h3>
-                            <p class="about__card-text">Explore the story of how Kidz Runz began.</p>
-                            <a href="{% url 'frontend:story' %}" class="btn btn-primary about__card-button">Read More</a>
+                    <div class="card values__card shadow-sm">
+                        <div class="card-body values__card-body text-center">
+                            <i class="fas fa-star values__icon text-primary" aria-hidden="true"></i>
+                            <h3 class="card-title values__card-title mt-3">Excellence</h3>
+                            <p class="values__card-text">We strive for excellence in every activity, delivering the best experience for your child.</p>
+                            <a href="{% url 'frontend:benefits' %}" class="btn btn-outline-primary values__card-button" aria-label="Discover the benefits of our activities">Discover Benefits</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section with Images -->
+    <section class="team page__section py-5" style="background: linear-gradient(180deg, #F0F8FF 0%, #C0D8EF 100%);" aria-labelledby="team-heading">
+        <div class="container">
+            <h2 id="team-heading" class="h3 mb-4 text-center team__title">Meet Our Expert Mentors</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card team__card shadow-sm">
+                        <img src="{% static 'images/team-member-1.jpg' %}" class="card-img-top" alt="Kidz Runz mentor Sarah Johnson" style="height: 250px; object-fit: cover;">
+                        <div class="card-body team__card-body text-center">
+                            <h3 class="card-title team__card-title">Sarah Johnson</h3>
+                            <p class="team__card-role text-muted">Lead Mentor</p>
+                            <p class="team__card-text">With 10 years of experience, Sarah specializes in supporting children with SEND.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="card about__card">
-                        <div class="card-body about__card-body text-center">
-                            <h3 class="card-title about__card-title">Communication and Feedback</h3>
-                            <p class="about__card-text">Learn how we stay connected with families.</p>
-                            <a href="{% url 'frontend:communication' %}" class="btn btn-primary about__card-button">Read More</a>
+                    <div class="card team__card shadow-sm">
+                        <img src="{% static 'images/team-member-2.jpg' %}" class="card-img-top" alt="Kidz Runz mentor Michael Brown" style="height: 250px; object-fit: cover;">
+                        <div class="card-body team__card-body text-center">
+                            <h3 class="card-title team__card-title">Michael Brown</h3>
+                            <p class="team__card-role text-muted">Activity Coordinator</p>
+                            <p class="team__card-text">Michael brings creativity to every session, ensuring kids have a blast.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="card about__card">
-                        <div class="card-body about__card-body text-center">
-                            <h3 class="card-title about__card-title">Parent Tips and Support</h3>
-                            <p class="about__card-text">Get tips and resources for supporting your child.</p>
-                            <a href="{% url 'frontend:parent_tips' %}" class="btn btn-primary about__card-button">Read More</a>
+                    <div class="card team__card shadow-sm">
+                        <img src="{% static 'images/team-member-3.jpg' %}" class="card-img-top" alt="Kidz Runz mentor Emily Davis" style="height: 250px; object-fit: cover;">
+                        <div class="card-body team__card-body text-center">
+                            <h3 class="card-title team__card-title">Emily Davis</h3>
+                            <p class="team__card-role text-muted">Safety Officer</p>
+                            <p class="team__card-text">Emily ensures every activity meets our strict safety standards.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card about__card">
-                        <div class="card-body about__card-body text-center">
-                            <h3 class="card-title about__card-title">Our Commitment to Safeguarding</h3>
-                            <p class="about__card-text">Understand our dedication to child safety.</p>
-                            <a href="{% url 'frontend:safeguarding' %}" class="btn btn-primary about__card-button">Read More</a>
-                        </div>
-                    </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="{% url 'frontend:cams' %}" class="btn btn-outline-primary team__more-button" aria-label="Meet the full Kidz Runz team">Meet the Full Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section with Gradient Background -->
+    <section class="cta page__section py-5" style="background: linear-gradient(135deg, #28a745 0%, #00c4b4 100%);" aria-labelledby="cta-heading">
+        <div class="container text-center">
+            <div class="card cta__card bg-transparent border-0">
+                <div class="card-body cta__card-body">
+                    <h2 id="cta-heading" class="h3 mb-4 cta__title text-white">Join the Kidz Runz Family</h2>
+                    <p class="mb-4 cta__text text-white">Book a session today and give your child the gift of fun, safe, and enriching activities!</p>
+                    <a href="{% url 'frontend:bookings' %}" class="btn btn-light cta__button text-primary" aria-label="Book a session now">Book Now</a>
                 </div>
             </div>
         </div>

@@ -13,12 +13,12 @@
             <li class="nav-item nav__item dropdown">
                 <a class="nav-link nav__link dropdown-toggle" href="{% url 'frontend:about' %}" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">About Us</a>
                 <ul class="dropdown-menu nav__dropdown" aria-labelledby="aboutDropdown">
-                    <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:about' %}#welcome">Welcome to Kidz Runz</a></li>
-                    <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:about' %}#mission">Our Mission Statements</a></li>
-                    <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:about' %}#story">Once Upon A Time Story</a></li>
-                    <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:about' %}#communication">Communication and Feedback</a></li>
-                    <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:about' %}#parent-tips">Parent Tips and Support</a></li>
-                    <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:about' %}#safeguarding">Our Commitment to Safeguarding</a></li>
+                    <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:about' %}">Welcome to Kidz Runz</a></li>
+                    <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:mission' %}">Our Mission Statements</a></li>
+                    <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:story' %}">Once Upon A Time Story</a></li>
+                    <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:communication' %}">Communication and Feedback</a></li>
+                    <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:parent_tips' %}">Parent Tips and Support</a></li>
+                    <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:safeguarding' %}">Our Commitment to Safeguarding</a></li>
                 </ul>
             </li>
             <li class="nav-item nav__item">
@@ -27,8 +27,8 @@
             <li class="nav-item nav__item dropdown">
                 <a class="nav-link nav__link dropdown-toggle" href="{% url 'frontend:activities' %}" id="activitiesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Activities</a>
                 <ul class="dropdown-menu nav__dropdown" aria-labelledby="activitiesDropdown">
-                    <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:activities' %}#benefits">Benefits of Children in Sports Activities</a></li>
-                    <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:activities' %}#explore">Explore Activities</a></li>
+                    <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:benefits' %}">Benefits of Children in Sports Activities</a></li>
+                    <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:explore' %}">Explore Activities</a></li>
                 </ul>
             </li>
             <li class="nav-item nav__item">
@@ -40,7 +40,7 @@
             <li class="nav-item nav__item dropdown">
                 <a class="nav-link nav__link dropdown-toggle" href="{% url 'frontend:bookings' %}" id="bookingsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Bookings</a>
                 <ul class="dropdown-menu nav__dropdown" aria-labelledby="bookingsDropdown">
-                    <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:bookings' %}#prices">Price Packages</a></li>
+                    <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:pricing_packages' %}">Price Packages</a></li>
                     <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:bookings' %}#policies">Package Policies</a></li>
                 </ul>
             </li>
@@ -66,12 +66,12 @@
         <li class="nav-item nav__item dropdown">
             <a class="nav-link nav__link dropdown-toggle" href="{% url 'frontend:about' %}" id="aboutDropdownDesktop" role="button" data-bs-toggle="dropdown" aria-expanded="false">About Us</a>
             <ul class="dropdown-menu nav__dropdown" aria-labelledby="aboutDropdownDesktop">
-                <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:about' %}#welcome">Welcome to Kidz Runz</a></li>
-                <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:about' %}#mission">Our Mission Statements</a></li>
-                <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:about' %}#story">Once Upon A Time Story</a></li>
-                <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:about' %}#communication">Communication and Feedback</a></li>
-                <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:about' %}#parent-tips">Parent Tips and Support</a></li>
-                <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:about' %}#safeguarding">Our Commitment to Safeguarding</a></li>
+                <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:about' %}">Welcome to Kidz Runz</a></li>
+                <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:mission' %}">Our Mission Statements</a></li>
+                <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:story' %}">Once Upon A Time Story</a></li>
+                <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:communication' %}">Communication and Feedback</a></li>
+                <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:parent_tips' %}">Parent Tips and Support</a></li>
+                <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:safeguarding' %}">Our Commitment to Safeguarding</a></li>
             </ul>
         </li>
         <li class="nav-item nav__item">
@@ -80,8 +80,8 @@
         <li class="nav-item nav__item dropdown">
             <a class="nav-link nav__link dropdown-toggle" href="{% url 'frontend:activities' %}" id="activitiesDropdownDesktop" role="button" data-bs-toggle="dropdown" aria-expanded="false">Activities</a>
             <ul class="dropdown-menu nav__dropdown" aria-labelledby="activitiesDropdownDesktop">
-                <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:activities' %}#benefits">Benefits of Children in Sports Activities</a></li>
-                <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:activities' %}#explore">Explore Activities</a></li>
+                <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:benefits' %}">Benefits of Children in Sports Activities</a></li>
+                <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:explore' %}">Explore Activities</a></li>
             </ul>
         </li>
         <li class="nav-item nav__item">
@@ -93,7 +93,7 @@
         <li class="nav-item nav__item dropdown">
             <a class="nav-link nav__link dropdown-toggle" href="{% url 'frontend:bookings' %}" id="bookingsDropdownDesktop" role="button" data-bs-toggle="dropdown" aria-expanded="false">Bookings</a>
             <ul class="dropdown-menu nav__dropdown" aria-labelledby="bookingsDropdownDesktop">
-                <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:bookings' %}#prices">Price Packages</a></li>
+                <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:pricing_packages' %}">Price Packages</a></li>
                 <li class="nav__dropdown-item"><a class="dropdown-item nav__link" href="{% url 'frontend:bookings' %}#policies">Package Policies</a></li>
             </ul>
         </li>

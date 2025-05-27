@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 import logging
 import uuid
+from decouple import config
 
 logger = logging.getLogger(__name__)
 
@@ -74,21 +75,29 @@ class Booking(models.Model):
     )
 
     def save(self, *args, **kwargs):
-        if self.start_date and not self.end_date and self.package and self.package.duration_hours:
+        start_datetime = self.start_date if self.start_date else self.date_time
+        if start_datetime and isinstance(start_datetime, str):
             try:
-                # Handle ISO format (e.g., '2025-05-23T12:08') or standard format
-                if isinstance(self.start_date, str):
-                    try:
-                        self.start_date = timezone.datetime.strptime(self.start_date.replace('T', ' '), '%Y-%m-%d %H:%M').replace(second=0, microsecond=0, tzinfo=timezone.get_current_timezone())
-                    except ValueError:
-                        self.start_date = timezone.datetime.strptime(self.start_date, '%Y-%m-%d %H:%M:%S').replace(tzinfo=timezone.get_current_timezone())
-                elif self.start_date and timezone.is_naive(self.start_date):
-                    self.start_date = timezone.make_aware(self.start_date, timezone.get_current_timezone())
-                self.end_date = self.start_date + timezone.timedelta(hours=self.package.duration_hours)
+                start_datetime = timezone.datetime.strptime(start_datetime.replace('T', ' '), '%Y-%m-%d %H:%M').replace(second=0, microsecond=0)
+                start_datetime = timezone.make_aware(start_datetime, timezone.get_current_timezone())
+            except ValueError:
+                start_datetime = timezone.make_aware(timezone.datetime.strptime(start_datetime, '%Y-%m-%d %H:%M:%S'), timezone.get_current_timezone())
+        elif start_datetime and timezone.is_naive(start_datetime):
+            start_datetime = timezone.make_aware(start_datetime, timezone.get_current_timezone())
+
+        if start_datetime and self.package and self.package.duration_hours is not None:
+            try:
+                self.end_date = start_datetime + timezone.timedelta(hours=self.package.duration_hours)
                 logger.debug(f"Calculated end_date: {self.end_date} for booking {self.reference_id}")
             except (TypeError, ValueError) as e:
                 logger.error(f"Error calculating end_date for booking {self.reference_id}: {str(e)}")
                 self.end_date = None
+        elif not self.package or self.package.duration_hours is None:
+            self.end_date = None
+
+        if start_datetime:
+            self.start_date = start_datetime
+
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -111,7 +120,6 @@ class EmailConfiguration(models.Model):
 
     @classmethod
     def get_active_config(cls):
-        """Return the first active email configuration or use settings from environment variables."""
         config = cls.objects.filter(is_active=True).first()
         if config:
             return {

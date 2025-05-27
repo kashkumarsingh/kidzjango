@@ -3,6 +3,7 @@ from django.core.management.base import BaseCommand
 from django.conf import settings
 from core.models import EmailConfiguration
 import logging
+from core.services.email import EmailService
 
 logger = logging.getLogger(__name__)
 
@@ -16,14 +17,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         email = options['email']
         try:
-            email_config = EmailConfiguration.get_active_config()
-            send_mail(
-                'Test Email from Kidz Runz',
-                'This is a test email from Kidz Runz.',
-                email_config['DEFAULT_FROM_EMAIL'],
-                [email],
-                fail_silently=False,
-            )
+            EmailService.send_test_email(email)  # Placeholder; extend EmailService if needed
             logger.info(f"Test email sent successfully to {email}.")
             self.stdout.write(self.style.SUCCESS(f"Test email sent successfully to {email}."))
         except Exception as e:

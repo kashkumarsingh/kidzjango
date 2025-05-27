@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Error - Kidz Runz{% endblock %}
+{% block meta_description %}An error occurred while processing your request.{% endblock %}
+
+{% block content %}
+    <section class="error__section error__section--intro text-center py-5" aria-label="Error Message">
+        <div class="container">
+            <h1 class="display-4 fw-bold error__title" id="error-title">Oops! Something Went Wrong</h1>
+            <p class="lead error__text">{{ error }}</p>
+            <div class="text-center mt-4">
+                <a href="{% url 'frontend:bookings' %}" class="btn btn-primary error__button" aria-label="Back to Bookings">Back to Bookings</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

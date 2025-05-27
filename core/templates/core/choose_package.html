@@ -9,45 +9,121 @@
 {% block twitter_description %}Enter your details to confirm your Kidz Runz package booking.{% endblock %}
 
 {% block content %}
-    <section class="choose-package__section choose-package__section--intro text-center py-5">
+    <section class="choose-package__section choose-package__section--intro text-center py-5" style="background: linear-gradient(135deg, #007bff 0%, #00c4b4 100%);" aria-label="Booking Introduction">
         <div class="container">
-            <h1 class="display-4 fw-bold choose-package__title">Make an Appointment</h1>
-            <p class="lead choose-package__text">Please provide your details to book the <strong>{{ package.name }}</strong> package.</p>
+            <h1 class="display-4 fw-bold choose-package__title text-white" id="booking-title">Make an Appointment</h1>
+            <p class="lead choose-package__text text-white">Please provide your details to book the <strong>{{ package.name }}</strong> package.</p>
+            <div class="progress mt-3" style="max-width: 300px; margin: 0 auto;">
+                <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">Step 1 of 2</div>
+            </div>
         </div>
     </section>
 
-    <section class="choose-package__section choose-package__section--content py-5">
+    <section class="choose-package__section choose-package__section--content py-5" aria-labelledby="booking-form">
         <div class="container">
-            <div class="card choose-package__card">
-                <div class="card-body choose-package__card-body">
-                    <h2 class="h3 mb-4 choose-package__subtitle">Booking Details</h2>
-                    <form method="POST" action="{% url 'core:bookings' %}" class="choose-package__form">
+            <div class="card choose-package__card shadow-sm">
+                <div class="card-body choose-package__card-body p-4">
+                    <h2 class="h3 mb-4 choose-package__subtitle text-primary" id="booking-form">Booking Details</h2>
+                    <form method="POST" action="{% url 'core:bookings' %}" class="choose-package__form needs-validation" novalidate aria-describedby="form-instructions" id="bookingForm">
                         {% csrf_token %}
-                        <input type="hidden" name="package_id" value="{{ package.id }}">
-                        <div class="mb-3">
-                            <label for="name" class="form-label choose-package__form-label">Full Name</label>
-                            <input type="text" class="form-control choose-package__form-input" id="name" name="name" placeholder="Enter your full name" required>
+                        {{ form.package_id }}
+                        {% if form.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                Please correct the errors below.
+                            </div>
+                        {% endif %}
+                        <div class="mb-4">
+                            <label for="{{ form.name.id_for_label }}" class="form-label choose-package__form-label">Full Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control choose-package__form-input {% if form.name.errors %}is-invalid{% endif %}" id="{{ form.name.id_for_label }}" name="{{ form.name.name }}" value="{{ form.name.value|default_if_none:'' }}" placeholder="Enter your full name" required aria-required="true">
+                            {% if form.name.errors %}
+                                <div class="invalid-feedback">
+                                    {{ form.name.errors|join:", " }}
+                                </div>
+                            {% endif %}
                         </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label choose-package__form-label">Email</label>
-                            <input type="email" class="form-control choose-package__form-input" id="email" name="email" placeholder="Enter your email" required>
+                        <div class="mb-4">
+                            <label for="{{ form.email.id_for_label }}" class="form-label choose-package__form-label">Email <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control choose-package__form-input {% if form.email.errors %}is-invalid{% endif %}" id="{{ form.email.id_for_label }}" name="{{ form.email.name }}" value="{{ form.email.value|default_if_none:'' }}" placeholder="Enter your email" required aria-required="true">
+                            {% if form.email.errors %}
+                                <div class="invalid-feedback">
+                                    {{ form.email.errors|join:", " }}
+                                </div>
+                            {% endif %}
                         </div>
-                        <div class="mb-3">
-                            <label for="phone" class="form-label choose-package__form-label">Phone Number</label>
-                            <input type="tel" class="form-control choose-package__form-input" id="phone" name="phone" placeholder="Enter your phone number" required>
+                        <div class="mb-4">
+                            <label for="{{ form.phone.id_for_label }}" class="form-label choose-package__form-label">Phone <span class="text-danger">*</span></label>
+                            <input type="tel" class="form-control choose-package__form-input {% if form.phone.errors %}is-invalid{% endif %}" id="{{ form.phone.id_for_label }}" name="{{ form.phone.name }}" value="{{ form.phone.value|default_if_none:'' }}" placeholder="Enter your phone number" required aria-required="true">
+                            {% if form.phone.errors %}
+                                <div class="invalid-feedback">
+                                    {{ form.phone.errors|join:", " }}
+                                </div>
+                            {% endif %}
                         </div>
-                        <div class="mb-3">
-                            <label for="date_time" class="form-label choose-package__form-label">Preferred Date and Time</label>
-                            <input type="datetime-local" class="form-control choose-package__form-input" id="date_time" name="date_time" required>
+                        <div class="mb-4">
+                            <label for="{{ form.date_time.id_for_label }}" class="form-label choose-package__form-label">Date & Time <span class="text-danger">*</span></label>
+                            <input type="datetime-local" class="form-control choose-package__form-input {% if form.date_time.errors %}is-invalid{% endif %}" id="{{ form.date_time.id_for_label }}" name="{{ form.date_time.name }}" value="{{ form.date_time.value|default_if_none:''|date:'Y-m-d\TH:i' }}" required aria-required="true">
+                            {% if form.date_time.errors %}
+                                <div class="invalid-feedback">
+                                    {{ form.date_time.errors|join:", " }}
+                                </div>
+                            {% endif %}
                         </div>
-                        <div class="mb-3">
-                            <label for="description" class="form-label choose-package__form-label">Additional Information (Optional)</label>
-                            <textarea class="form-control choose-package__form-input" id="description" name="description" rows="3" placeholder="Allergies, special needs, or other notes"></textarea>
+                        <div class="mb-4">
+                            <label for="{{ form.description.id_for_label }}" class="form-label choose-package__form-label">Additional Information</label>
+                            <textarea class="form-control choose-package__form-input {% if form.description.errors %}is-invalid{% endif %}" id="{{ form.description.id_for_label }}" name="{{ form.description.name }}" rows="3" placeholder="Allergies, special needs, or other notes" aria-label="Additional Information">{{ form.description.value|default_if_none:'' }}</textarea>
+                            {% if form.description.errors %}
+                                <div class="invalid-feedback">
+                                    {{ form.description.errors|join:", " }}
+                                </div>
+                            {% endif %}
+                            <small class="form-text text-muted">{{ form.description.help_text }}</small>
                         </div>
-                        <button type="submit" class="btn btn-primary choose-package__form-button">Confirm Booking</button>
+                        <p id="form-instructions" class="text-muted mb-4">Fields marked with * are required.</p>
+                        <button type="submit" class="btn btn-primary choose-package__form-button w-100 py-2 position-relative" style="background: linear-gradient(135deg, #28a745 0%, #00c4b4 100%); border: none;" id="submitButton" aria-label="Confirm Booking">
+                            Confirm Booking
+                            <span class="loader d-none" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke="#ffffff" stroke-width="4" fill="none">
+                                        <animate attributeName="stroke-dasharray" from="0 62.83185307179586" to="62.83185307179586 0" dur="1s" repeatCount="indefinite"/>
+                                    </circle>
+                                </svg>
+                            </span>
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
+
+    <script>
+        (function () {
+            'use strict';
+            const form = document.getElementById('bookingForm');
+            const submitButton = document.getElementById('submitButton');
+            const loader = submitButton.querySelector('.loader');
+
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    form.classList.add('was-validated');
+                    return;
+                }
+
+                // Disable button and show loader
+                submitButton.disabled = true;
+                submitButton.style.cursor = 'default'; // Remove hand cursor when disabled
+                loader.classList.remove('d-none');
+                submitButton.querySelector('span:not(.loader)').style.opacity = '0'; // Fade out text
+            });
+
+            // Optional: Re-enable button if form validation fails (e.g., on page reload)
+            form.addEventListener('reset', function () {
+                submitButton.disabled = false;
+                submitButton.style.cursor = 'pointer';
+                loader.classList.add('d-none');
+                submitButton.querySelector('span:not(.loader)').style.opacity = '1';
+            });
+        })();
+    </script>
 {% endblock %}

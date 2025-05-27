@@ -4,7 +4,7 @@
 /* Page styles */
 .page {
     font-family: "Open Sans", sans-serif;
-    background: linear-gradient(180deg, #F5F5F5 0%, #FAFAFA 100%);
+    background: #FFFFFF; /* Default to white background */
     color: #333333;
 }
 
@@ -26,7 +26,7 @@
 
 /* Header styles */
 .header {
-    background-color: #1A3C5A;
+    background: linear-gradient(180deg, #1A3C5A 0%, #2A4060 100%);
 }
 
 .header__nav {
@@ -75,7 +75,7 @@
 }
 
 .nav__link:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.3) 100%);
     border-radius: 4px;
     color: #FFFFFF;
 }
@@ -90,7 +90,7 @@
 }
 
 .nav__dropdown-item .nav__link:hover {
-    background-color: #00B140;
+    background: linear-gradient(180deg, #00B140 0%, #007B2F 100%);
     color: #FFFFFF;
 }
 
@@ -101,7 +101,7 @@
 
 /* Footer styles */
 .footer {
-    background-color: #F5F5F5;
+    background: #F5F5F5;
     border-top: 1px solid #E0E0E0;
 }
 
@@ -156,7 +156,7 @@
 .signin__section,
 .signup__section {
     padding: 2rem 0;
-    background-color: #F5F5F5;
+    background: #FFFFFF;
 }
 
 .signin__card,
@@ -198,16 +198,16 @@
 .auth__form-button {
     font-family: "Poppins", sans-serif;
     font-weight: 600;
-    background-color: #00AEEF;
+    background: linear-gradient(180deg, #00AEEF 0%, #0091D0 100%);
     color: #FFFFFF;
     border: none;
     padding: 0.5rem 1rem;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .auth__form-button:hover {
     transform: translateY(-2px);
-    background-color: #0091D0;
+    background: linear-gradient(180deg, #0091D0 0%, #00AEEF 100%);
 }
 
 .auth__link {
@@ -238,13 +238,12 @@
 
 /* General Button Styles */
 .btn-primary {
-    background-color: #00AEEF;
-    border-color: #00AEEF;
+    background: linear-gradient(180deg, #00AEEF 0%, #0091D0 100%);
+    border: none;
 }
 
 .btn-primary:hover {
-    background-color: #0091D0;
-    border-color: #0091D0;
+    background: linear-gradient(180deg, #0091D0 0%, #00AEEF 100%);
 }
 
 .btn-outline-primary {
@@ -253,13 +252,13 @@
 }
 
 .btn-outline-primary:hover {
-    background-color: #00AEEF;
+    background: linear-gradient(180deg, #00AEEF 0%, #0091D0 100%);
     color: #FFFFFF;
 }
 
 /* Home Page Styles */
-.hero {
-    background: linear-gradient(180deg, #F5F7FA 0%, #E0E7FF 100%);
+.home__hero {
+    background: linear-gradient(135deg, #007bff 0%, #00c4b4 100%);
     padding: 5rem 0;
     min-height: 80vh;
     display: flex;
@@ -273,13 +272,13 @@
 .hero__title {
     font-family: "Poppins", sans-serif;
     font-weight: 600;
-    color: #1A3C5A;
+    color: #FFFFFF;
     animation: fadeInUp 1s ease-out;
 }
 
 .hero__text {
     font-family: "Open Sans", sans-serif;
-    color: #666666;
+    color: #E0E0E0;
     animation: fadeInUp 1.2s ease-out;
 }
 
@@ -294,7 +293,7 @@
 }
 
 .why-choose {
-    background: linear-gradient(180deg, #E6F0FA 0%, #B3CDE0 100%);
+    background: #FFFFFF;
 }
 
 .why-choose__title {
@@ -303,14 +302,14 @@
     color: #1A3C5A;
 }
 
-.why-choose__card {
+.why-choose__item {
     border: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     transition: transform 0.3s ease;
 }
 
-.why-choose__card:hover {
+.why-choose__item:hover {
     transform: scale(1.05);
 }
 
@@ -320,23 +319,23 @@
     margin-bottom: 1rem;
 }
 
-.why-choose__card-title {
+.why-choose__item-title {
     font-family: "Poppins", sans-serif;
     font-weight: 600;
     color: #00AEEF;
 }
 
-.why-choose__card-text {
+.why-choose__item-text {
     font-family: "Open Sans", sans-serif;
     color: #666666;
 }
 
-.why-choose__card-button {
+.why-choose__item-button {
     font-family: "Poppins", sans-serif;
 }
 
 .pricing {
-    background: linear-gradient(180deg, #F0F4F8 0%, #D1E8FF 100%);
+    background: #FFFFFF;
 }
 
 .pricing__title {
@@ -370,48 +369,48 @@
     border-bottom: 2px solid #00AEEF;
 }
 
-.pricing__card {
+.pricing__item {
     border: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     transition: transform 0.3s ease;
 }
 
-.pricing__card:hover {
+.pricing__item:hover {
     transform: scale(1.05);
 }
 
-.pricing__card-title {
+.pricing__item-title {
     font-family: "Poppins", sans-serif;
     font-weight: 600;
     color: #00AEEF;
 }
 
-.pricing__card-price {
+.pricing__item-price {
     font-family: "Open Sans", sans-serif;
     font-size: 1.5rem;
     color: #1A3C5A;
     margin-bottom: 1rem;
 }
 
-.pricing__card-description {
+.pricing__item-description {
     font-family: "Open Sans", sans-serif;
     color: #666666;
 }
 
-.pricing__card-features {
+.pricing__item-features {
     font-family: "Open Sans", sans-serif;
     color: #333333;
     margin-bottom: 1rem;
 }
 
-.pricing__card-button {
+.pricing__item-button {
     font-family: "Poppins", sans-serif;
     font-weight: 600;
 }
 
 .special-offer {
-    background: linear-gradient(180deg, #E6F3FF 0%, #A3C9FF 100%);
+    background: linear-gradient(180deg, #F0F8FF 0%, #C0D8EF 100%);
 }
 
 .special-offer__title {
@@ -430,13 +429,13 @@
     color: #00B140;
 }
 
-.special-offer__card {
+.special-offer__content {
     border: none;
     border-radius: 8px;
     transition: transform 0.3s ease;
 }
 
-.special-offer__card:hover {
+.special-offer__content:hover {
     transform: scale(1.05);
 }
 
@@ -446,7 +445,7 @@
 }
 
 .activities {
-    background: linear-gradient(180deg, #F0F8FF 0%, #C0D8EF 100%);
+    background: #FFFFFF;
 }
 
 .activities__title {
@@ -455,35 +454,75 @@
     color: #1A3C5A;
 }
 
-.activities__card {
+.activities__item {
     border: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     transition: transform 0.3s ease;
 }
 
-.activities__card:hover {
+.activities__item:hover {
     transform: scale(1.05);
 }
 
-.activities__card-title {
+.activities__item-title {
     font-family: "Poppins", sans-serif;
     font-weight: 600;
     color: #00AEEF;
 }
 
-.activities__card-text {
+.activities__item-text {
     font-family: "Open Sans", sans-serif;
     color: #666666;
 }
 
-.activities__card-button {
+.activities__item-button {
     font-family: "Poppins", sans-serif;
     font-weight: 600;
 }
 
-.faqs {
+.testimonials {
     background: linear-gradient(180deg, #F5F7FA 0%, #E0E7FF 100%);
+}
+
+.testimonials__title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #1A3C5A;
+}
+
+.testimonials__carousel .carousel-item-inner {
+    width: 100%;
+}
+
+.testimonials__item {
+    border: none;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.testimonials__item:hover {
+    transform: scale(1.05);
+}
+
+.testimonials__item-content {
+    position: relative;
+    z-index: 1;
+}
+
+.testimonials__text {
+    font-family: "Open Sans", sans-serif;
+    color: #FFFFFF;
+}
+
+.testimonials__author {
+    font-family: "Open Sans", sans-serif;
+    color: #E0E0E0;
+    font-style: italic;
+}
+
+.faqs {
+    background: #FFFFFF;
 }
 
 .faqs__title {
@@ -521,28 +560,28 @@
 }
 
 .cta {
-    background: linear-gradient(180deg, #E6F0FA 0%, #B3CDE0 100%);
+    background: linear-gradient(135deg, #28a745 0%, #00c4b4 100%);
 }
 
 .cta__title {
     font-family: "Poppins", sans-serif;
     font-weight: 600;
-    color: #1A3C5A;
+    color: #FFFFFF;
 }
 
 .cta__text {
     font-family: "Open Sans", sans-serif;
-    color: #666666;
+    color: #E0E0E0;
 }
 
-.cta__card {
+.cta__content {
     border: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     transition: transform 0.3s ease;
 }
 
-.cta__card:hover {
+.cta__content:hover {
     transform: scale(1.05);
 }
 
@@ -551,221 +590,68 @@
     font-weight: 600;
 }
 
-/* Booking Page Styles */
-.booking__section--intro {
-    background: linear-gradient(180deg, #F5F7FA 0%, #E0E7FF 100%);
-}
-
-.booking__title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    color: #1A3C5A;
-}
-
-.booking__text {
-    font-family: "Open Sans", sans-serif;
-    color: #666666;
-}
-
-.booking__card {
-    border: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-.booking__subtitle {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    color: #00AEEF;
-}
-
-.booking__package-card {
-    border: 1px solid #E0E0E0;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-
-.booking__package-card:hover {
-    transform: scale(1.05);
-}
-
-.booking__package-title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    color: #00AEEF;
-}
-
-.booking__package-price {
-    font-family: "Open Sans", sans-serif;
-    font-size: 1.5rem;
-    color: #1A3C5A;
-}
-
-.booking__package-description {
-    font-family: "Open Sans", sans-serif;
-    color: #666666;
-}
-
-.booking__package-features {
-    font-family: "Open Sans", sans-serif;
-    color: #333333;
-}
-
-.booking__package-button {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-}
-
-.booking__cta-text {
-    font-family: "Open Sans", sans-serif;
-    color: #666666;
-}
-
-.booking__cta-button {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-}
-
-/* Choose Package Page Styles */
-.choose-package__section--intro {
-    background: linear-gradient(180deg, #F5F7FA 0%, #E0E7FF 100%);
-}
-
-.choose-package__title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    color: #1A3C5A;
-}
-
-.choose-package__text {
-    font-family: "Open Sans", sans-serif;
-    color: #666666;
-}
-
-.choose-package__card {
-    max-width: 600px;
-    margin: 0 auto;
-    border: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-.choose-package__subtitle {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    color: #00AEEF;
-}
-
-.choose-package__form-label {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    color: #00B140;
-}
-
-.choose-package__form-input {
-    border-radius: 4px;
-    border: 1px solid #E0E0E0;
-    font-family: "Open Sans", sans-serif;
-}
-
-.choose-package__form-input:focus {
-    border-color: #00AEEF;
-    box-shadow: 0 0 5px rgba(0, 174, 239, 0.3);
-}
-
-.choose-package__form-button {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-}
-
-/* Thank You Page Styles */
-.thank-you__section--intro {
-    background: linear-gradient(180deg, #F5F7FA 0%, #E0E7FF 100%);
-}
-
-.thank-you__title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    color: #1A3C5A;
-}
-
-.thank-you__text {
-    font-family: "Open Sans", sans-serif;
-    color: #666666;
-}
-
-.thank-you__card {
-    max-width: 600px;
-    margin: 0 auto;
-    border: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-.thank-you__subtitle {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    color: #00AEEF;
-}
-
-.thank-you__details {
-    font-family: "Open Sans", sans-serif;
-    color: #333333;
-}
-
-.thank-you__detail-item {
-    margin-bottom: 0.5rem;
-}
-
-.thank-you__button {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-}
-
-/* Dark Mode Styles */
+/* Dark Mode Styles (updated to match new backgrounds) */
 .dark-mode .page {
     background: linear-gradient(180deg, #1A2A44 0%, #2A4060 100%);
     color: #E0E0E0;
 }
 
-.dark-mode .hero {
+.dark-mode .header {
     background: linear-gradient(180deg, #1A2A44 0%, #2A4060 100%);
 }
 
-.dark-mode .why-choose {
-    background: linear-gradient(180deg, #152535 0%, #1F4060 100%);
+.dark-mode .footer {
+    background: #1A2A44;
 }
 
-.dark-mode .pricing {
+.dark-mode .signin__section,
+.dark-mode .signup__section {
+    background: #1A2A44;
+}
+
+.dark-mode .home__hero,
+.dark-mode .booking__section--intro,
+.dark-mode .choose-package__section--intro,
+.dark-mode .thank-you__section--intro,
+.dark-mode .about__section--intro,
+.dark-mode .activities__section--intro,
+.dark-mode .benefits__section--intro,
+.dark-mode .cams__section--intro,
+.dark-mode .communication__section--intro,
+.dark-mode .contact__hero,
+.dark-mode .explore__section--intro,
+.dark-mode .faqs,
+.dark-mode .mission__section--intro,
+.dark-mode .parent-tips__section--intro,
+.dark-mode .safeguarding__section--intro,
+.dark-mode .story__section--intro,
+.dark-mode .welcome__section--intro {
     background: linear-gradient(180deg, #1A2A44 0%, #2A4060 100%);
+}
+
+.dark-mode .why-choose,
+.dark-mode .pricing,
+.dark-mode .activities,
+.dark-mode .about__section--content,
+.dark-mode .communication__section--content,
+.dark-mode .mission__section--content,
+.dark-mode .parent-tips__section--content,
+.dark-mode .safeguarding__section--content,
+.dark-mode .story__section--content,
+.dark-mode .welcome__section--content {
+    background: #152535;
 }
 
 .dark-mode .special-offer {
     background: linear-gradient(180deg, #1F4060 0%, #152535 100%);
 }
 
-.dark-mode .activities {
+.dark-mode .testimonials {
     background: linear-gradient(180deg, #152535 0%, #1F4060 100%);
-}
-
-.dark-mode .faqs {
-    background: linear-gradient(180deg, #1A2A44 0%, #2A4060 100%);
 }
 
 .dark-mode .cta {
     background: linear-gradient(180deg, #1F4060 0%, #152535 100%);
-}
-
-.dark-mode .booking__section--intro {
-    background: linear-gradient(180deg, #1A2A44 0%, #2A4060 100%);
-}
-
-.dark-mode .choose-package__section--intro {
-    background: linear-gradient(180deg, #1A2A44 0%, #2A4060 100%);
-}
-
-.dark-mode .thank-you__section--intro {
-    background: linear-gradient(180deg, #1A2A44 0%, #2A4060 100%);
 }
 
 .dark-mode .hero__title,
@@ -773,81 +659,29 @@
 .dark-mode .pricing__title,
 .dark-mode .special-offer__title,
 .dark-mode .activities__title,
+.dark-mode .testimonials__title,
 .dark-mode .faqs__title,
 .dark-mode .cta__title,
-.dark-mode .why-choose__card-title,
-.dark-mode .pricing__card-title,
-.dark-mode .activities__card-title,
-.dark-mode .booking__title,
-.dark-mode .booking__subtitle,
-.dark-mode .booking__package-title,
-.dark-mode .choose-package__title,
-.dark-mode .choose-package__subtitle,
-.dark-mode .thank-you__title,
-.dark-mode .thank-you__subtitle {
+.dark-mode .why-choose__item-title,
+.dark-mode .pricing__item-title,
+.dark-mode .activities__item-title {
     color: #FFFFFF;
 }
 
 .dark-mode .hero__text,
-.dark-mode .why-choose__card-text,
+.dark-mode .why-choose__item-text,
 .dark-mode .pricing__description,
-.dark-mode .pricing__card-description,
-.dark-mode .pricing__card-features,
+.dark-mode .pricing__item-description,
+.dark-mode .pricing__item-features,
 .dark-mode .special-offer__text,
-.dark-mode .activities__card-text,
+.dark-mode .activities__item-text,
 .dark-mode .faqs__body,
 .dark-mode .faqs__empty-text,
 .dark-mode .pricing__empty-text,
 .dark-mode .cta__text,
-.dark-mode .booking__text,
-.dark-mode .booking__package-description,
-.dark-mode .booking__package-features,
-.dark-mode .booking__cta-text,
-.dark-mode .choose-package__text,
-.dark-mode .thank-you__text,
-.dark-mode .thank-you__details {
+.dark-mode .testimonials__text,
+.dark-mode .testimonials__author {
     color: #D0D0D0;
-}
-
-.dark-mode .btn-primary {
-    background-color: #0091D0;
-    border-color: #0091D0;
-}
-
-.dark-mode .btn-primary:hover {
-    background-color: #00AEEF;
-    border-color: #00AEEF;
-}
-
-.dark-mode .btn-outline-primary {
-    color: #00AEEF;
-    border-color: #00AEEF;
-}
-
-.dark-mode .btn-outline-primary:hover {
-    background-color: #00AEEF;
-    color: #FFFFFF;
-}
-
-.dark-mode .pricing__tab-link {
-    color: #D0D0D0;
-}
-
-.dark-mode .pricing__tab-link:hover,
-.dark-mode .pricing__tab-link.active {
-    color: #00AEEF;
-}
-
-.dark-mode .faqs__button {
-    color: #FFFFFF;
-}
-
-.dark-mode .special-offer__highlight {
-    color: #00B140;
-}
-
-.dark-mode .choose-package__form-label {
-    color: #00B140;
 }
 
 /* Animation Keyframes */
