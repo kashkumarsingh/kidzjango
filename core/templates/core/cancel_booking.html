@@ -2,25 +2,26 @@
 {% load static %}
 
 {% block title %}Cancel Booking - Kidz Runz{% endblock %}
-{% block meta_description %}Cancel your Kidz Runz booking with ease.{% endblock %}
+{% block meta_description %}Cancel your Kidz Runz booking with ease on a cosmic journey.{% endblock %}
 {% block og_title %}Cancel Booking - Kidz Runz{% endblock %}
-{% block og_description %}Cancel your Kidz Runz booking by confirming the details.{% endblock %}
+{% block og_description %}Cancel your Kidz Runz booking by confirming the details in a stellar interface.{% endblock %}
 {% block twitter_title %}Cancel Booking - Kidz Runz{% endblock %}
-{% block twitter_description %}Confirm cancellation of your Kidz Runz booking here.{% endblock %}
+{% block twitter_description %}Confirm cancellation of your Kidz Runz booking here with a cosmic touch.{% endblock %}
 
 {% block content %}
-    <section class="cancel__section cancel__section--intro text-center py-5">
-        <div class="container">
+    <section class="cancel__section cancel__section--intro text-center py-5 position-relative" aria-label="Cancel Booking Introduction">
+        <div class="cancel__hero-overlay position-absolute w-100 h-100"></div>
+        <div class="container position-relative">
             <h1 class="display-4 fw-bold cancel__title">Cancel Your Booking</h1>
             <p class="lead cancel__text">Are you sure you want to cancel the following booking?</p>
         </div>
     </section>
 
-    <section class="cancel__section cancel__section--content py-5">
+    <section class="cancel__section cancel__section--content py-5" aria-labelledby="cancel-details">
         <div class="container">
-            <div class="card cancel__card">
-                <div class="card-body cancel__card-body">
-                    <h2 class="h3 mb-4 cancel__subtitle">Booking Details</h2>
+            <div class="card cancel__card shadow-sm">
+                <div class="card-body cancel__card-body p-4">
+                    <h2 class="h3 mb-4 cancel__subtitle" id="cancel-details">Booking Details</h2>
                     <ul class="list-unstyled cancel__details">
                         <li class="cancel__detail-item"><strong>Reference ID:</strong> {{ booking.reference_id }}</li>
                         <li class="cancel__detail-item"><strong>Name:</strong> {{ booking.name }}</li>
@@ -40,7 +41,7 @@
                             <button type="submit" class="btn btn-danger cancel__button">Confirm Cancellation</button>
                         </form>
                     {% else %}
-                        <p class="text-danger cancel__disabled">Cancellation is not allowed after the start date ({{ booking.start_date|date:"Y-m-d H:i" }}).</p>
+                        <p class="cancel__disabled">Cancellation is not allowed after the start date ({{ booking.start_date|date:"Y-m-d H:i" }}).</p>
                     {% endif %}
                     <div class="text-center mt-4">
                         <a href="{% url 'frontend:home' %}" class="btn btn-secondary cancel__back">Back to Home</a>

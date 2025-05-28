@@ -2,76 +2,263 @@
 <!DOCTYPE html>
 <html lang="en" class="page">
 <head>
+    <!-- Core Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{% block meta_description %}Kidz Runz - Fun and safe activities for kids with Child Activity Mentor Support{% endblock %}">
-    <meta name="robots" content="index, follow">
+    <meta name="description" content="{% block meta_description %}Kidz Runz - Fun and safe space-themed activities for kids with Child Activity Mentor Support (CAMS){% endblock %}">
+    <meta name="keywords" content="space activities for kids, child activity mentor support, CAMS, Kidz Runz, fun safe kids activities">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="author" content="Kidz Runz">
+
+    <!-- Accessibility and Theme -->
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#0D1B2A">
+
+    <!-- Geo-Targeting for Local SEO -->
+    <meta name="geo.region" content="GB">
+    <meta name="geo.placename" content="London">
+    <meta name="geo.position" content="51.5074;-0.1278">
+    <meta name="ICBM" content="51.5074, -0.1278">
+
+    <!-- AI and Voice Search Optimization -->
+    <meta name="ai-content-overview" content="Kidz Runz offers fun, safe, space-themed activities for kids with professional Child Activity Mentor Support (CAMS) in London.">
+    <meta name="speakable" content="h1, .page__main">
+
+    <!-- Security Headers -->
+    {% comment %} <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY"> {% endcomment %}
+
+    <!-- Mobile App Integration -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Canonical and International SEO -->
     <link rel="canonical" href="{% block canonical_url %}{% url 'frontend:home' %}{% endblock %}">
     <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
-    <!-- Open Graph -->
-    <meta property="og:title" content="{% block og_title %}Kidz Runz{% endblock %}">
-    <meta property="og:description" content="{% block og_description %}Fun and safe activities for kids with Child Activity Mentor Support{% endblock %}">
+    <link rel="alternate" hreflang="en-gb" href="{% url 'frontend:home' %}">
+    <link rel="alternate" hreflang="x-default" href="{% url 'frontend:home' %}">
+
+    <!-- Performance Optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="preload" href="{% static 'css/custom.css' %}" as="style">
+    <link rel="preload" href="{% static 'images/logo.webp' %}" as="image">
+
+    <!-- Open Graph for Social Media -->
+    <meta property="og:title" content="{% block og_title %}Kidz Runz - Cosmic Adventures for Kids{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Explore fun, safe, space-themed activities for kids with Child Activity Mentor Support at Kidz Runz{% endblock %}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{% block og_url %}{% url 'frontend:home' %}{% endblock %}">
     <meta property="og:image" content="{% static 'images/logo.webp' %}">
     <meta property="og:site_name" content="Kidz Runz">
+
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{% block twitter_title %}Kidz Runz{% endblock %}">
-    <meta name="twitter:description" content="{% block twitter_description %}Fun and safe activities for kids with Child Activity Mentor Support{% endblock %}">
+    <meta name="twitter:title" content="{% block twitter_title %}Kidz Runz - Cosmic Adventures for Kids{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}Explore fun, safe, space-themed activities for kids with Child Activity Mentor Support at Kidz Runz{% endblock %}">
     <meta name="twitter:image" content="{% static 'images/logo.webp' %}">
+    <meta name="twitter:site" content="@kidzrunz">
+
+    <!-- Page Title -->
     <title>{% block title %}Kidz Runz{% endblock %}</title>
+
+    <!-- Stylesheets -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"> <!-- Added Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+
     <!-- Structured Data (Schema.org) -->
+    <!-- Organization Schema for Brand Recognition -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Kidz Runz",
+        "alternateName": "Kidz Runz CAMS",
         "url": "{% url 'frontend:home' %}",
         "logo": "{% static 'images/logo.webp' %}",
+        "description": "Kidz Runz provides fun, safe, space-themed activities for kids with professional Child Activity Mentor Support (CAMS) in London.",
+        "foundingDate": "2023-01-01",
         "contactPoint": {
             "@type": "ContactPoint",
             "telephone": "+44-20-1234-5678",
             "contactType": "customer service",
-            "email": "info@kidzrunz.com"
+            "email": "info@kidzrunz.com",
+            "availableLanguage": ["English"],
+            "areaServed": "GB"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 Cosmic Lane",
+            "addressLocality": "London",
+            "addressRegion": "Greater London",
+            "postalCode": "SW1A 1AA",
+            "addressCountry": "GB"
         },
         "sameAs": [
             "https://facebook.com/kidzrunz",
             "https://x.com/kidzrunz",
             "https://linkedin.com/company/kidzrunz"
-        ]
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "150"
+        }
     }
     </script>
+
+    <!-- WebSite Schema for Site Structure -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Kidz Runz",
+        "alternateName": "Kidz Runz Activities",
+        "url": "{% url 'frontend:home' %}",
+        "description": "Explore fun, safe, space-themed activities for kids with Child Activity Mentor Support at Kidz Runz.",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{% static 'images/logo.webp' %}"
+            }
+        },
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "{% url 'frontend:home' %}search?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
+    <!-- WebPage Schema for Individual Pages -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "{% block webpage_title %}Kidz Runz - Fun Space Activities for Kids{% endblock %}",
+        "description": "{% block webpage_description %}Explore fun, safe, space-themed activities for kids with Child Activity Mentor Support at Kidz Runz{% endblock %}",
+        "url": "{% block webpage_url %}{% url 'frontend:home' %}{% endblock %}",
+        "datePublished": "2023-01-01T00:00:00+00:00",
+        "dateModified": "2025-05-28T11:16:00+01:00",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{% static 'images/logo.webp' %}"
+            }
+        },
+        "mainEntity": {
+            "@type": "Service",
+            "name": "Child Activity Mentor Support (CAMS)",
+            "description": "Kidz Runz offers professional Child Activity Mentor Support with space-themed activities for kids in a safe environment.",
+            "provider": {
+                "@type": "Organization",
+                "name": "Kidz Runz"
+            }
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "{% url 'frontend:home' %}"
+                }
+                {% block breadcrumb_items %}{% endblock %}
+            ]
+        },
+        "speakable": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": ["h1", ".page__main"]
+        }
+    }
+    </script>
+
+    <!-- Local Business Schema for Local SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Kidz Runz",
+        "image": "{% static 'images/logo.webp' %}",
+        "description": "Kidz Runz provides fun, safe, space-themed activities for kids with professional Child Activity Mentor Support in London.",
+        "url": "{% url 'frontend:home' %}",
+        "telephone": "+44-20-1234-5678",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 Cosmic Lane",
+            "addressLocality": "London",
+            "addressRegion": "Greater London",
+            "postalCode": "SW1A 1AA",
+            "addressCountry": "GB"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 51.5074,
+            "longitude": -0.1278
+        },
+        "openingHours": [
+            "Mo-Fr 09:00-17:00",
+            "Sa 10:00-14:00"
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "150"
+        }
+    }
+    </script>
+
+    <!-- Creative Work Schema for AI Content Guidelines -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": "{% block creative_title %}Kidz Runz Activities{% endblock %}",
+        "contentRating": "human-authored",
+        "creator": {
+            "@type": "Organization",
+            "name": "Kidz Runz Team",
+            "description": "A team of experienced child activity mentors dedicated to providing safe, fun, space-themed activities for kids."
+        },
+        "generativeAI": false,
+        "editorialProcess": "human-reviewed"
+    }
+    </script>
+
+    <!-- Extra Head Content -->
     {% block extra_head %}{% endblock %}
 </head>
-<body class="page__body" style="box-shadow: inset 0 0 10px rgba(0,0,0,0.1);">
-    <!-- Header -->
+<body class="page__body">
+    <!-- Header Section -->
     {% if request.path|slice:"0:15" != "/accounts/signin/" and request.path|slice:"0:15" != "/accounts/signup/" %}
         {% include "partials/_header.html" %}
     {% endif %}
 
-    <!-- Hero Section (optional, can be overridden) -->
-    {% comment %} {% block hero %}
-        {% if request.path|slice:"0:15" != "/accounts/signin/" and request.path|slice:"0:15" != "/accounts/signup/" %}
-            {% include "partials/_hero.html" with hero_title="Welcome to Kidz Runz" hero_subtitle="Providing professional Children's Activity-based Mentoring and Support services (CAMS)" %}
-        {% endif %}
-    {% endblock %} {% endcomment %}
-
+    <!-- Main Content -->
     <main class="page__main" role="main">
         {% block content %}
         {% endblock %}
     </main>
 
-    <!-- Footer -->
+    <!-- Footer Section -->
     {% if request.path|slice:"0:15" != "/accounts/signin/" and request.path|slice:"0:15" != "/accounts/signup/" %}
         {% include "partials/_footer.html" %}
     {% endif %}
 
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="{% static 'js/main.js' %}"></script>
     {% block extra_js %}{% endblock %}

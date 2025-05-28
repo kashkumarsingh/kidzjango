@@ -2,17 +2,18 @@
 {% load static %}
 
 {% block title %}Choose Package - Kidz Runz{% endblock %}
-{% block meta_description %}Provide your details to book your selected Kidz Runz package.{% endblock %}
+{% block meta_description %}Provide your details to book your selected Kidz Runz package on a cosmic journey.{% endblock %}
 {% block og_title %}Choose Package - Kidz Runz{% endblock %}
-{% block og_description %}Book your Kidz Runz package by providing your details.{% endblock %}
+{% block og_description %}Book your Kidz Runz package by providing your details for a stellar experience.{% endblock %}
 {% block twitter_title %}Choose Package - Kidz Runz{% endblock %}
-{% block twitter_description %}Enter your details to confirm your Kidz Runz package booking.{% endblock %}
+{% block twitter_description %}Enter your details to confirm your Kidz Runz package booking and explore the stars.{% endblock %}
 
 {% block content %}
-    <section class="choose-package__section choose-package__section--intro text-center py-5" style="background: linear-gradient(135deg, #007bff 0%, #00c4b4 100%);" aria-label="Booking Introduction">
-        <div class="container">
-            <h1 class="display-4 fw-bold choose-package__title text-white" id="booking-title">Make an Appointment</h1>
-            <p class="lead choose-package__text text-white">Please provide your details to book the <strong>{{ package.name }}</strong> package.</p>
+    <section class="choose-package__section choose-package__section--intro text-center py-5 position-relative" aria-label="Booking Introduction">
+        <div class="choose-package__hero-overlay position-absolute w-100 h-100"></div>
+        <div class="container position-relative">
+            <h1 class="display-4 fw-bold choose-package__title" id="booking-title">Make an Appointment</h1>
+            <p class="lead choose-package__text">Please provide your details to book the <strong>{{ package.name }}</strong> package.</p>
             <div class="progress mt-3" style="max-width: 300px; margin: 0 auto;">
                 <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">Step 1 of 2</div>
             </div>
@@ -23,7 +24,7 @@
         <div class="container">
             <div class="card choose-package__card shadow-sm">
                 <div class="card-body choose-package__card-body p-4">
-                    <h2 class="h3 mb-4 choose-package__subtitle text-primary" id="booking-form">Booking Details</h2>
+                    <h2 class="h3 mb-4 choose-package__subtitle" id="booking-form">Booking Details</h2>
                     <form method="POST" action="{% url 'core:bookings' %}" class="choose-package__form needs-validation" novalidate aria-describedby="form-instructions" id="bookingForm">
                         {% csrf_token %}
                         {{ form.package_id }}
@@ -79,7 +80,7 @@
                             <small class="form-text text-muted">{{ form.description.help_text }}</small>
                         </div>
                         <p id="form-instructions" class="text-muted mb-4">Fields marked with * are required.</p>
-                        <button type="submit" class="btn btn-primary choose-package__form-button w-100 py-2 position-relative" style="background: linear-gradient(135deg, #28a745 0%, #00c4b4 100%); border: none;" id="submitButton" aria-label="Confirm Booking">
+                        <button type="submit" class="btn btn-primary choose-package__form-button w-100 py-2 position-relative" id="submitButton" aria-label="Confirm Booking">
                             Confirm Booking
                             <span class="loader d-none" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
                                 <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -110,14 +111,12 @@
                     return;
                 }
 
-                // Disable button and show loader
                 submitButton.disabled = true;
-                submitButton.style.cursor = 'default'; // Remove hand cursor when disabled
+                submitButton.style.cursor = 'default';
                 loader.classList.remove('d-none');
-                submitButton.querySelector('span:not(.loader)').style.opacity = '0'; // Fade out text
+                submitButton.querySelector('span:not(.loader)').style.opacity = '0';
             });
 
-            // Optional: Re-enable button if form validation fails (e.g., on page reload)
             form.addEventListener('reset', function () {
                 submitButton.disabled = false;
                 submitButton.style.cursor = 'pointer';

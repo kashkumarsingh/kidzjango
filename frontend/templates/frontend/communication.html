@@ -1,23 +1,97 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Communication and Feedback - Kidz Runz{% endblock %}
-{% block meta_description %}Learn how Kidz Runz communicates with families and values your feedback.{% endblock %}
-{% block og_title %}Communication and Feedback - Kidz Runz{% endblock %}
-{% block og_description %}Discover how Kidz Runz keeps families connected and welcomes feedback.{% endblock %}
-{% block twitter_title %}Communication and Feedback - Kidz Runz{% endblock %}
-{% block twitter_description %}See how Kidz Runz communicates with parents and values their input.{% endblock %}
+{% block title %}Communication & Feedback for Parents - Kidz Runz Cosmic Adventures{% endblock %}
+{% block meta_description %}Learn how Kidz Runz in London communicates with families and values your feedback for cosmic adventures.{% endblock %}
+{% block og_title %}Communication & Feedback for Parents - Kidz Runz Cosmic Adventures{% endblock %}
+{% block og_description %}Discover how Kidz Runz keeps families connected and welcomes feedback for galactic experiences in London.{% endblock %}
+{% block twitter_title %}Communication & Feedback for Parents - Kidz Runz Cosmic Adventures{% endblock %}
+{% block twitter_description %}See how Kidz Runz communicates with parents and values their input for space-themed activities in London.{% endblock %}
+{% block breadcrumb_items %}
+    ,{"@type": "ListItem", "position": 2, "name": "Communication", "item": "{% url 'frontend:communication' %}"}
+{% endblock %}
+
+{% block extra_head %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Communication & Feedback for Parents - Kidz Runz Cosmic Adventures",
+        "description": "Learn how Kidz Runz in London communicates with families and values your feedback for cosmic adventures.",
+        "url": "{% url 'frontend:communication' %}",
+        "datePublished": "2023-01-01T00:00:00+00:00",
+        "dateModified": "2025-05-28T13:19:00+01:00",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{% static 'images/logo.webp' %}"
+            }
+        },
+        "mainEntity": {
+            "@type": "Service",
+            "name": "Kidz Runz Cosmic Communication",
+            "description": "Kidz Runz provides regular updates and welcomes feedback from parents for space-themed activities in London.",
+            "provider": {
+                "@type": "Organization",
+                "name": "Kidz Runz",
+                "url": "{% url 'frontend:home' %}"
+            }
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": "{% url 'frontend:home' %}"},
+                {"@type": "ListItem", "position": 2, "name": "Communication", "item": "{% url 'frontend:communication' %}"}
+            ]
+        }
+    }
+    </script>
+{% endblock %}
 
 {% block content %}
-    <section class="container communication__section communication__section--intro text-center py-5">
-        <h1 class="display-4 fw-bold communication__title">Communication and Feedback</h1>
-        <p class="lead communication__text">We value staying connected with our Kidz Runz families.</p>
+    <section class="container communication__section communication__section--intro text-center py-5" aria-labelledby="communication-hero-heading">
+        <div class="container">
+            <h1 id="communication-hero-heading" class="display-4 fw-bold communication__title">Communication & Feedback for Parents at Kidz Runz Cosmic Adventures</h1>
+            <p class="lead communication__text">We value staying connected with our Kidz Runz families across the galaxy.</p>
+        </div>
     </section>
 
-    <section class="container communication__section communication__section--content py-5">
-        <p class="communication__paragraph">At Kidz Runz, we believe in open communication with parents and caregivers. We provide regular updates on your child’s activities and progress, and we welcome your feedback to continually improve our services. Whether through meetings, reports, or direct conversations, we’re here to ensure you’re always in the loop.</p>
-        <div class="text-center communication__cta">
-            <a href="{% url 'frontend:about' %}" class="btn btn-primary communication__cta-button">Back to About Us</a>
+    <section class="container communication__section communication__section--content py-5" aria-labelledby="communication-content-heading">
+        <div class="container">
+            <h2 id="communication-content-heading" class="h3 mb-4 communication__subtitle">How We Stay Connected</h2>
+            <p class="communication__paragraph">At Kidz Runz, we prioritize open communication with parents and caregivers. We provide regular updates on your child’s cosmic activities and progress via meetings, reports, and direct conversations. Your feedback helps us improve our stellar services.</p>
+            <div class="accordion mt-4" id="communicationAccordion">
+                <div class="accordion-item communication__item">
+                    <h2 class="accordion-header communication__header">
+                        <button class="accordion-button communication__button" type="button" data-bs-toggle="collapse" data-bs-target="#communication-collapse-1" aria-expanded="true" aria-controls="communication-collapse-1">
+                            How do I receive updates?
+                        </button>
+                    </h2>
+                    <div id="communication-collapse-1" class="accordion-collapse collapse show" aria-labelledby="communication-header-1" data-bs-parent="#communicationAccordion">
+                        <div class="accordion-body communication__body">
+                            We send weekly emails and offer monthly parent meetings across the cosmos.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item communication__item">
+                    <h2 class="accordion-header communication__header">
+                        <button class="accordion-button communication__button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#communication-collapse-2" aria-expanded="false" aria-controls="communication-collapse-2">
+                            How can I provide feedback?
+                        </button>
+                    </h2>
+                    <div id="communication-collapse-2" class="accordion-collapse collapse" aria-labelledby="communication-header-2" data-bs-parent="#communicationAccordion">
+                        <div class="accordion-body communication__body">
+                            Use our contact form or attend a feedback session to share your stellar insights.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center communication__cta mt-4">
+                <a href="{% url 'frontend:about' %}" class="btn btn-primary communication__cta-button" aria-label="Back to about us">Back to About Us</a>
+                <a href="{% url 'frontend:contact' %}" class="btn btn-outline-primary ms-2 communication__cta-button" aria-label="Send feedback">Send Feedback</a>
+            </div>
         </div>
     </section>
 {% endblock %}

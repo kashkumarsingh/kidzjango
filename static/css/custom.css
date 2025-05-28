@@ -1,11 +1,33 @@
-/* BEM-structured custom styles for Kidz Runz */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Open+Sans:wght@400;700&display=swap');
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@400;600&family=Open+Sans:wght@400;600&display=swap');
 
-/* Page styles */
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
+:root {
+    /* Cosmic Color Palette */
+    --space-black: #0D1B2A;
+    --nebula-blue: #1B263B;
+    --galaxy-purple: #2E1A47;
+    --star-white: #E0E0E0;
+    --cosmic-cyan: #00AEEF;
+    --neon-green: #00B140;
+    --glow-cyan: rgba(0, 174, 239, 0.5);
+    --glow-green: rgba(0, 177, 64, 0.5);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+
+    /* Typography */
+    --font-heading: 'Orbitron', sans-serif;
+    --font-subheading: 'Poppins', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+}
+
 .page {
-    font-family: "Open Sans", sans-serif;
-    background: #FFFFFF; /* Default to white background */
-    color: #333333;
+    font-family: var(--font-body);
+    background: var(--space-black);
+    color: var(--star-white);
+    margin: 0;
+    overflow-x: hidden;
 }
 
 .page__body {
@@ -19,90 +41,196 @@
 }
 
 .page__section {
-    padding: 2rem 0;
+    position: relative;
+    padding: 4rem 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--space-black) 0%, var(--nebula-blue) 100%);
+    z-index: 1;
+}
+
+.page__section:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="10" cy="10" r="1" fill="white" opacity="0.5"/><circle cx="50" cy="20" r="2" fill="white" opacity="0.3"/><circle cx="80" cy="70" r="1" fill="white" opacity="0.4"/><circle cx="30" cy="80" r="2" fill="white" opacity="0.6"/></svg>') repeat;
+    opacity: 0.5;
+    z-index: -2;
+}
+
+/* ==========================================================================
+   Component Styles
+   ========================================================================== */
+/* Buttons */
+.btn-primary {
+    font-family: var(--font-subheading);
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--cosmic-cyan) 0%, #0091D0 100%);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    color: #FFFFFF;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px var(--glow-cyan);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px var(--glow-cyan);
+    background: linear-gradient(135deg, #0091D0 0%, var(--cosmic-cyan) 100%);
+}
+
+.btn-outline-primary {
+    font-family: var(--font-subheading);
+    font-weight: 600;
+    border: 2px solid var(--cosmic-cyan);
+    color: var(--cosmic-cyan);
+    background: transparent;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background: var(--cosmic-cyan);
+    color: #FFFFFF;
+    box-shadow: 0 0 10px var(--glow-cyan);
+}
+
+/* Cards */
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px var(--shadow-dark);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
 }
 
-/* Header styles */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px var(--glow-cyan);
+}
+
+.card-body {
+    padding: 2rem;
+    z-index: 1;
+    position: relative;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--cosmic-cyan);
+    text-shadow: 0 0 5px var(--glow-cyan);
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 2rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+p, li, a {
+    font-family: var(--font-body);
+    color: var(--star-white);
+    line-height: 1.8;
+}
+
+/* ==========================================================================
+   Header Styles
+   ========================================================================== */
 .header {
-    background: linear-gradient(180deg, #1A3C5A 0%, #2A4060 100%);
+    background: linear-gradient(180deg, var(--space-black) 0%, var(--nebula-blue) 100%);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px var(--shadow-dark);
 }
 
 .header__nav {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 1000;
+    padding: 1rem 0;
 }
 
 .header__brand {
-    font-family: "Poppins", sans-serif;
+    font-family: var(--font-heading);
     font-weight: 600;
-    font-size: 1.5rem;
-    color: #FFFFFF;
+    font-size: 1.75rem;
+    color: var(--cosmic-cyan);
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
 .header__logo {
-    transition: opacity 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .header__logo:hover {
-    opacity: 0.8;
+    transform: scale(1.1);
 }
 
 .nav__toggler {
     border: none;
-    background-color: transparent;
+    background: transparent;
+    color: var(--star-white);
 }
 
 .nav__list {
-    gap: 1rem;
+    display: flex;
+    gap: 1.5rem;
 }
 
 .nav__item {
-    transition: background-color 0.2s ease;
+    position: relative;
 }
 
 .nav__link {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
+    font-family: var(--font-subheading);
+    font-weight: 600;
     font-size: 1.1rem;
-    color: #FFFFFF;
+    color: var(--star-white);
     padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: color 0.3s ease, background 0.3s ease;
 }
 
 .nav__link:hover {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.3) 100%);
-    border-radius: 4px;
-    color: #FFFFFF;
+    color: var(--cosmic-cyan);
+    background: rgba(255, 255, 255, 0.1);
 }
 
-.nav--offcanvas .nav__link {
-    font-size: 1.2rem;
-    padding: 0.75rem;
+.nav__dropdown {
+    background: var(--nebula-blue);
+    border: 1px solid var(--cosmic-cyan);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px var(--shadow-dark);
 }
 
 .nav__dropdown-item .nav__link {
-    color: #FFFFFF;
+    color: var(--star-white);
 }
 
 .nav__dropdown-item .nav__link:hover {
-    background: linear-gradient(180deg, #00B140 0%, #007B2F 100%);
+    background: var(--cosmic-cyan);
     color: #FFFFFF;
 }
 
-.nav__link--button {
-    padding: 0.25rem 0.5rem;
-    cursor: pointer;
+.nav--offcanvas {
+    background: var(--space-black);
 }
 
-/* Footer styles */
+/* ==========================================================================
+   Footer Styles
+   ========================================================================== */
 .footer {
-    background: #F5F5F5;
-    border-top: 1px solid #E0E0E0;
+    background: linear-gradient(180deg, var(--nebula-blue) 0%, var(--space-black) 100%);
+    padding: 3rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer__section {
@@ -111,583 +239,393 @@
 }
 
 .footer__title {
-    font-family: "Poppins", sans-serif;
+    font-family: var(--font-heading);
     font-weight: 600;
-    color: #00AEEF;
+    color: var(--cosmic-cyan);
+    margin-bottom: 1.5rem;
 }
 
 .footer__list {
     padding: 0;
+    list-style: none;
 }
 
 .footer__item {
-    line-height: 1.6;
+    margin-bottom: 0.75rem;
 }
 
 .footer__link {
-    font-family: "Open Sans", sans-serif;
-    color: #00B140;
-    transition: color 0.2s ease;
+    color: var(--star-white);
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .footer__link:hover {
-    color: #007B2F;
+    color: var(--cosmic-cyan);
 }
 
 .footer__list--social .footer__link {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    margin-right: 1rem;
 }
 
 .footer__divider {
-    border-color: #E0E0E0;
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 .footer__copyright {
-    font-family: "Open Sans", sans-serif;
     font-size: 0.9rem;
-    color: #666666;
+    color: var(--star-white);
 }
 
 .footer__brand-link {
-    color: #00AEEF;
-}
-
-/* Signin and Signup styles */
-.signin__section,
-.signup__section {
-    padding: 2rem 0;
-    background: #FFFFFF;
-}
-
-.signin__card,
-.signup__card {
-    max-width: 500px;
-    margin: 0 auto;
-    border: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.auth__image {
-    background-size: cover;
-    min-height: 400px;
-}
-
-.auth__title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    color: #00AEEF;
-}
-
-.auth__form-label {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    color: #00B140;
-}
-
-.auth__form-input {
-    border-radius: 4px;
-    border: 1px solid #E0E0E0;
-    font-family: "Open Sans", sans-serif;
-}
-
-.auth__form-input:focus {
-    border-color: #00AEEF;
-    box-shadow: 0 0 5px rgba(0, 174, 239, 0.3);
-}
-
-.auth__form-button {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    background: linear-gradient(180deg, #00AEEF 0%, #0091D0 100%);
-    color: #FFFFFF;
-    border: none;
-    padding: 0.5rem 1rem;
-    transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.auth__form-button:hover {
-    transform: translateY(-2px);
-    background: linear-gradient(180deg, #0091D0 0%, #00AEEF 100%);
-}
-
-.auth__link {
-    color: #00B140;
+    color: var(--cosmic-cyan);
     text-decoration: none;
 }
 
-.auth__link:hover {
-    color: #007B2F;
-}
-
-/* Dashboard styles */
-.dashboard__section {
-    padding: 2rem 0;
-}
-
-.dashboard__card {
-    max-width: 500px;
-    margin: 0 auto;
-    border: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.dashboard__card p {
-    font-family: "Open Sans", sans-serif;
-    color: #333333;
-}
-
-/* General Button Styles */
-.btn-primary {
-    background: linear-gradient(180deg, #00AEEF 0%, #0091D0 100%);
-    border: none;
-}
-
-.btn-primary:hover {
-    background: linear-gradient(180deg, #0091D0 0%, #00AEEF 100%);
-}
-
-.btn-outline-primary {
-    color: #00AEEF;
-    border-color: #00AEEF;
-}
-
-.btn-outline-primary:hover {
-    background: linear-gradient(180deg, #00AEEF 0%, #0091D0 100%);
-    color: #FFFFFF;
-}
-
-/* Home Page Styles */
-.home__hero {
-    background: linear-gradient(135deg, #007bff 0%, #00c4b4 100%);
-    padding: 5rem 0;
+/* ==========================================================================
+   Section-Specific Styles
+   ========================================================================== */
+/* Hero Section (All Pages) */
+.hero {
+    position: relative;
     min-height: 80vh;
     display: flex;
     align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, var(--space-black) 0%, var(--galaxy-purple) 100%);
 }
 
-.hero__slide {
+.hero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 174, 239, 0.3) 0%, rgba(46, 26, 71, 0.3) 100%);
+    z-index: 1;
+}
+
+.hero__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
     padding: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
 }
 
 .hero__title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    color: #FFFFFF;
+    font-size: 3.5rem;
     animation: fadeInUp 1s ease-out;
+    color: #FFFFFF;
+    text-shadow: 0 0 8px var(--glow-cyan);
 }
 
 .hero__text {
-    font-family: "Open Sans", sans-serif;
-    color: #E0E0E0;
+    font-size: 1.5rem;
     animation: fadeInUp 1.2s ease-out;
+    color: #FFFFFF;
 }
 
 .hero__button {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    transition: transform 0.2s ease;
+    margin-top: 1.5rem;
 }
 
-.hero__button:hover {
-    transform: translateY(-2px);
+/* Home Page Sections */
+.home__hero {
+    background: linear-gradient(180deg, var(--space-black) 0%, var(--galaxy-purple) 100%);
 }
 
 .why-choose {
-    background: #FFFFFF;
-}
-
-.why-choose__title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    color: #1A3C5A;
+    background: linear-gradient(135deg, var(--nebula-blue) 0%, var(--space-black) 100%);
 }
 
 .why-choose__item {
-    border: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    transition: transform 0.3s ease;
+    padding: 2rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
 }
 
-.why-choose__item:hover {
-    transform: scale(1.05);
-}
-
-.why-choose__icon {
-    font-size: 2rem;
-    display: block;
+.why-choose__svg {
+    width: 60px;
+    height: 60px;
     margin-bottom: 1rem;
+    animation: orbit 15s linear infinite;
 }
 
 .why-choose__item-title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    color: #00AEEF;
+    color: var(--neon-green);
+    font-size: 1.75rem;
 }
 
 .why-choose__item-text {
-    font-family: "Open Sans", sans-serif;
-    color: #666666;
-}
-
-.why-choose__item-button {
-    font-family: "Poppins", sans-serif;
+    color: #FFFFFF;
+    font-size: 1.1rem;
 }
 
 .pricing {
-    background: #FFFFFF;
+    position: relative;
+    background: linear-gradient(135deg, var(--space-black) 0%, var(--nebula-blue) 100%);
 }
 
-.pricing__title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    color: #1A3C5A;
-}
-
+.pricing__title,
 .pricing__description {
-    font-family: "Open Sans", sans-serif;
-    color: #666666;
+    color: #FFFFFF;
+    text-shadow: 0 0 5px var(--glow-cyan);
 }
 
 .pricing__tabs {
+    border-bottom: 2px solid var(--cosmic-cyan);
     justify-content: center;
-    border-bottom: 2px solid #E0E0E0;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.5rem;
+    border-radius: 10px;
 }
 
 .pricing__tab-link {
-    font-family: "Poppins", sans-serif;
+    font-family: var(--font-subheading);
     font-weight: 600;
-    color: #666666;
+    color: var(--star-white);
+    background: transparent;
     border: none;
-    padding: 0.75rem 1.5rem;
-    transition: color 0.2s ease;
+    padding: 1rem 2rem;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
 }
 
 .pricing__tab-link:hover,
 .pricing__tab-link.active {
-    color: #00AEEF;
-    border-bottom: 2px solid #00AEEF;
+    color: var(--cosmic-cyan);
+    border-bottom: 2px solid var(--cosmic-cyan);
 }
 
 .pricing__item {
-    border: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    transition: transform 0.3s ease;
+    margin-bottom: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
 }
 
-.pricing__item:hover {
-    transform: scale(1.05);
+.pricing__svg {
+    width: 80px;
+    height: 80px;
+    animation: orbit 10s linear infinite;
+}
+
+.pricing__badge {
+    background: #FFD700;
+    color: var(--space-black);
+    font-family: var(--font-subheading);
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
 }
 
 .pricing__item-title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    color: #00AEEF;
+    color: var(--cosmic-cyan);
 }
 
-.pricing__item-price {
-    font-family: "Open Sans", sans-serif;
-    font-size: 1.5rem;
-    color: #1A3C5A;
-    margin-bottom: 1rem;
-}
-
+.pricing__item-price,
 .pricing__item-description {
-    font-family: "Open Sans", sans-serif;
-    color: #666666;
-}
-
-.pricing__item-features {
-    font-family: "Open Sans", sans-serif;
-    color: #333333;
-    margin-bottom: 1rem;
-}
-
-.pricing__item-button {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
+    color: #FFFFFF;
 }
 
 .special-offer {
-    background: linear-gradient(180deg, #F0F8FF 0%, #C0D8EF 100%);
-}
-
-.special-offer__title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    color: #1A3C5A;
-}
-
-.special-offer__text {
-    font-family: "Open Sans", sans-serif;
-    color: #666666;
-}
-
-.special-offer__highlight {
-    font-weight: 700;
-    color: #00B140;
+    background: linear-gradient(135deg, var(--neon-green) 0%, var(--nebula-blue) 100%);
 }
 
 .special-offer__content {
-    border: none;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
+    padding: 2rem;
+    border-radius: 15px;
 }
 
-.special-offer__content:hover {
-    transform: scale(1.05);
+.special-offer__title,
+.special-offer__text {
+    color: #FFFFFF;
 }
 
-.special-offer__button {
-    font-family: "Poppins", sans-serif;
+.special-offer__highlight {
+    color: var(--cosmic-cyan);
     font-weight: 600;
 }
 
 .activities {
-    background: #FFFFFF;
-}
-
-.activities__title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    color: #1A3C5A;
+    background: linear-gradient(135deg, var(--nebula-blue) 0%, var(--galaxy-purple) 100%);
 }
 
 .activities__item {
-    border: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-
-.activities__item:hover {
-    transform: scale(1.05);
-}
-
-.activities__item-title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    color: #00AEEF;
-}
-
-.activities__item-text {
-    font-family: "Open Sans", sans-serif;
-    color: #666666;
-}
-
-.activities__item-button {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-}
-
-.testimonials {
-    background: linear-gradient(180deg, #F5F7FA 0%, #E0E7FF 100%);
-}
-
-.testimonials__title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    color: #1A3C5A;
-}
-
-.testimonials__carousel .carousel-item-inner {
-    width: 100%;
-}
-
-.testimonials__item {
-    border: none;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-}
-
-.testimonials__item:hover {
-    transform: scale(1.05);
-}
-
-.testimonials__item-content {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
     position: relative;
-    z-index: 1;
 }
 
-.testimonials__text {
-    font-family: "Open Sans", sans-serif;
-    color: #FFFFFF;
-}
-
-.testimonials__author {
-    font-family: "Open Sans", sans-serif;
-    color: #E0E0E0;
-    font-style: italic;
-}
-
-.faqs {
-    background: #FFFFFF;
-}
-
-.faqs__title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    color: #1A3C5A;
-}
-
-.faqs__item {
-    border: 1px solid #E0E0E0;
-    border-radius: 8px;
+.activities__item:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(135deg, var(--cosmic-cyan) 0%, var(--nebula-blue) 100%);
+    border-radius: 10px;
     margin-bottom: 1rem;
 }
 
+.activities__item-title {
+    color: var(--neon-green);
+    font-size: 1.75rem;
+}
+
+.activities__item-text {
+    color: #FFFFFF;
+    font-size: 1.1rem;
+}
+
+.testimonials {
+    background: linear-gradient(135deg, var(--space-black) 0%, var(--nebula-blue) 100%);
+}
+
+.testimonials__overlay {
+    background: linear-gradient(135deg, rgba(0, 174, 239, 0.3) 0%, rgba(46, 26, 71, 0.3) 100%);
+}
+
+.testimonials h2 {
+    color: #FFFFFF;
+}
+
+.card.bg-transparent .card-body {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.card.bg-transparent .card-text,
+.card.bg-transparent .card-subtitle {
+    color: #FFFFFF;
+}
+
+.faqs {
+    background: linear-gradient(135deg, var(--nebula-blue) 0%, var(--space-black) 100%);
+}
+
+.faqs__item {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+}
+
 .faqs__button {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    color: #1A3C5A;
+    background: transparent;
+    color: var(--cosmic-cyan);
+    font-family: var(--font-subheading);
+}
+
+.faqs__button:not(.collapsed) {
+    background: rgba(0, 174, 239, 0.2);
 }
 
 .faqs__body {
-    font-family: "Open Sans", sans-serif;
-    color: #666666;
-}
-
-.faqs__empty-text,
-.pricing__empty-text {
-    font-family: "Open Sans", sans-serif;
-    color: #666666;
-}
-
-.faqs__more-button {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
+    color: #FFFFFF;
 }
 
 .cta {
-    background: linear-gradient(135deg, #28a745 0%, #00c4b4 100%);
-}
-
-.cta__title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    color: #FFFFFF;
-}
-
-.cta__text {
-    font-family: "Open Sans", sans-serif;
-    color: #E0E0E0;
+    background: linear-gradient(135deg, var(--cosmic-cyan) 0%, var(--galaxy-purple) 100%);
 }
 
 .cta__content {
-    border: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    transition: transform 0.3s ease;
+    padding: 2rem;
+    border-radius: 15px;
 }
 
-.cta__content:hover {
-    transform: scale(1.05);
-}
-
-.cta__button {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-}
-
-/* Dark Mode Styles (updated to match new backgrounds) */
-.dark-mode .page {
-    background: linear-gradient(180deg, #1A2A44 0%, #2A4060 100%);
-    color: #E0E0E0;
-}
-
-.dark-mode .header {
-    background: linear-gradient(180deg, #1A2A44 0%, #2A4060 100%);
-}
-
-.dark-mode .footer {
-    background: #1A2A44;
-}
-
-.dark-mode .signin__section,
-.dark-mode .signup__section {
-    background: #1A2A44;
-}
-
-.dark-mode .home__hero,
-.dark-mode .booking__section--intro,
-.dark-mode .choose-package__section--intro,
-.dark-mode .thank-you__section--intro,
-.dark-mode .about__section--intro,
-.dark-mode .activities__section--intro,
-.dark-mode .benefits__section--intro,
-.dark-mode .cams__section--intro,
-.dark-mode .communication__section--intro,
-.dark-mode .contact__hero,
-.dark-mode .explore__section--intro,
-.dark-mode .faqs,
-.dark-mode .mission__section--intro,
-.dark-mode .parent-tips__section--intro,
-.dark-mode .safeguarding__section--intro,
-.dark-mode .story__section--intro,
-.dark-mode .welcome__section--intro {
-    background: linear-gradient(180deg, #1A2A44 0%, #2A4060 100%);
-}
-
-.dark-mode .why-choose,
-.dark-mode .pricing,
-.dark-mode .activities,
-.dark-mode .about__section--content,
-.dark-mode .communication__section--content,
-.dark-mode .mission__section--content,
-.dark-mode .parent-tips__section--content,
-.dark-mode .safeguarding__section--content,
-.dark-mode .story__section--content,
-.dark-mode .welcome__section--content {
-    background: #152535;
-}
-
-.dark-mode .special-offer {
-    background: linear-gradient(180deg, #1F4060 0%, #152535 100%);
-}
-
-.dark-mode .testimonials {
-    background: linear-gradient(180deg, #152535 0%, #1F4060 100%);
-}
-
-.dark-mode .cta {
-    background: linear-gradient(180deg, #1F4060 0%, #152535 100%);
-}
-
-.dark-mode .hero__title,
-.dark-mode .why-choose__title,
-.dark-mode .pricing__title,
-.dark-mode .special-offer__title,
-.dark-mode .activities__title,
-.dark-mode .testimonials__title,
-.dark-mode .faqs__title,
-.dark-mode .cta__title,
-.dark-mode .why-choose__item-title,
-.dark-mode .pricing__item-title,
-.dark-mode .activities__item-title {
+.cta__title,
+.cta__text {
     color: #FFFFFF;
 }
 
-.dark-mode .hero__text,
-.dark-mode .why-choose__item-text,
-.dark-mode .pricing__description,
-.dark-mode .pricing__item-description,
-.dark-mode .pricing__item-features,
-.dark-mode .special-offer__text,
-.dark-mode .activities__item-text,
-.dark-mode .faqs__body,
-.dark-mode .faqs__empty-text,
-.dark-mode .pricing__empty-text,
-.dark-mode .cta__text,
-.dark-mode .testimonials__text,
-.dark-mode .testimonials__author {
-    color: #D0D0D0;
+/* About Page Sections */
+.about__hero,
+.mission__hero,
+.story__hero,
+.welcome__hero,
+.communication__hero,
+.parent_tips__hero,
+.safeguarding__hero,
+.services__hero {
+    background: url('/static/images/about-hero.jpg') no-repeat center center/cover;
 }
 
-/* Animation Keyframes */
+.mission,
+.values,
+.team {
+    background: linear-gradient(135deg, var(--nebula-blue) 0%, var(--galaxy-purple) 100%);
+}
+
+.values__card,
+.team__card {
+    padding: 2rem;
+}
+
+.values__svg {
+    width: 50px;
+    height: 50px;
+    animation: orbit 10s linear infinite;
+}
+
+.team__card-role {
+    color: var(--neon-green);
+}
+
+/* Pricing Packages Page */
+.pricing-packages {
+    background: linear-gradient(135deg, var(--space-black) 0%, var(--nebula-blue) 100%);
+}
+
+.pricing__card {
+    padding: 2rem;
+}
+
+/* Explore Page */
+.explore__section--gallery .carousel-item img {
+    border-radius: 15px;
+    box-shadow: 0 5px 15px var(--shadow-dark);
+}
+
+/* ==========================================================================
+   Dark Mode Styles
+   ========================================================================== */
+.dark-mode .page {
+    background: var(--space-black);
+}
+
+.dark-mode .page__section,
+.dark-mode .header,
+.dark-mode .footer,
+.dark-mode .home__hero,
+.dark-mode .about__hero,
+.dark-mode .mission,
+.dark-mode .values,
+.dark-mode .team,
+.dark-mode .pricing,
+.dark-mode .special-offer,
+.dark-mode .testimonials,
+.dark-mode .cta {
+    background: linear-gradient(135deg, var(--space-black) 0%, var(--nebula-blue) 100%);
+}
+
+/* ==========================================================================
+   Animation Keyframes
+   ========================================================================== */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes orbit {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .carousel--animated .carousel-item {
@@ -697,4 +635,27 @@
 
 .carousel--animated .carousel-item.active {
     opacity: 1;
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    .hero { min-height: 60vh; }
+    .nav__list { flex-direction: column; }
+    .pricing__tabs { flex-direction: column; }
+    .pricing__tab-link { margin-bottom: 0.5rem; }
+    .card { margin-bottom: 1.5rem; }
+}
+
+/* ==========================================================================
+   Accessibility
+   ========================================================================== */
+.card:focus-within,
+.btn-primary:focus,
+.btn-outline-primary:focus {
+    outline: 2px solid var(--cosmic-cyan);
+    outline-offset: 2px;
 }

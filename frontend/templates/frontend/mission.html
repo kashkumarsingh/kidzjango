@@ -1,23 +1,73 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Our Mission Statements - Kidz Runz{% endblock %}
-{% block meta_description %}Discover the mission and values that drive Kidz Runz to support children and families.{% endblock %}
-{% block og_title %}Our Mission Statements - Kidz Runz{% endblock %}
-{% block og_description %}Learn about Kidz Runz’s mission to empower children through play and support.{% endblock %}
-{% block twitter_title %}Our Mission Statements - Kidz Runz{% endblock %}
-{% block twitter_description %}Explore Kidz Runz’s mission to create a nurturing environment for kids.{% endblock %}
+{% block title %}Our Mission - Kidz Runz Cosmic Adventures{% endblock %}
+{% block meta_description %}Learn about Kidz Runz’s mission in London to provide fun, safe, and supportive space-themed activities for children with expert CAMS.{% endblock %}
+{% block og_title %}Our Mission - Kidz Runz Cosmic Adventures{% endblock %}
+{% block og_description %}Discover Kidz Runz’s commitment in London to safe, fun, space-themed activities and child development through expert mentorship.{% endblock %}
+{% block twitter_title %}Our Mission - Kidz Runz Cosmic Adventures{% endblock %}
+{% block twitter_description %}Explore Kidz Runz’s mission in London to support kids with fun, safe, space-themed activities and expert CAMS.{% endblock %}
+{% block breadcrumb_items %}
+    ,{"@type": "ListItem", "position": 2, "name": "Mission", "item": "{% url 'frontend:mission' %}"}
+{% endblock %}
+
+{% block extra_head %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "Our Mission - Kidz Runz Cosmic Adventures",
+        "description": "Learn about Kidz Runz’s mission in London to provide fun, safe, and supportive space-themed activities for children with expert CAMS.",
+        "url": "{% url 'frontend:mission' %}",
+        "datePublished": "2023-01-01T00:00:00+00:00",
+        "dateModified": "2025-05-28T13:19:00+01:00",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{% static 'images/logo.webp' %}"
+            }
+        },
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "url": "{% url 'frontend:home' %}",
+            "description": "Kidz Runz is dedicated to fostering child development through safe, fun, space-themed activities with Child Activity Mentor Support (CAMS) in London.",
+            "sameAs": [
+                "https://facebook.com/kidzrunz",
+                "https://twitter.com/kidzrunz",
+                "https://instagram.com/kidzrunz"
+            ]
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": "{% url 'frontend:home' %}"},
+                {"@type": "ListItem", "position": 2, "name": "Mission", "item": "{% url 'frontend:mission' %}"}
+            ]
+        }
+    }
+    </script>
+{% endblock %}
 
 {% block content %}
-    <section class="container mission__section mission__section--intro text-center py-5">
-        <h1 class="display-4 fw-bold mission__title">Our Mission Statements</h1>
-        <p class="lead mission__text">Our goals to empower and support every child.</p>
+    <section class="hero mission__hero page__section position-relative" aria-labelledby="mission-hero-heading">
+        <div class="position-absolute w-100 h-100 mission__hero-overlay" style="background: rgba(0,0,0,0.5);"></div>
+        <div class="container position-relative text-center py-5">
+            <h1 id="mission-hero-heading" class="display-4 fw-bold mission__title text-white">Our Cosmic Mission at Kidz Runz</h1>
+            <p class="lead mission__text text-white">Dedicated to nurturing children’s growth through fun and safe space-themed activities.</p>
+        </div>
     </section>
 
-    <section class="container mission__section mission__section--content py-5">
-        <p class="mission__paragraph">At Kidz Runz, our mission is to inspire children to reach their full potential through engaging activities and supportive mentorship. We aim to foster a love for learning, promote physical and emotional well-being, and create a community where every child feels valued and included.</p>
-        <div class="text-center mission__cta">
-            <a href="{% url 'frontend:about' %}" class="btn btn-primary mission__cta-button">Back to About Us</a>
+    <section class="mission__section py-5" aria-labelledby="mission-content-heading">
+        <div class="container">
+            <h2 id="mission-content-heading" class="h3 mb-4 text-center mission__subtitle">Our Commitment to Children</h2>
+            <p class="mission__paragraph">At Kidz Runz, our mission is to create a nurturing cosmic environment where every child can thrive. We provide expert Child Activity Mentor Support (CAMS) to ensure safety, inclusion, and development for all, including children with SEND, across the galaxy.</p>
+            <p class="mission__paragraph">Through play, mentorship, and tailored space-themed activities, we aim to foster physical, social, and emotional growth, making every moment a joyful interstellar learning experience.</p>
+            <div class="text-center mt-4">
+                <a href="{% url 'frontend:about' %}" class="btn btn-primary mission__button" aria-label="Learn more about us">Learn More About Us</a>
+            </div>
         </div>
     </section>
 {% endblock %}

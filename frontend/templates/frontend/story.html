@@ -1,23 +1,81 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Once Upon A Time Story - Kidz Runz{% endblock %}
-{% block meta_description %}Learn the story of how Kidz Runz began, dedicated to children’s growth and joy.{% endblock %}
-{% block og_title %}Once Upon A Time Story - Kidz Runz{% endblock %}
-{% block og_description %}Discover the origins of Kidz Runz and our journey to support kids.{% endblock %}
-{% block twitter_title %}Once Upon A Time Story - Kidz Runz{% endblock %}
-{% block twitter_description %}Read the story of how Kidz Runz started, bringing joy to children.{% endblock %}
+{% block title %}Our Story - Kidz Runz Cosmic Adventures{% endblock %}
+{% block meta_description %}Discover the inspiring story of Kidz Runz in London and how we started supporting children’s space-themed activities.{% endblock %}
+{% block og_title %}Our Story - Kidz Runz Cosmic Adventures{% endblock %}
+{% block og_description %}Learn about the journey of Kidz Runz in London in creating safe, fun, space-themed activities for kids.{% endblock %}
+{% block twitter_title %}Our Story - Kidz Runz Cosmic Adventures{% endblock %}
+{% block twitter_description %}Explore the history of Kidz Runz in London and our dedication to children’s cosmic growth.{% endblock %}
+{% block breadcrumb_items %}
+    ,{"@type": "ListItem", "position": 2, "name": "Story", "item": "{% url 'frontend:story' %}"}
+{% endblock %}
+
+{% block extra_head %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "Our Story - Kidz Runz Cosmic Adventures",
+        "description": "Discover the inspiring story of Kidz Runz in London and how we started supporting children’s space-themed activities.",
+        "url": "{% url 'frontend:story' %}",
+        "datePublished": "2023-01-01T00:00:00+00:00",
+        "dateModified": "2025-05-28T13:19:00+01:00",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{% static 'images/logo.webp' %}"
+            }
+        },
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "url": "{% url 'frontend:home' %}",
+            "description": "Kidz Runz began with a passion for child development, offering safe, space-themed activities with expert support in London.",
+            "foundingDate": "2020"
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": "{% url 'frontend:home' %}"},
+                {"@type": "ListItem", "position": 2, "name": "Story", "item": "{% url 'frontend:story' %}"}
+            ]
+        }
+    }
+    </script>
+{% endblock %}
 
 {% block content %}
-    <section class="container story__section story__section--intro text-center py-5">
-        <h1 class="display-4 fw-bold story__title">Once Upon A Time Story</h1>
-        <p class="lead story__text">The journey of Kidz Runz from vision to reality.</p>
+    <section class="hero story__hero page__section position-relative" aria-labelledby="story-hero-heading">
+        <div class="position-absolute w-100 h-100 story__hero-overlay" style="background: rgba(0,0,0,0.5);"></div>
+        <div class="container position-relative text-center py-5">
+            <h1 id="story-hero-heading" class="display-4 fw-bold story__title text-white">Our Cosmic Story at Kidz Runz</h1>
+            <p class="lead story__text text-white">A journey of passion for children’s cosmic growth.</p>
+        </div>
     </section>
 
-    <section class="container story__section story__section--content py-5">
-        <p class="story__paragraph">Once upon a time, a group of passionate educators and caregivers dreamed of a place where children could explore their potential through play and adventure. That dream became Kidz Runz, a community dedicated to creating magical experiences for kids. From our humble beginnings to today, we’ve been committed to making every child’s journey unforgettable.</p>
-        <div class="text-center story__cta">
-            <a href="{% url 'frontend:about' %}" class="btn btn-primary story__cta-button">Back to About Us</a>
+    <section class="story__section py-5" aria-labelledby="story-content-heading">
+        <div class="container">
+            <h2 id="story-content-heading" class="h3 mb-4 text-center story__subtitle">Our Cosmic Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3 class="timeline-title">2020</h3>
+                    <p class="timeline-text">Founded with a mission to support cosmic child development in London.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3 class="timeline-title">2022</h3>
+                    <p class="timeline-text">Expanded services with CAMS support across the galaxy.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3 class="timeline-title">2025</h3>
+                    <p class="timeline-text">Serving thousands of happy families in a stellar community.</p>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="{% url 'frontend:about' %}" class="btn btn-primary story__button" aria-label="Learn more about us">Learn More</a>
+            </div>
         </div>
     </section>
 {% endblock %}

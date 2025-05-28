@@ -1,26 +1,122 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Contact Us - Kidz Runz{% endblock %}
-{% block meta_description %}Get in touch with Kidz Runz for inquiries, bookings, or support. Find our location, phone, email, and send us a message!{% endblock %}
-{% block og_title %}Contact Us - Kidz Runz{% endblock %}
-{% block og_description %}Reach out to Kidz Runz for any questions or support. View our location and contact details.{% endblock %}
-{% block twitter_title %}Contact Us - Kidz Runz{% endblock %}
-{% block twitter_description %}Contact Kidz Runz for inquiries or support. See our location and get in touch!{% endblock %}
+{% block title %}Contact Us for Kids’ Cosmic Activities - Kidz Runz{% endblock %}
+{% block meta_description %}Get in touch with Kidz Runz for inquiries, bookings, or support about our space-themed kids' activities. Find our location, phone, email, and send us a message!{% endblock %}
+{% block og_title %}Contact Us for Kids’ Cosmic Activities - Kidz Runz{% endblock %}
+{% block og_description %}Reach out to Kidz Runz for questions or support about our space-themed activities for kids. View our location and contact details.{% endblock %}
+{% block twitter_title %}Contact Us for Kids’ Cosmic Activities - Kidz Runz{% endblock %}
+{% block twitter_description %}Contact Kidz Runz for inquiries or support about our cosmic adventures for kids. See our location and get in touch!{% endblock %}
+{% block breadcrumb_items %}
+    ,{"@type": "ListItem", "position": 2, "name": "Contact", "item": "{% url 'frontend:contact' %}"}
+{% endblock %}
+
+{% block extra_head %}
+    <!-- ContactPage Schema for Contact Information -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contact Us for Kids’ Cosmic Activities - Kidz Runz",
+        "description": "Get in touch with Kidz Runz for inquiries, bookings, or support about our space-themed kids' activities. Find our location, phone, email, and send us a message!",
+        "url": "{% url 'frontend:contact' %}",
+        "datePublished": "2023-01-01T00:00:00+00:00",
+        "dateModified": "2025-05-28T11:29:00+01:00",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{% static 'images/logo.webp' %}"
+            }
+        },
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "url": "{% url 'frontend:home' %}",
+            "contactPoint": [
+                {
+                    "@type": "ContactPoint",
+                    "telephone": "+44-20-1234-5678",
+                    "contactType": "Customer Service",
+                    "email": "info@kidzrunz.com",
+                    "availableLanguage": ["English"],
+                    "areaServed": "UK"
+                }
+            ],
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "123 Cosmic Lane",
+                "addressLocality": "London",
+                "addressRegion": "Greater London",
+                "postalCode": "SW1A 1AA",
+                "addressCountry": "UK"
+            }
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": "{% url 'frontend:home' %}"},
+                {"@type": "ListItem", "position": 2, "name": "Contact", "item": "{% url 'frontend:contact' %}"}
+            ]
+        }
+    }
+    </script>
+
+    <!-- WebPage Schema for SEO Optimization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Contact Us for Kids’ Cosmic Activities - Kidz Runz",
+        "description": "Get in touch with Kidz Runz for inquiries, bookings, or support about our space-themed kids' activities. Find our location, phone, email, and send us a message!",
+        "url": "{% url 'frontend:contact' %}",
+        "datePublished": "2023-01-01T00:00:00+00:00",
+        "dateModified": "2025-05-28T11:29:00+01:00",
+        "author": {
+            "@type": "Organization",
+            "name": "Kidz Runz Team",
+            "description": "A team of experienced child activity mentors dedicated to space-themed fun."
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{% static 'images/logo.webp' %}"
+            }
+        },
+        "mainEntity": {
+            "@type": "ContactPage",
+            "name": "Contact Us for Kids’ Activities - Kidz Runz",
+            "description": "Contact page for inquiries and support."
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": "{% url 'frontend:home' %}"},
+                {"@type": "ListItem", "position": 2, "name": "Contact", "item": "{% url 'frontend:contact' %}"}
+            ]
+        },
+        "speakable": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": ["h1", ".contact__section--info"]
+        }
+    }
+    </script>
+{% endblock %}
 
 {% block content %}
-    <!-- Hero Section -->
     <section class="hero contact__hero" aria-labelledby="contact-hero-heading">
-        <div class="container text-center">
-            <h1 id="contact-hero-heading" class="display-4 fw-bold mb-4 hero__title">Contact Us</h1>
-            <p class="lead mb-4 hero__text">We'd love to hear from you! Reach out for inquiries, bookings, or support.</p>
+        <div class="container text-center py-5">
+            <h1 id="contact-hero-heading" class="display-4 fw-bold mb-4 hero__title">Contact Us for Kids’ Cosmic Activities</h1>
+            <p class="lead mb-4 hero__text">We'd love to hear from you! Reach out for inquiries, bookings, or support about our space-themed adventures.</p>
+            <div id="live-chat" class="contact__live-chat" aria-live="polite">Live Chat Coming Soon!</div>
         </div>
     </section>
 
-    <!-- Contact Information and Form Section -->
     <section class="contact__section contact__section--info py-5">
         <div class="container">
-            <!-- Success Message -->
             {% if success_message %}
                 <div class="alert alert-success alert-dismissible fade show contact__success-message" role="alert">
                     {{ success_message }}
@@ -28,98 +124,71 @@
                 </div>
             {% endif %}
             <div class="row">
-                <!-- Contact Info -->
                 <div class="col-12 col-lg-6 mb-4 mb-lg-0">
-                    <div class="card contact__card">
+                    <div class="card contact__card sticky-top" style="top: 20px;">
                         <div class="card-body contact__card-body">
-                            <h2 class="h3 mb-4 contact__title">Get in Touch</h2>
+                            <h2 class="h3 mb-4 contact__title">Get in Touch with Us</h2>
                             <ul class="list-unstyled contact__info-list">
                                 <li class="mb-3 contact__info-item">
                                     <strong class="contact__info-label">Address:</strong>
-                                    <p class="mb-0 contact__info-text">123 Kidz Runz Lane, London, SW1A 1AA, UK</p>
+                                    <p class="mb-0 contact__info-text">123 Cosmic Lane, London, SW1A 1AA, UK</p>
                                 </li>
                                 <li class="mb-3 contact__info-item">
                                     <strong class="contact__info-label">Phone:</strong>
-                                    <p class="mb-0 contact__info-text"><a href="tel:+19342772" class="contact__info-link">+1 934 2772</a></p>
+                                    <p class="mb-0 contact__info-text"><a href="tel:+442012345678" class="contact__info-link">+44 20 1234 5678</a></p>
                                 </li>
                                 <li class="mb-3 contact__info-item">
                                     <strong class="contact__info-label">Email:</strong>
                                     <p class="mb-0 contact__info-text"><a href="mailto:info@kidzrunz.com" class="contact__info-link">info@kidzrunz.com</a></p>
                                 </li>
                             </ul>
-                            <!-- Google Maps -->
                             <div class="contact__map mt-4">
-                                <iframe 
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.905849568214!2d-0.125736684229994!3d51.50136497963521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760520c214a511%3A0x5e6d8a67b6a6e8f2!2sBuckingham%20Palace!5e0!3m2!1sen!2suk!4v1697641234567!5m2!1sen!2suk" 
-                                    width="100%" 
-                                    height="300" 
-                                    style="border:0;" 
-                                    allowfullscreen="" 
-                                    loading="lazy" 
-                                    referrerpolicy="no-referrer-when-downgrade"
-                                    aria-label="Map showing Kidz Runz location near Buckingham Palace">
-                                </iframe>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.905849568214!2d-0.125736684229994!3d51.50136497963521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760520c214a511%3A0x5e6d8a67b6a6e8f2!2sBuckingham%20Palace!5e0!3m2!1sen!2suk!4v1697641234567!5m2!1sen!2suk" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Map showing Kidz Runz location near Buckingham Palace"></iframe>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Contact Form -->
                 <div class="col-12 col-lg-6">
                     <div class="card contact__card">
                         <div class="card-body contact__card-body">
                             <h2 class="h3 mb-4 contact__title">Send Us a Message</h2>
-                            <form method="POST" action="{% url 'frontend:contact' %}" class="contact__form">
+                            <form method="POST" action="{% url 'frontend:contact' %}" class="contact__form" novalidate>
                                 {% csrf_token %}
                                 <div class="mb-3">
                                     <label for="fullName" class="form-label contact__form-label">Full Name</label>
-                                    <input 
-                                        type="text" 
-                                        class="form-control contact__form-input" 
-                                        id="fullName" 
-                                        name="full_name" 
-                                        placeholder="Enter your full name" 
-                                        value="John Doe" 
-                                        required 
-                                        aria-describedby="fullNameHelp">
-                                    <div id="fullNameHelp" class="form-text contact__form-help">Please provide your full name.</div>
+                                    <input type="text" class="form-control contact__form-input {% if form.full_name.errors %}is-invalid{% endif %}" id="fullName" name="full_name" placeholder="Enter your full name" value="{{ form.full_name.value|default:'John Doe' }}" required aria-describedby="fullNameHelp">
+                                    {% if form.full_name.errors %}
+                                        <div class="invalid-feedback">{{ form.full_name.errors|join:", " }}</div>
+                                    {% else %}
+                                        <div id="fullNameHelp" class="form-text contact__form-help">Please provide your full name.</div>
+                                    {% endif %}
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label contact__form-label">Email</label>
-                                    <input 
-                                        type="email" 
-                                        class="form-control contact__form-input" 
-                                        id="email" 
-                                        name="email" 
-                                        placeholder="name@company.com" 
-                                        value="john@company.com" 
-                                        required 
-                                        aria-describedby="emailHelp">
-                                    <div id="emailHelp" class="form-text contact__form-help">We'll never share your email with anyone else.</div>
+                                    <input type="email" class="form-control contact__form-input {% if form.email.errors %}is-invalid{% endif %}" id="email" name="email" placeholder="name@company.com" value="{{ form.email.value|default:'john@company.com' }}" required aria-describedby="emailHelp">
+                                    {% if form.email.errors %}
+                                        <div class="invalid-feedback">{{ form.email.errors|join:", " }}</div>
+                                    {% else %}
+                                        <div id="emailHelp" class="form-text contact__form-help">We'll never share your email.</div>
+                                    {% endif %}
                                 </div>
                                 <div class="mb-3">
                                     <label for="phone" class="form-label contact__form-label">Phone Number</label>
-                                    <input 
-                                        type="tel" 
-                                        class="form-control contact__form-input" 
-                                        id="phone" 
-                                        name="phone" 
-                                        placeholder="+1 934 2772" 
-                                        value="+1 934 2772" 
-                                        required 
-                                        aria-describedby="phoneHelp">
-                                    <div id="phoneHelp" class="form-text contact__form-help">Please include your country code (e.g., +1).</div>
+                                    <input type="tel" class="form-control contact__form-input {% if form.phone.errors %}is-invalid{% endif %}" id="phone" name="phone" placeholder="+44 20 1234 5678" value="{{ form.phone.value|default:'+44 20 1234 5678' }}" required aria-describedby="phoneHelp">
+                                    {% if form.phone.errors %}
+                                        <div class="invalid-feedback">{{ form.phone.errors|join:", " }}</div>
+                                    {% else %}
+                                        <div id="phoneHelp" class="form-text contact__form-help">Include your country code (e.g., +44).</div>
+                                    {% endif %}
                                 </div>
                                 <div class="mb-3">
                                     <label for="message" class="form-label contact__form-label">Message</label>
-                                    <textarea 
-                                        class="form-control contact__form-input" 
-                                        id="message" 
-                                        name="message" 
-                                        rows="5" 
-                                        placeholder="Your message here..." 
-                                        required 
-                                        aria-describedby="messageHelp"></textarea>
-                                    <div id="messageHelp" class="form-text contact__form-help">Tell us how we can assist you!</div>
+                                    <textarea class="form-control contact__form-input {% if form.message.errors %}is-invalid{% endif %}" id="message" name="message" rows="5" placeholder="Your message here..." required aria-describedby="messageHelp">{{ form.message.value|default:'' }}</textarea>
+                                    {% if form.message.errors %}
+                                        <div class="invalid-feedback">{{ form.message.errors|join:", " }}</div>
+                                    {% else %}
+                                        <div id="messageHelp" class="form-text contact__form-help">Tell us how we can assist you!</div>
+                                    {% endif %}
                                 </div>
                                 <button type="submit" class="btn btn-primary contact__form-button">Send Message</button>
                             </form>
@@ -130,13 +199,12 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section class="cta contact__cta" aria-labelledby="contact-cta-heading">
         <div class="container py-5 text-center">
             <div class="cta__card">
                 <div class="card-body cta__card-body">
-                    <h2 id="contact-cta-heading" class="h3 mb-4 cta__title">Ready to Book an Activity?</h2>
-                    <p class="mb-4 cta__text">Explore our packages and book a fun-filled session for your child today!</p>
+                    <h2 id="contact-cta-heading" class="h3 mb-4 cta__title">Ready to Book a Cosmic Adventure?</h2>
+                    <p class="mb-4 cta__text">Explore our packages and book a fun-filled space-themed session for your child today!</p>
                     <a href="{% url 'frontend:bookings' %}" class="btn btn-light cta__button">Book Now</a>
                 </div>
             </div>

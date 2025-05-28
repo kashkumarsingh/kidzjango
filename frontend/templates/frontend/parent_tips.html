@@ -1,23 +1,86 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Parent Tips and Support - Kidz Runz{% endblock %}
-{% block meta_description %}Get tips and support for parents from Kidz Runz to help your child thrive.{% endblock %}
-{% block og_title %}Parent Tips and Support - Kidz Runz{% endblock %}
-{% block og_description %}Find helpful parenting tips and support resources from Kidz Runz.{% endblock %}
-{% block twitter_title %}Parent Tips and Support - Kidz Runz{% endblock %}
-{% block twitter_description %}Kidz Runz offers tips and support for parents to help kids grow.{% endblock %}
+{% block title %}Parent Tips - Kidz Runz Cosmic Adventures{% endblock %}
+{% block meta_description %}Get expert parenting tips from Kidz Runz in London to support your child’s growth and space-themed activities.{% endblock %}
+{% block og_title %}Parent Tips - Kidz Runz Cosmic Adventures{% endblock %}
+{% block og_description %}Explore valuable parenting advice from Kidz Runz in London to enhance your child’s cosmic development.{% endblock %}
+{% block twitter_title %}Parent Tips - Kidz Runz Cosmic Adventures{% endblock %}
+{% block twitter_description %}Discover expert tips for parents from Kidz Runz in London to support your child’s cosmic growth.{% endblock %}
+{% block breadcrumb_items %}
+    ,{"@type": "ListItem", "position": 2, "name": "Parent Tips", "item": "{% url 'frontend:parent_tips' %}"}
+{% endblock %}
+
+{% block extra_head %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Parent Tips - Kidz Runz Cosmic Adventures",
+        "description": "Get expert parenting tips from Kidz Runz in London to support your child’s growth and space-themed activities.",
+        "url": "{% url 'frontend:parent_tips' %}",
+        "datePublished": "2023-01-01T00:00:00+00:00",
+        "dateModified": "2025-05-28T13:19:00+01:00",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{% static 'images/logo.webp' %}"
+            }
+        },
+        "mainEntity": {
+            "@type": "CreativeWork",
+            "name": "Parenting Tips by Kidz Runz",
+            "description": "Expert advice on supporting children’s cosmic development through activities and mentorship in London.",
+            "author": {
+                "@type": "Organization",
+                "name": "Kidz Runz",
+                "url": "{% url 'frontend:home' %}"
+            }
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": "{% url 'frontend:home' %}"},
+                {"@type": "ListItem", "position": 2, "name": "Parent Tips", "item": "{% url 'frontend:parent_tips' %}"}
+            ]
+        }
+    }
+    </script>
+{% endblock %}
 
 {% block content %}
-    <section class="container parent-tips__section parent-tips__section--intro text-center py-5">
-        <h1 class="display-4 fw-bold parent-tips__title">Parent Tips and Support</h1>
-        <p class="lead parent-tips__text">Resources to help you support your child’s growth.</p>
+    <section class="hero parent_tips__hero page__section position-relative" aria-labelledby="tips-hero-heading">
+        <div class="position-absolute w-100 h-100 parent_tips__hero-overlay" style="background: rgba(0,0,0,0.5);"></div>
+        <div class="container position-relative text-center py-5">
+            <h1 id="tips-hero-heading" class="display-4 fw-bold parent_tips__title text-white">Cosmic Parenting Tips from Kidz Runz</h1>
+            <p class="lead parent_tips__text text-white">Support your child’s cosmic growth with expert advice.</p>
+        </div>
     </section>
 
-    <section class="container parent-tips__section parent-tips__section--content py-5">
-        <p class="parent-tips__paragraph">Kidz Runz is here to support parents with practical tips and resources. From encouraging healthy habits to fostering creativity at home, we provide guidance to help your child thrive. Explore our tips on managing screen time, promoting physical activity, and building strong family connections.</p>
-        <div class="text-center parent-tips__cta">
-            <a href="{% url 'frontend:about' %}" class="btn btn-primary parent-tips__cta-button">Back to About Us</a>
+    <section class="parent_tips__section py-5" aria-labelledby="tips-content-heading">
+        <div class="container">
+            <h2 id="tips-content-heading" class="h3 mb-4 text-center parent_tips__subtitle">Helpful Tips for Parents</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="list-unstyled parent_tips__list">
+                        <li class="parent_tips__item"><span class="parent_tips__icon">👶</span> Encourage active play daily in a cosmic setting.</li>
+                        <li class="parent_tips__item"><span class="parent_tips__icon">📚</span> Support learning through space-themed activities.</li>
+                        <li class="parent_tips__item"><span class="parent_tips__icon">🤝</span> Foster social skills with galactic peers.</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-unstyled parent_tips__list">
+                        <li class="parent_tips__item"><span class="parent_tips__icon">🌱</span> Promote healthy eating habits for interstellar energy.</li>
+                        <li class="parent_tips__item"><span class="parent_tips__icon">❤️</span> Show love and encouragement across the stars.</li>
+                        <li class="parent_tips__item"><span class="parent_tips__icon">🚶‍♂️</span> Ensure safe outdoor time in a cosmic environment.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="{% url 'frontend:contact' %}" class="btn btn-primary parent_tips__button" aria-label="Download cosmic parenting guide">Download Cosmic Guide</a>
+            </div>
         </div>
     </section>
 {% endblock %}

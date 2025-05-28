@@ -1,5 +1,6 @@
 Django 
 django-browser-reload 
+django-ratelimit
 python-dotenv
 python-decouple
 django-tinymce

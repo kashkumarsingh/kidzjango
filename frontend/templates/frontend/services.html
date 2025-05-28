@@ -1,11 +1,76 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %}Services - Kidz Runz{% endblock %}
+{% block title %}Services for Kids - Kidz Runz Cosmic Adventures{% endblock %}
+{% block meta_description %}Explore the diverse, space-themed services offered by Kidz Runz in London, including activities and mentorship for children.{% endblock %}
+{% block og_title %}Services for Kids - Kidz Runz Cosmic Adventures{% endblock %}
+{% block og_description %}Discover Kidz Runz’s range of space-themed services in London, from activities to expert mentorship for kids.{% endblock %}
+{% block twitter_title %}Services for Kids - Kidz Runz Cosmic Adventures{% endblock %}
+{% block twitter_description %}Learn about Kidz Runz’s space-themed services in London for children, including fun activities and support.{% endblock %}
+{% block breadcrumb_items %}
+    ,{"@type": "ListItem", "position": 2, "name": "Services", "item": "{% url 'frontend:services' %}"}
+{% endblock %}
+
+{% block extra_head %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Services for Kids - Kidz Runz Cosmic Adventures",
+        "description": "Explore the diverse, space-themed services offered by Kidz Runz in London, including activities and mentorship for children.",
+        "url": "{% url 'frontend:services' %}",
+        "datePublished": "2023-01-01T00:00:00+00:00",
+        "dateModified": "2025-05-28T13:19:00+01:00",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{% static 'images/logo.webp' %}"
+            }
+        },
+        "mainEntity": {
+            "@type": "Service",
+            "name": "Kidz Runz Cosmic Child Services",
+            "description": "Offers space-themed activities, mentorship, and support for children’s development in London.",
+            "provider": {
+                "@type": "Organization",
+                "name": "Kidz Runz",
+                "url": "{% url 'frontend:home' %}"
+            }
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": "{% url 'frontend:home' %}"},
+                {"@type": "ListItem", "position": 2, "name": "Services", "item": "{% url 'frontend:services' %}"}
+            ]
+        }
+    }
+    </script>
+{% endblock %}
+
 {% block content %}
-    <section class="services__section text-center py-5">
+    <section class="hero services__hero page__section position-relative" aria-labelledby="services-hero-heading">
+        <div class="position-absolute w-100 h-100 services__hero-overlay" style="background: rgba(0,0,0,0.5);"></div>
+        <div class="container position-relative text-center py-5">
+            <h1 id="services-hero-heading" class="display-4 fw-bold services__title text-white">Cosmic Services for Kids at Kidz Runz</h1>
+            <p class="lead services__text text-white">Tailored space-themed support for your child’s development.</p>
+        </div>
+    </section>
+
+    <section class="services__section py-5" aria-labelledby="services-content-heading">
         <div class="container">
-            <h1 class="display-4">Services</h1>
-            <p>This is a placeholder for the Services page. Add content here!</p>
+            <h2 id="services-content-heading" class="h3 mb-4 text-center services__subtitle">Our Cosmic Services</h2>
+            <ul class="list-unstyled services__list">
+                <li class="services__item"><span class="services__icon">🎉</span> Fun Space-Themed Activities & Sports</li>
+                <li class="services__item"><span class="services__icon">👩‍🏫</span> Expert Cosmic Mentorship</li>
+                <li class="services__item"><span class="services__icon">🚐</span> Safe Galactic Transportation</li>
+                <li class="services__item"><span class="services__icon">📝</span> Stellar Progress Reports</li>
+            </ul>
+            <div class="text-center mt-4">
+                <a href="{% url 'frontend:bookings' %}" class="btn btn-primary services__button" aria-label="Book a cosmic service">Book Now</a>
+            </div>
         </div>
     </section>
 {% endblock %}

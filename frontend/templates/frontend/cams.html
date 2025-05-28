@@ -1,47 +1,164 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}CAMS Staff - Kidz Runz{% endblock %}
-{% block meta_description %}Meet the dedicated Child Activity Mentor Support (CAMS) staff at Kidz Runz, ensuring safety and fun for your child.{% endblock %}
-{% block og_title %}CAMS Staff - Kidz Runz{% endblock %}
-{% block og_description %}Learn about our extraordinary CAMS staff who bring expertise and care to every child’s adventure at Kidz Runz.{% endblock %}
-{% block twitter_title %}CAMS Staff - Kidz Runz{% endblock %}
-{% block twitter_description %}Discover the passionate CAMS team at Kidz Runz, committed to your child’s safety and growth.{% endblock %}
+{% block title %}CAMS Staff for Kids - Kidz Runz Cosmic Adventures{% endblock %}
+{% block meta_description %}Meet the dedicated Child Activity Mentor Support (CAMS) staff at Kidz Runz in London, ensuring safety and fun for your child’s space-themed adventures.{% endblock %}
+{% block og_title %}CAMS Staff for Kids - Kidz Runz Cosmic Adventures{% endblock %}
+{% block og_description %}Learn about our extraordinary CAMS staff who bring expertise and care to every child’s galactic adventure at Kidz Runz in London.{% endblock %}
+{% block twitter_title %}CAMS Staff for Kids - Kidz Runz Cosmic Adventures{% endblock %}
+{% block twitter_description %}Discover the passionate CAMS team at Kidz Runz in London, committed to your child’s safety and growth in space-themed activities.{% endblock %}
+{% block breadcrumb_items %}
+    ,{"@type": "ListItem", "position": 2, "name": "CAMS", "item": "{% url 'frontend:cams' %}"}
+{% endblock %}
+
+{% block extra_head %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "CAMS Staff for Kids - Kidz Runz Cosmic Adventures",
+        "description": "Meet the dedicated Child Activity Mentor Support (CAMS) staff at Kidz Runz in London, ensuring safety and fun for your child’s space-themed adventures.",
+        "url": "{% url 'frontend:cams' %}",
+        "datePublished": "2023-01-01T00:00:00+00:00",
+        "dateModified": "2025-05-28T13:05:00+01:00",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{% static 'images/logo.webp' %}"
+            }
+        },
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "Kidz Runz CAMS Team",
+            "description": "Our CAMS staff are experienced professionals providing support for children’s space-themed activities, including those with SEND, in London.",
+            "parentOrganization": {
+                "@type": "Organization",
+                "name": "Kidz Runz",
+                "url": "{% url 'frontend:home' %}"
+            },
+            "member": [
+                {
+                    "@type": "Person",
+                    "name": "Sarah Johnson",
+                    "jobTitle": "Lead Mentor",
+                    "description": "Lead Mentor with 10 years of SEND experience, guiding children through cosmic adventures.",
+                    "image": "{% static 'images/team-member-1.jpg' %}"
+                },
+                {
+                    "@type": "Person",
+                    "name": "Michael Brown",
+                    "jobTitle": "Activity Coordinator",
+                    "description": "Creative Activity Coordinator bringing space-themed fun to life.",
+                    "image": "{% static 'images/team-member-2.jpg' %}"
+                },
+                {
+                    "@type": "Person",
+                    "name": "Emily Davis",
+                    "jobTitle": "Safety Officer",
+                    "description": "Safety Officer ensuring strict standards for galactic activities.",
+                    "image": "{% static 'images/team-member-3.jpg' %}"
+                }
+            ]
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": "{% url 'frontend:home' %}"},
+                {"@type": "ListItem", "position": 2, "name": "CAMS", "item": "{% url 'frontend:cams' %}"}
+            ]
+        }
+    }
+    </script>
+{% endblock %}
 
 {% block content %}
-    <section class="cams__section cams__section--intro text-center py-5">
-        <h1 class="display-4 fw-bold cams__title">Meet Our CAMS Staff</h1>
-        <p class="lead cams__text">Discover the dedicated team supporting your child’s journey!</p>
+    <section class="cams__section cams__section--intro text-center py-5" aria-labelledby="cams-hero-heading">
+        <div class="container">
+            <h1 id="cams-hero-heading" class="display-4 fw-bold cams__title">Meet Our Expert CAMS Staff for Kids’ Galactic Adventures</h1>
+            <p class="lead cams__text">Discover the dedicated team supporting your child’s cosmic journey!</p>
+        </div>
     </section>
 
-    <section class="cams__section cams__section--content py-5">
-       <div class="container">
-               <div class="row">
-            <div class="col-md-6">
-                <h2 class="cams__subtitle">Who are our CAMS Staff at Kidz Runz?</h2>
-                <p class="cams__paragraph">Prepare to be amazed by the incredible team of Child Activity Mentor Support (CAMS) professionals at Kidz Runz! They are the driving force behind creating unforgettable experiences and shaping your child's journey with joy, growth, and lifelong memories.</p>
-                <p class="cams__paragraph">Our CAMS staff are more than just experts in recreational activities and mentoring; they are dedicated guardians of your child's safety and well-being. With extensive backgrounds in Local Authority Children Homes as Youth Workers and Children's Playworkers, they bring a treasure trove of knowledge and expertise to every interaction. Rest easy knowing that our CAMS staff undergo rigorous background checks, including full DBS Enhanced checks, ensuring the utmost trust and security.</p>
-                <p class="cams__paragraph">Don’t miss out on this extraordinary opportunity! Join us at Kidz Runz and witness the incredible impact our CAMS staff can make in your child's life.</p>
-            </div>
-            <div class="col-md-6">
-                <div class="card cams__card">
-                    <div class="card-body cams__card-body">
-                        <h3 class="card-title cams__card-title">What Makes Our CAMS Staff Special</h3>
-                        <ul class="list-unstyled cams__card-list">
-                            <li class="cams__card-item"><span class="cams__card-icon">🌟</span> <strong>Expertise:</strong> Extensive experience from youth and play settings.</li>
-                            <li class="cams__card-item"><span class="cams__card-icon">🌟</span> <strong>Inclusivity:</strong> Trained to support children with SEND for an enriching environment.</li>
-                            <li class="cams__card-item"><span class="cams__card-icon">🌟</span> <strong>PACE Approach:</strong> Embracing Playfulness, Acceptance, Curiosity, and Empathy.</li>
-                            <li class="cams__card-item"><span class="cams__card-icon">🌟</span> <strong>Passion:</strong> Passionate about sports and thrilling activities.</li>
-                            <li class="cams__card-item"><span class="cams__card-icon">🌟</span> <strong>Safety:</strong> Rigorous DBS checks for peace of mind.</li>
-                        </ul>
+    <section class="cams__section cams__section--content py-5" aria-labelledby="cams-content-heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 id="cams-content-heading" class="cams__subtitle">Who Are Our CAMS Staff at Kidz Runz?</h2>
+                    <p class="cams__paragraph">Meet our incredible Child Activity Mentor Support (CAMS) professionals who create unforgettable space-themed experiences for your child with joy and growth.</p>
+                    <p class="cams__paragraph">Our CAMS staff, with backgrounds in youth work and play settings, undergo full DBS Enhanced checks for your peace of mind during their cosmic adventures.</p>
+                    <a href="{% url 'frontend:about' %}" class="btn btn-outline-primary cams__button" aria-label="Learn more about us">Learn More About Us</a>
+                </div>
+                <div class="col-md-6">
+                    <div class="card cams__card shadow-sm">
+                        <div class="card-body cams__card-body">
+                            <h3 class="card-title cams__card-title">What Makes Our CAMS Staff Special</h3>
+                            <ul class="list-unstyled cams__card-list">
+                                <li class="cams__card-item"><span class="cams__card-icon">🌟</span> <strong>Expertise:</strong> Experienced in youth and play settings across the galaxy.</li>
+                                <li class="cams__card-item"><span class="cams__card-icon">🌟</span> <strong>Inclusivity:</strong> Supports children with SEND on their cosmic journey.</li>
+                                <li class="cams__card-item"><span class="cams__card-icon">🌟</span> <strong>PACE Approach:</strong> Playfulness, Acceptance, Curiosity, Empathy among the stars.</li>
+                                <li class="cams__card-item"><span class="cams__card-icon">🌟</span> <strong>Passion:</strong> Loves space-themed sports and activities.</li>
+                                <li class="cams__card-item"><span class="cams__card-icon">🌟</span> <strong>Safety:</strong> Rigorous DBS checks for stellar safety.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="text-center cams__cta mt-4">
+                <a href="{% url 'frontend:contact' %}" class="btn btn-primary cams__cta-button" aria-label="Contact us today">Contact Us Today</a>
+            </div>
         </div>
-        <div class="text-center cams__cta">
-            <a href="{% url 'frontend:contact' %}" class="btn btn-primary cams__cta-button">Contact Us Today</a>
-        </div>
-       </div>        
+    </section>
 
+    <section class="cams__section cams__section--team py-5" aria-labelledby="team-carousel-heading">
+        <div class="container">
+            <h2 id="team-carousel-heading" class="h3 mb-4 text-center cams__team-title">Our Dedicated CAMS Team</h2>
+            <div id="camsCarousel" class="carousel slide" data-bs-ride="carousel" aria-label="CAMS team carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card cams__team-card shadow-sm">
+                                    <img src="{% static 'images/team-member-1.jpg' %}" class="card-img-top" alt="Sarah Johnson, CAMS Lead Mentor" loading="lazy">
+                                    <div class="card-body text-center">
+                                        <h3 class="card-title">Sarah Johnson</h3>
+                                        <p class="card-text">Lead Mentor with 10 years of SEND experience, guiding children through cosmic adventures.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card cams__team-card shadow-sm">
+                                    <img src="{% static 'images/team-member-2.jpg' %}" class="card-img-top" alt="Michael Brown, CAMS Activity Coordinator" loading="lazy">
+                                    <div class="card-body text-center">
+                                        <h3 class="card-title">Michael Brown</h3>
+                                        <p class="card-text">Creative Activity Coordinator bringing space-themed fun to life.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card cams__team-card shadow-sm">
+                                    <img src="{% static 'images/team-member-3.jpg' %}" class="card-img-top" alt="Emily Davis, CAMS Safety Officer" loading="lazy">
+                                    <div class="card-body text-center">
+                                        <h3 class="card-title">Emily Davis</h3>
+                                        <p class="card-text">Safety Officer ensuring strict standards for galactic activities.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#camsCarousel" data-bs-slide="prev" aria-label="Previous team member">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#camsCarousel" data-bs-slide="next" aria-label="Next team member">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
     </section>
 {% endblock %}

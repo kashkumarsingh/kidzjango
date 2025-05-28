@@ -1,47 +1,154 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Benefits of Sports - Kidz Runz{% endblock %}
-{% block meta_description %}Learn about the benefits of sports for children with Kidz Runz’s supportive programs.{% endblock %}
-{% block og_title %}Benefits of Sports - Kidz Runz{% endblock %}
-{% block og_description %}Discover how sports help children grow physically, socially, and emotionally with Kidz Runz.{% endblock %}
-{% block twitter_title %}Benefits of Sports - Kidz Runz{% endblock %}
-{% block twitter_description %}Explore the amazing benefits of sports for kids with Kidz Runz’s expert support.{% endblock %}
+{% block title %}Benefits of Space-Themed Sports for Kids - Kidz Runz Cosmic Adventures{% endblock %}
+{% block meta_description %}Learn about the benefits of space-themed sports for children with Kidz Runz’s supportive programs in London.{% endblock %}
+{% block og_title %}Benefits of Space-Themed Sports for Kids - Kidz Runz Cosmic Adventures{% endblock %}
+{% block og_description %}Discover how space-themed sports help children grow physically, socially, and emotionally with Kidz Runz in London.{% endblock %}
+{% block twitter_title %}Benefits of Space-Themed Sports for Kids - Kidz Runz Cosmic Adventures{% endblock %}
+{% block twitter_description %}Explore the amazing benefits of space-themed sports for kids with Kidz Runz’s expert support in London.{% endblock %}
+{% block breadcrumb_items %}
+    ,{"@type": "ListItem", "position": 2, "name": "Benefits", "item": "{% url 'frontend:benefits' %}"}
+{% endblock %}
+
+{% block extra_head %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Benefits of Space-Themed Sports for Kids - Kidz Runz Cosmic Adventures",
+        "description": "Learn about the benefits of space-themed sports for children with Kidz Runz’s supportive programs in London.",
+        "url": "{% url 'frontend:benefits' %}",
+        "datePublished": "2023-01-01T00:00:00+00:00",
+        "dateModified": "2025-05-28T11:39:00+01:00",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{% static 'images/logo.webp' %}"
+            }
+        },
+        "mainEntity": {
+            "@type": "Service",
+            "name": "Kidz Runz Space-Themed Sports Benefits",
+            "description": "Discover how space-themed sports help children grow physically, socially, and emotionally with expert Child Activity Mentor Support (CAMS).",
+            "provider": {
+                "@type": "Organization",
+                "name": "Kidz Runz",
+                "url": "{% url 'frontend:home' %}"
+            },
+            "areaServed": "UK",
+            "offers": {
+                "@type": "Offer",
+                "priceCurrency": "GBP",
+                "priceSpecification": {
+                    "@type": "PriceSpecification",
+                    "price": "10.00",
+                    "description": "Starting price per session"
+                }
+            }
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": "{% url 'frontend:home' %}"},
+                {"@type": "ListItem", "position": 2, "name": "Benefits", "item": "{% url 'frontend:benefits' %}"}
+            ]
+        }
+    }
+    </script>
+
+    <!-- HowTo Schema for Leveraging Sports Benefits -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Maximize Sports Benefits for Your Child with Kidz Runz",
+        "description": "A step-by-step guide to help your child gain the most from space-themed sports at Kidz Runz.",
+        "step": [
+            {
+                "@type": "HowToStep",
+                "name": "Explore Benefits",
+                "text": "Review the benefits of sports on the Kidz Runz website."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Choose a Program",
+                "text": "Select a space-themed sports program that fits your child’s needs."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Encourage Participation",
+                "text": "Support your child with encouragement and provide proper gear."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Monitor Progress",
+                "text": "Track your child’s growth with feedback from Kidz Runz mentors."
+            }
+        ],
+        "supply": {
+            "@type": "HowToSupply",
+            "name": "Sports Gear (e.g., shoes, uniform)"
+        },
+        "estimatedCost": {
+            "@type": "MonetaryAmount",
+            "currency": "GBP",
+            "value": "10.00"
+        },
+        "totalTime": "PT1H30M",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Kidz Runz"
+        }
+    }
+    </script>
+{% endblock %}
 
 {% block content %}
-    <section class="container benefits__section benefits__section--intro text-center py-5">
-        <h1 class="display-4 fw-bold benefits__title">Benefits of Children in Sports Activities</h1>
-        <p class="lead benefits__text">The benefits of children participating in sports activities are immense, and at Kidz Runz, we are passionate about supporting children every step of the way.</p>
+    <section class="hero benefits__hero page__section position-relative p-0" aria-labelledby="benefits-hero-heading">
+        <div class="position-absolute w-100 h-100 benefits__hero-overlay" style="background: rgba(0,0,0,0.5);"></div>
+        <div class="container position-relative text-center py-5">
+            <video class="benefits__hero-video" autoplay muted loop playsinline poster="{% static 'images/benefits-hero.jpg' %}">
+                <source src="{% static 'videos/benefits-video.mp4' %}" type="video/mp4">
+            </video>
+            <h1 id="benefits-hero-heading" class="display-4 fw-bold benefits__title text-white">Benefits of Space-Themed Sports for Children at Kidz Runz</h1>
+            <p class="lead benefits__text text-white">The benefits of children participating in space-themed sports are immense with our support.</p>
+        </div>
     </section>
 
-    <section class="container benefits__section benefits__section--content py-5">
+    <section class="container benefits__section py-5" aria-labelledby="benefits-content-heading">
         <div class="row">
             <div class="col-md-6">
-                <div class="card benefits__card">
+                <div class="card benefits__card shadow-sm">
                     <div class="card-body benefits__card-body">
                         <ul class="list-unstyled benefits__card-list">
-                            <li class="benefits__card-item"><span class="benefits__card-icon">🏃‍♂️</span> <strong>Physical Fitness:</strong> Promotes healthy habits and reduces disease risk.</li>
-                            <li class="benefits__card-item"><span class="benefits__card-icon">👥</span> <strong>Social Skills:</strong> Fosters teamwork and communication.</li>
-                            <li class="benefits__card-item"><span class="benefits__card-icon">🌟</span> <strong>Confidence:</strong> Builds self-esteem through goals and success.</li>
-                            <li class="benefits__card-item"><span class="benefits__card-icon">📚</span> <strong>Academic Success:</strong> Correlates with improved performance.</li>
+                            <li class="benefits__card-item"><span class="benefits__card-icon">🏃‍♂️</span> <strong>Physical Fitness:</strong> Promotes healthy habits and reduces disease risk with cosmic energy.</li>
+                            <li class="benefits__card-item"><span class="benefits__card-icon">👥</span> <strong>Social Skills:</strong> Fosters teamwork and communication among the stars.</li>
+                            <li class="benefits__card-item"><span class="benefits__card-icon">🌟</span> <strong>Confidence:</strong> Builds self-esteem through intergalactic goals.</li>
+                            <li class="benefits__card-item"><span class="benefits__card-icon">📚</span> <strong>Academic Success:</strong> Improves school performance with stellar focus.</li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="card benefits__card">
+                <div class="card benefits__card shadow-sm">
                     <div class="card-body benefits__card-body">
                         <ul class="list-unstyled benefits__card-list">
-                            <li class="benefits__card-item"><span class="benefits__card-icon">👮‍♂️</span> <strong>Respect for Authority:</strong> Teaches discipline and rule-following.</li>
-                            <li class="benefits__card-item"><span class="benefits__card-icon">😊</span> <strong>Emotional Control:</strong> Channels emotions productively.</li>
-                            <li class="benefits__card-item"><span class="benefits__card-icon">🚫</span> <strong>Anti-Social Activities:</strong> Reduces risky behaviors.</li>
-                            <li class="benefits__card-item"><span class="benefits__card-icon">🌈</span> <strong>Stress Relief:</strong> Lowers depression risk.</li>
-                            <li class="benefits__card-item"><span class="benefits__card-icon">🤝</span> <strong>Fun and Friendship:</strong> Creates joy and lasting bonds.</li>
+                            <li class="benefits__card-item"><span class="benefits__card-icon">👮‍♂️</span> <strong>Respect for Authority:</strong> Teaches discipline in a cosmic setting.</li>
+                            <li class="benefits__card-item"><span class="benefits__card-icon">😊</span> <strong>Emotional Control:</strong> Channels emotions positively in space adventures.</li>
+                            <li class="benefits__card-item"><span class="benefits__card-icon">🚫</span> <strong>Anti-Social Activities:</strong> Reduces risky behaviors with cosmic engagement.</li>
+                            <li class="benefits__card-item"><span class="benefits__card-icon">🌈</span> <strong>Stress Relief:</strong> Lowers depression risk with stellar relaxation.</li>
+                            <li class="benefits__card-item"><span class="benefits__card-icon">🤝</span> <strong>Fun and Friendship:</strong> Creates joy and bonds in a galactic community.</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <p class="benefits__paragraph">At Kidz Runz, we provide safe transportation, nutritional support, mentorship, and reporting to ensure children enjoy these benefits.</p>
+        <p class="benefits__paragraph">At Kidz Runz, we provide safe transportation, nutrition, mentorship, and reporting to maximize these benefits in a space-themed environment.</p>
+        <div class="text-center mt-4">
+            <a href="{% url 'frontend:activities' %}" class="btn btn-primary benefits__cta-button" aria-label="Explore cosmic activities">Explore Cosmic Activities</a>
+        </div>
     </section>
 {% endblock %}

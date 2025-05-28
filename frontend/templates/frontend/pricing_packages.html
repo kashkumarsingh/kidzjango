@@ -1,26 +1,79 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Pricing Packages - Kidz Runz{% endblock %}
-{% block meta_description %}Explore all pricing packages at Kidz Runz for single and multi-session child activities with expert support.{% endblock %}
-{% block og_title %}Pricing Packages - Kidz Runz{% endblock %}
-{% block og_description %}View all Kidz Runz pricing packages for fun, safe child activities with professional mentors.{% endblock %}
-{% block twitter_title %}Pricing Packages - Kidz Runz{% endblock %}
-{% block twitter_description %}Check out Kidz Runz pricing for single and multi-session packages for kids.{% endblock %}
+{% block title %}Pricing Packages - Kidz Runz Cosmic Adventures{% endblock %}
+{% block meta_description %}Explore all pricing packages at Kidz Runz in London for single and multi-session space-themed child activities with expert support.{% endblock %}
+{% block og_title %}Pricing Packages - Kidz Runz Cosmic Adventures{% endblock %}
+{% block og_description %}View all Kidz Runz pricing packages in London for fun, safe, space-themed child activities with professional mentors.{% endblock %}
+{% block twitter_title %}Pricing Packages - Kidz Runz Cosmic Adventures{% endblock %}
+{% block twitter_description %}Check out Kidz Runz pricing in London for single and multi-session packages for space-themed kids’ activities.{% endblock %}
+{% block breadcrumb_items %}
+    ,{"@type": "ListItem", "position": 2, "name": "Pricing Packages", "item": "{% url 'frontend:pricing_packages' %}"}
+{% endblock %}
 
+{% block extra_head %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Pricing Packages - Kidz Runz Cosmic Adventures",
+        "description": "View Kidz Runz pricing packages in London for fun, safe, space-themed children’s activities with flexible options.",
+        "url": "{% url 'frontend:pricing_packages' %}",
+        "datePublished": "2023-01-01T00:00:00+00:00",
+        "dateModified": "2025-05-28T13:19:00+01:00",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{% static 'images/logo.webp' %}"
+            }
+        },
+        "mainEntity": {
+            "@type": "Offer",
+            "name": "Kidz Runz Cosmic Activity Packages",
+            "description": "Flexible pricing options for space-themed children’s activities with expert support in London.",
+            "priceCurrency": "GBP",
+            "priceSpecification": [
+                {
+                    "@type": "UnitPriceSpecification",
+                    "price": "20.00",
+                    "referenceQuantity": {
+                        "@type": "QuantitativeValue",
+                        "value": "1",
+                        "unitCode": "DAY"
+                    }
+                }
+            ],
+            "offeredBy": {
+                "@type": "Organization",
+                "name": "Kidz Runz",
+                "url": "{% url 'frontend:home' %}"
+            }
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": "{% url 'frontend:home' %}"},
+                {"@type": "ListItem", "position": 2, "name": "Pricing Packages", "item": "{% url 'frontend:pricing_packages' %}"}
+            ]
+        }
+    }
+    </script>
+{% endblock %}
 {% block content %}
     <section class="pricing-packages py-5" aria-labelledby="pricing-packages-heading">
         <div class="container">
-            <h1 id="pricing-packages-heading" class="display-4 fw-bold mb-4 text-center">All Pricing Packages</h1>
-            <p class="mb-4 text-center">Find the perfect package for your child’s activities and needs.</p>
+            <h1 id="pricing-packages-heading" class="display-4 fw-bold mb-4 text-center">All Cosmic Pricing Packages</h1>
+            <p class="mb-4 text-center">Find the perfect space-themed package for your child’s activities and needs in London.</p>
 
             <!-- Tabs Navigation -->
             <ul class="nav nav-tabs mb-4 pricing__tabs" id="pricingTabs" role="tablist">
                 <li class="nav-item pricing__tab" role="presentation">
-                    <button class="nav-link active pricing__tab-link" id="all-single-session-tab" data-bs-toggle="tab" data-bs-target="#all-single-session" type="button" role="tab" aria-controls="all-single-session" aria-selected="true">Single Sessions</button>
+                    <button class="nav-link active pricing__tab-link" id="all-single-session-tab" data-bs-toggle="tab" data-bs-target="#all-single-session" type="button" role="tab" aria-controls="all-single-session" aria-selected="true">Single Cosmic Sessions</button>
                 </li>
                 <li class="nav-item pricing__tab" role="presentation">
-                    <button class="nav-link pricing__tab-link" id="all-multi-session-tab" data-bs-toggle="tab" data-bs-target="#all-multi-session" type="button" role="tab" aria-controls="all-multi-session" aria-selected="false">Multi-Sessions</button>
+                    <button class="nav-link pricing__tab-link" id="all-multi-session-tab" data-bs-toggle="tab" data-bs-target="#all-multi-session" type="button" role="tab" aria-controls="all-multi-session" aria-selected="false">Multi-Galactic Sessions</button>
                 </li>
             </ul>
 
@@ -34,7 +87,7 @@
                                 <div class="col-12 col-md-4 mb-4">
                                     <div class="card pricing__card">
                                         <div class="card-body pricing__card-body">
-                                            <h3 class="pricing__card-title">{{ package.name }}</h3>
+                                            <h3 class="pricing__card-title">{{ package.name }} Cosmic Package</h3>
                                             <p class="pricing__card-price">{{ package.price }}</p>
                                             <p class="pricing__card-description">{{ package.description }}</p>
                                             <div class="pricing__card-features">
@@ -47,7 +100,7 @@
                             {% endif %}
                         {% empty %}
                             <div class="col-12 text-center">
-                                <p class="pricing__empty-text">No single-session packages available at the moment.</p>
+                                <p class="pricing__empty-text">No single-session cosmic packages available at the moment.</p>
                             </div>
                         {% endfor %}
                     </div>
@@ -61,7 +114,7 @@
                                 <div class="col-12 col-md-4 mb-4">
                                     <div class="card pricing__card">
                                         <div class="card-body pricing__card-body">
-                                            <h3 class="pricing__card-title">{{ package.name }}</h3>
+                                            <h3 class="pricing__card-title">{{ package.name }} Galactic Package</h3>
                                             <p class="pricing__card-price">{{ package.price }}</p>
                                             <p class="pricing__card-description">{{ package.description }}</p>
                                             <div class="pricing__card-features">
@@ -74,7 +127,7 @@
                             {% endif %}
                         {% empty %}
                             <div class="col-12 text-center">
-                                <p class="pricing__empty-text">No multi-session packages available at the moment.</p>
+                                <p class="pricing__empty-text">No multi-session galactic packages available at the moment.</p>
                             </div>
                         {% endfor %}
                     </div>

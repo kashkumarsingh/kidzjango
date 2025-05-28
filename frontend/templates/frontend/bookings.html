@@ -1,56 +1,183 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Bookings - Kidz Runz{% endblock %}
-{% block meta_description %}Book your child’s activity session with Kidz Runz. Choose a package and schedule with ease.{% endblock %}
-{% block og_title %}Bookings - Kidz Runz{% endblock %}
-{% block og_description %}Secure your child’s spot with Kidz Runz. Select a package and book now!{% endblock %}
-{% block twitter_title %}Bookings - Kidz Runz{% endblock %}
-{% block twitter_description %}Book a fun session for your child with Kidz Runz packages today!{% endblock %}
+{% block title %}Bookings - Kidz Runz Cosmic Adventures{% endblock %}
+{% block meta_description %}Book your child’s cosmic adventure with Kidz Runz in London. Choose a stellar package and schedule with ease.{% endblock %}
+{% block og_title %}Bookings - Kidz Runz Cosmic Adventures{% endblock %}
+{% block og_description %}Secure your child’s spot for a galactic experience with Kidz Runz in London. Select a space-themed package and book now!{% endblock %}
+{% block og_image %}{% static 'images/hero-image.jpg' %}{% endblock %}
+{% block twitter_title %}Bookings - Kidz Runz Cosmic Adventures{% endblock %}
+{% block twitter_description %}Book a fun, space-themed session for your child with Kidz Runz packages in London today!{% endblock %}
+{% block twitter_image %}{% static 'images/hero-image.jpg' %}{% endblock %}
+{% block breadcrumb_items %}
+    ,{"@type": "ListItem", "position": 2, "name": "Bookings", "item": "{% url 'frontend:bookings' %}"}
+{% endblock %}
+
+{% block extra_head %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Book Kids’ Cosmic Activities - Kidz Runz",
+        "description": "Book your child’s cosmic adventure with Kidz Runz in London. Choose a stellar package and schedule with ease.",
+        "url": "{% url 'frontend:bookings' %}",
+        "datePublished": "2023-01-01T00:00:00+00:00",
+        "dateModified": "2025-05-28T12:57:00+01:00",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{% static 'images/logo.webp' %}"
+            }
+        },
+        "mainEntity": {
+            "@type": "Service",
+            "name": "Kidz Runz Cosmic Booking Service",
+            "description": "Book space-themed activities for children with Kidz Runz, including mentor support and flexible scheduling in London.",
+            "provider": {
+                "@type": "Organization",
+                "name": "Kidz Runz",
+                "url": "{% url 'frontend:home' %}"
+            },
+            "areaServed": "UK",
+            "offers": {
+                "@type": "OfferCatalog",
+                "name": "Kidz Runz Packages",
+                "itemListElement": [
+                    {% for package in pricing_packages %}
+                    {
+                        "@type": "Offer",
+                        "name": "{{ package.name }} Package",
+                        "description": "{{ package.description|truncatechars:100|escapejs }}",
+                        "priceCurrency": "GBP",
+                        "price": "{{ package.price|floatformat:2 }}",
+                        "url": "{% url 'core:choose_package' package.id %}"
+                    }{% if not forloop.last %},{% endif %}
+                    {% empty %}
+                    {
+                        "@type": "Offer",
+                        "name": "No Packages Available",
+                        "description": "No packages are currently available. Please check back later."
+                    }
+                    {% endfor %}
+                ]
+            }
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": "{% url 'frontend:home' %}"},
+                {"@type": "ListItem", "position": 2, "name": "Bookings", "item": "{% url 'frontend:bookings' %}"}
+            ]
+        }
+    }
+    </script>
+{% endblock %}
 
 {% block content %}
-    <section class="booking__section booking__section--intro text-center py-5">
-        <div class="container">
-            <h1 class="display-4 fw-bold booking__title">Book Your Child’s Adventure</h1>
-            <p class="lead booking__text">Select a package and schedule a session with ease.</p>
+    <!-- Hero Section with Space Theme -->
+    <section class="booking__section booking__section--intro text-center py-5 position-relative" style="background-attachment: fixed;" aria-label="Book Your Child’s Cosmic Adventure">
+        <div class="booking__hero-overlay position-absolute w-100 h-100" style="z-index: 1;"></div>
+        <div class="container position-relative" style="z-index: 2;">
+            <h1 class="display-4 fw-bold booking__title text-white animate__animated animate__fadeInUp">Book Your Child’s Cosmic Adventure</h1>
+            <p class="lead booking__text text-white animate__animated animate__fadeInUp animate__delay-1s">Select a stellar package and schedule a session with ease, guided by our DBS-checked staff.</p>
         </div>
     </section>
 
-    <section class="booking__section booking__section--content py-5">
+    <!-- Packages Section -->
+    <section class="booking__section booking__section--content py-5" aria-labelledby="packages-heading">
         <div class="container">
-            <div class="card booking__card">
-                <div class="card-body booking__card-body">
-                    <h2 class="h3 mb-4 booking__subtitle">Choose a Package</h2>
-                    <div class="row">
-                        {% for package in pricing_packages %}
-                            <div class="col-12 col-md-4 mb-4">
-                                <div class="card booking__package-card">
-                                    <div class="card-body booking__package-card-body">
-                                        <h3 class="booking__package-title">{{ package.name }}</h3>
-                                        <p class="booking__package-price">{{ package.price }}</p>
-                                        <p class="booking__package-description">{{ package.description }}</p>
-                                        <div class="booking__package-features">
-                                            {{ package.features|safe }}
-                                        </div>
-                                        <a href="{% url 'core:choose_package' package.id %}" class="btn btn-primary booking__package-button" aria-label="Choose this package">Choose Package</a>
-                                    </div>
+            <h2 id="packages-heading" class="h3 mb-5 text-center booking__subtitle">Choose a Package for Your Little Astronaut</h2>
+            <div class="row g-4">
+                {% for package in pricing_packages %}
+                    <div class="col-12 col-md-4">
+                        <div class="card booking__package-card shadow-sm position-relative">
+                            {% if package.name == 'Venus' or package.name == 'Jupiter' %}
+                                <span class="booking__badge position-absolute top-0 end-0 bg-primary text-white px-3 py-1 rounded-start">Popular</span>
+                            {% endif %}
+                            <div class="card-body booking__package-card-body text-center">
+                                <!-- Space-Themed SVG -->
+                                {% if package.name == 'Mercury' %}
+                                    <svg class="booking__svg mb-3" width="80" height="80" viewBox="0 0 80 80" aria-hidden="true">
+                                        <defs><linearGradient id="mercuryGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a9a9a9;" /><stop offset="100%" style="stop-color:#696969;" /></linearGradient></defs>
+                                        <circle cx="40" cy="40" r="30" fill="url(#mercuryGradient)" />
+                                        <circle cx="30" cy="30" r="5" fill="#555" /><circle cx="50" cy="35" r="4" fill="#555" /><circle cx="45" cy="50" r="3" fill="#555" />
+                                        <path class="booking__orbit" d="M40 10 A30 30 0 0 1 40 70 A30 30 0 0 1 40 10" stroke="#00aeef" stroke-width="1" fill="none" opacity="0.3" />
+                                    </svg>
+                                {% elif package.name == 'Venus' %}
+                                    <svg class="booking__svg mb-3" width="80" height="80" viewBox="0 0 80 80" aria-hidden="true">
+                                        <defs><linearGradient id="venusGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd700;" /><stop offset="100%" style="stop-color:#ff8c00;" /></linearGradient></defs>
+                                        <circle cx="40" cy="40" r="30" fill="url(#venusGradient)" />
+                                        <path d="M30 30 Q35 25 40 30 T50 30" fill="none" stroke="#fff" stroke-width="2" opacity="0.5" />
+                                        <path d="M35 45 Q40 40 45 45 T55 45" fill="none" stroke="#fff" stroke-width="2" opacity="0.5" />
+                                        <path class="booking__orbit" d="M40 10 A30 30 0 0 1 40 70 A30 30 0 0 1 40 10" stroke="#00aeef" stroke-width="1" fill="none" opacity="0.3" />
+                                    </svg>
+                                {% elif package.name == 'Earth' %}
+                                    <svg class="booking__svg mb-3" width="80" height="80" viewBox="0 0 80 80" aria-hidden="true">
+                                        <defs><linearGradient id="earthGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#00b7eb;" /><stop offset="100%" style="stop-color:#008000;" /></linearGradient></defs>
+                                        <circle cx="40" cy="40" r="30" fill="url(#earthGradient)" />
+                                        <path d="M35 30 Q40 25 45 30 Q50 35 45 40 Q40 45 35 40 Z" fill="#008000" opacity="0.8" />
+                                        <path d="M50 45 Q55 40 60 45 Q55 50 50 45 Z" fill="#008000" opacity="0.8" />
+                                        <path class="booking__orbit" d="M40 10 A30 30 0 0 1 40 70 A30 30 0 0 1 40 10" stroke="#00aeef" stroke-width="1" fill="none" opacity="0.3" />
+                                    </svg>
+                                {% elif package.name == 'Jupiter' %}
+                                    <svg class="booking__svg mb-3" width="80" height="80" viewBox="0 0 80 80" aria-hidden="true">
+                                        <defs><linearGradient id="jupiterGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ff8c00;" /><stop offset="100%" style="stop-color:#8b4513;" /></linearGradient></defs>
+                                        <circle cx="40" cy="40" r="30" fill="url(#jupiterGradient)" />
+                                        <path d="M20 35 H60" stroke="#fff" stroke-width="2" opacity="0.5" />
+                                        <path d="M20 45 H60" stroke="#fff" stroke-width="2" opacity="0.5" />
+                                        <ellipse cx="50" cy="40" rx="5" ry="3" fill="#ff0000" opacity="0.8" />
+                                        <path class="booking__orbit" d="M40 10 A30 30 0 0 1 40 70 A30 30 0 0 1 40 10" stroke="#00aeef" stroke-width="1" fill="none" opacity="0.3" />
+                                    </svg>
+                                {% elif package.name == 'Saturn' %}
+                                    <svg class="booking__svg mb-3" width="80" height="80" viewBox="0 0 80 80" aria-hidden="true">
+                                        <defs><linearGradient id="saturnGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd700;" /><stop offset="100%" style="stop-color:#daa520;" /></linearGradient></defs>
+                                        <circle cx="40" cy="40" r="25" fill="url(#saturnGradient)" />
+                                        <ellipse cx="40" cy="40" rx="40" ry="10" fill="none" stroke="url(#saturnGradient)" stroke-width="2" opacity="0.7" />
+                                        <path class="booking__orbit" d="M40 10 A30 30 0 0 1 40 70 A30 30 0 0 1 40 10" stroke="#00aeef" stroke-width="1" fill="none" opacity="0.3" />
+                                    </svg>
+                                {% elif package.name == 'Neptune' %}
+                                    <svg class="booking__svg mb-3" width="80" height="80" viewBox="0 0 80 80" aria-hidden="true">
+                                        <defs>
+                                            <linearGradient id="neptuneGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" style="stop-color:#1E90FF;" />
+                                                <stop offset="100%" style="stop-color:#00B7EB;" />
+                                            </linearGradient>
+                                        </defs>
+                                        <circle cx="40" cy="40" r="30" fill="url(#neptuneGradient)" />
+                                        <path d="M35 35 Q40 30 45 35 Q50 40 45 45 Q40 50 35 45 Z" fill="#87CEEB" opacity="0.8" />
+                                        <path class="booking__orbit" d="M40 10 A30 30 0 0 1 40 70 A30 30 0 0 1 40 10" stroke="#00aeef" stroke-width="1" fill="none" opacity="0.3" />
+                                    </svg>
+                                {% endif %}
+                                <h3 class="booking__package-title">{{ package.name }}</h3>
+                                <p class="booking__package-price">{{ package.price }}</p>
+                                <p class="booking__package-description">{{ package.description|truncatechars:50 }}</p>
+                                <div class="booking__package-features mb-3">
+                                    {{ package.features|safe }}
                                 </div>
+                                <a href="{% url 'core:choose_package' package.id %}" class="btn btn-primary booking__package-button" style="background: linear-gradient(135deg, #007bff 0%, #00c4b4 100%); border: none;" aria-label="Choose {{ package.name }} Package">Choose Package</a>
                             </div>
-                        {% empty %}
-                            <div class="col-12 text-center">
-                                <p class="booking__empty-text">No packages available. Please check back later.</p>
-                            </div>
-                        {% endfor %}
+                        </div>
                     </div>
-                </div>
+                {% empty %}
+                    <div class="col-12 text-center">
+                        <p class="booking__empty-text">No packages available. Please check back later or contact us for assistance.</p>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </section>
 
-    <section class="booking__section booking__section--cta py-5 bg-light text-center">
-        <div class="container">
-            <p class="mb-4 booking__cta-text">Need help choosing? Contact our team for personalized advice.</p>
-            <a href="{% url 'frontend:contact' %}" class="btn btn-outline-primary booking__cta-button">Contact Us</a>
+    <!-- CTA Section with Space Theme -->
+    <section class="booking__section booking__section--cta py-5 text-center position-relative" aria-labelledby="cta-heading">
+        <div class="booking__cta-overlay position-absolute w-100 h-100" style="z-index: 1;"></div>
+        <div class="container position-relative" style="z-index: 2;">
+            <div class="booking__cta-content shadow-lg p-5 rounded">
+                <h2 id="cta-heading" class="h3 mb-4 booking__cta-title text-white">Need Help Choosing a Package?</h2>
+                <p class="mb-4 booking__cta-text text-white">Our team is here to guide you through the stars. Contact us for personalized advice!</p>
+                <a href="{% url 'frontend:contact' %}" class="btn btn-light booking__cta-button text-primary" aria-label="Contact Us for Assistance">Contact Us</a>
+            </div>
         </div>
     </section>
 {% endblock %}

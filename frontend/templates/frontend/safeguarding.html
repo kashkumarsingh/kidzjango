@@ -1,23 +1,78 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Our Commitment to Safeguarding - Kidz Runz{% endblock %}
-{% block meta_description %}Learn about Kidz Runz’s commitment to safeguarding children’s safety and well-being.{% endblock %}
-{% block og_title %}Our Commitment to Safeguarding - Kidz Runz{% endblock %}
-{% block og_description %}Discover how Kidz Runz ensures the safety and well-being of every child.{% endblock %}
-{% block twitter_title %}Our Commitment to Safeguarding - Kidz Runz{% endblock %}
-{% block twitter_description %}Kidz Runz is dedicated to keeping children safe and supported.{% endblock %}
+{% block title %}Safeguarding for Kids - Kidz Runz Cosmic Adventures{% endblock %}
+{% block meta_description %}Learn about Kidz Runz’s safeguarding policies in London to ensure the safety of children during space-themed activities.{% endblock %}
+{% block og_title %}Safeguarding for Kids - Kidz Runz Cosmic Adventures{% endblock %}
+{% block og_description %}Explore Kidz Runz’s commitment in London to child safety with robust safeguarding measures for galactic adventures.{% endblock %}
+{% block twitter_title %}Safeguarding for Kids - Kidz Runz Cosmic Adventures{% endblock %}
+{% block twitter_description %}Discover Kidz Runz’s safeguarding policies in London for a safe cosmic environment for kids.{% endblock %}
+{% block breadcrumb_items %}
+    ,{"@type": "ListItem", "position": 2, "name": "Safeguarding", "item": "{% url 'frontend:safeguarding' %}"}
+{% endblock %}
+
+{% block extra_head %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Safeguarding for Kids - Kidz Runz Cosmic Adventures",
+        "description": "Learn about Kidz Runz’s safeguarding policies in London to ensure the safety of children during space-themed activities.",
+        "url": "{% url 'frontend:safeguarding' %}",
+        "datePublished": "2023-01-01T00:00:00+00:00",
+        "dateModified": "2025-05-28T13:19:00+01:00",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{% static 'images/logo.webp' %}"
+            }
+        },
+        "mainEntity": {
+            "@type": "Policy",
+            "name": "Kidz Runz Cosmic Safeguarding Policy",
+            "description": "Ensures child safety through DBS checks, trained staff, and strict protocols for galactic activities in London.",
+            "provider": {
+                "@type": "Organization",
+                "name": "Kidz Runz",
+                "url": "{% url 'frontend:home' %}"
+            }
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": "{% url 'frontend:home' %}"},
+                {"@type": "ListItem", "position": 2, "name": "Safeguarding", "item": "{% url 'frontend:safeguarding' %}"}
+            ]
+        }
+    }
+    </script>
+{% endblock %}
 
 {% block content %}
-    <section class="container safeguarding__section safeguarding__section--intro text-center py-5">
-        <h1 class="display-4 fw-bold safeguarding__title">Our Commitment to Safeguarding</h1>
-        <p class="lead safeguarding__text">Your child’s safety is our top priority.</p>
+    <section class="hero safeguarding__hero page__section position-relative" aria-labelledby="safeguarding-hero-heading">
+        <div class="position-absolute w-100 h-100 safeguarding__hero-overlay" style="background: rgba(0,0,0,0.5);"></div>
+        <div class="container position-relative text-center py-5">
+            <h1 id="safeguarding-hero-heading" class="display-4 fw-bold safeguarding__title text-white">Cosmic Safeguarding at Kidz Runz</h1>
+            <p class="lead safeguarding__text text-white">Ensuring the safety of every child across the galaxy.</p>
+        </div>
     </section>
 
-    <section class="container safeguarding__section safeguarding__section--content py-5">
-        <p class="safeguarding__paragraph">At Kidz Runz, we are deeply committed to safeguarding every child in our care. Our staff undergo rigorous DBS checks, and we follow strict safety protocols to ensure a secure environment. We also provide training to recognize and respond to any concerns, ensuring your child is always protected and supported.</p>
-        <div class="text-center safeguarding__cta">
-            <a href="{% url 'frontend:about' %}" class="btn btn-primary safeguarding__cta-button">Back to About Us</a>
+    <section class="safeguarding__section py-5" aria-labelledby="safeguarding-content-heading">
+        <div class="container">
+            <h2 id="safeguarding-content-heading" class="h3 mb-4 text-center safeguarding__subtitle">Our Cosmic Safety Commitment</h2>
+            <p class="safeguarding__paragraph">Kidz Runz prioritizes child safety with DBS-checked staff, strict protocols, and trained mentors. Our safeguarding measures include regular risk assessments and open communication with parents for space-themed adventures in London.</p>
+            <div class="safeguarding__checklist">
+                <ul class="list-unstyled">
+                    <li class="safeguarding__item"><span class="safeguarding__icon">✅</span> DBS-enhanced staff checks for stellar safety.</li>
+                    <li class="safeguarding__item"><span class="safeguarding__icon">✅</span> Regular cosmic safety training.</li>
+                    <li class="safeguarding__item"><span class="safeguarding__icon">✅</span> Parent updates and feedback across the stars.</li>
+                </ul>
+            </div>
+            <div class="text-center mt-4">
+                <a href="{% url 'frontend:contact' %}" class="btn btn-primary safeguarding__button" aria-label="Contact for cosmic safety concerns">Contact Us</a>
+            </div>
         </div>
     </section>
 {% endblock %}

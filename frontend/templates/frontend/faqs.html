@@ -1,26 +1,123 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}FAQs - Kidz Runz{% endblock %}
-{% block meta_description %}Get answers to frequently asked questions about Kidz Runz services and support for children.{% endblock %}
-{% block og_title %}FAQs - Kidz Runz{% endblock %}
-{% block og_description %}Find answers to common questions about Kidz Runz and our child support services.{% endblock %}
-{% block twitter_title %}FAQs - Kidz Runz{% endblock %}
-{% block twitter_description %}Explore FAQs about Kidz Runz services for children and families.{% endblock %}
+{% block title %}FAQs for Parents - Kidz Runz{% endblock %}
+{% block meta_description %}Get answers to frequently asked questions about Kidz Runz's space-themed activities and Child Activity Mentor Support (CAMS) services for kids.{% endblock %}
+{% block og_title %}FAQs for Parents - Kidz Runz{% endblock %}
+{% block og_description %}Discover detailed answers to common questions about Kidz Runz's space-themed activities and CAMS support for children.{% endblock %}
+{% block twitter_title %}FAQs for Parents - Kidz Runz{% endblock %}
+{% block twitter_description %}Explore FAQs about Kidz Runz's cosmic adventures and support services for kids and families.{% endblock %}
+{% block breadcrumb_items %}
+    ,{"@type": "ListItem", "position": 2, "name": "FAQs", "item": "{% url 'frontend:faqs' %}"}
+{% endblock %}
+
+{% block extra_head %}
+    <!-- FAQPage Schema for Featured Snippets -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "name": "FAQs for Parents - Kidz Runz Cosmic Adventures",
+        "description": "Comprehensive FAQs about Kidz Runz's space-themed activities and Child Activity Mentor Support (CAMS) for kids.",
+        "url": "{% url 'frontend:faqs' %}",
+        "datePublished": "2023-01-01T00:00:00+00:00",
+        "dateModified": "2025-05-28T11:27:00+01:00",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{% static 'images/logo.webp' %}"
+            }
+        },
+        "mainEntity": [
+            {% for faq in faqs %}
+            {
+                "@type": "Question",
+                "name": "{{ faq.question|escapejs }}",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "{{ faq.answer|escapejs }}"
+                }
+            }{% if not forloop.last %},{% endif %}
+            {% empty %}
+            {
+                "@type": "Question",
+                "name": "No FAQs Available",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No FAQs are available at the moment. Please contact us with your questions at info@kidzrunz.com."
+                }
+            }
+            {% endfor %}
+        ],
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": "{% url 'frontend:home' %}"},
+                {"@type": "ListItem", "position": 2, "name": "FAQs", "item": "{% url 'frontend:faqs' %}"}
+            ]
+        }
+    }
+    </script>
+
+    <!-- WebPage Schema for SEO Optimization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "FAQs for Parents - Kidz Runz Cosmic Adventures",
+        "description": "Find expert answers to your questions about Kidz Runz's space-themed activities and Child Activity Mentor Support (CAMS) for kids.",
+        "url": "{% url 'frontend:faqs' %}",
+        "datePublished": "2023-01-01T00:00:00+00:00",
+        "dateModified": "2025-05-28T11:27:00+01:00",
+        "author": {
+            "@type": "Organization",
+            "name": "Kidz Runz Team",
+            "description": "A team of experienced child activity mentors dedicated to space-themed fun."
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{% static 'images/logo.webp' %}"
+            }
+        },
+        "mainEntity": {
+            "@type": "FAQPage",
+            "name": "FAQs for Parents - Kidz Runz",
+            "description": "Comprehensive FAQs about our services."
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": "{% url 'frontend:home' %}"},
+                {"@type": "ListItem", "position": 2, "name": "FAQs", "item": "{% url 'frontend:faqs' %}"}
+            ]
+        },
+        "speakable": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": ["h1", ".faqs__section--content"]
+        }
+    }
+    </script>
+{% endblock %}
 
 {% block content %}
-    <section class="faqs__section faqs__section--intro text-center py-5">
+    <section class="faqs__section faqs__section--intro text-center py-5" aria-labelledby="faqs-hero-heading">
         <div class="container">
-            <h1 class="display-4 fw-bold faqs__title">Frequently Asked Questions</h1>
-            <p class="lead faqs__text">Find answers to your questions about Kidz Runz services.</p>
+            <h1 id="faqs-hero-heading" class="display-4 fw-bold faqs__title">Frequently Asked Questions for Parents at Kidz Runz</h1>
+            <p class="lead faqs__subtitle">Explore answers to your questions about our cosmic adventures for kids!</p>
         </div>
     </section>
 
-    <section class="faqs__section faqs__section--content py-5">
+    <section class="faqs__section faqs__section--content py-5" aria-labelledby="faqs-content-heading">
         <div class="container">
+            <h2 id="faqs-content-heading" class="h3 mb-4 faqs__subtitle">Common Questions Answered</h2>
             <div class="accordion" id="faqAccordion">
                 {% for faq in faqs %}
-                    <div class="accordion-item faqs__item">
+                    <div class="accordion-item faqs__item shadow-sm">
                         <h2 class="accordion-header faqs__header" id="faq-heading-{{ forloop.counter }}">
                             <button class="accordion-button faqs__button {% if forloop.first %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-{{ forloop.counter }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="faq-collapse-{{ forloop.counter }}">
                                 {{ faq.question }}
@@ -28,15 +125,18 @@
                         </h2>
                         <div id="faq-collapse-{{ forloop.counter }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" aria-labelledby="faq-heading-{{ forloop.counter }}" data-bs-parent="#faqAccordion">
                             <div class="accordion-body faqs__body">
-                                {{ faq.answer }}
+                                {{ faq.answer|safe }}
                             </div>
                         </div>
                     </div>
                 {% empty %}
                     <div class="col-12 text-center">
-                        <p class="faqs__empty-text">No FAQs available at the moment. Please contact us with your questions!</p>
+                        <p class="faqs__empty-text">No FAQs available. <a href="{% url 'frontend:contact' %}">Contact us</a> with your questions!</p>
                     </div>
                 {% endfor %}
+            </div>
+            <div class="text-center mt-4">
+                <a href="{% url 'frontend:about' %}" class="btn btn-outline-primary faqs__cta-button" aria-label="Learn more about us">Learn More About Us</a>
             </div>
         </div>
     </section>

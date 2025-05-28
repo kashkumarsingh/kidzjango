@@ -1,46 +1,115 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Explore Activities - Kidz Runz{% endblock %}
-{% block meta_description %}Discover exciting activities for children with Kidz Runz, sparking imagination and creating memories.{% endblock %}
-{% block og_title %}Explore Activities - Kidz Runz{% endblock %}
-{% block og_description %}Join Kidz Runz for fun activities that inspire creativity and joy in children.{% endblock %}
-{% block twitter_title %}Explore Activities - Kidz Runz{% endblock %}
-{% block twitter_description %}Explore thrilling activities with Kidz Runz that create lasting memories for kids.{% endblock %}
+{% block title %}Explore Kids’ Cosmic Activities - Kidz Runz Cosmic Adventures{% endblock %}
+{% block meta_description %}Discover exciting space-themed activities for children with Kidz Runz in London, sparking imagination and creating stellar memories.{% endblock %}
+{% block og_title %}Explore Kids’ Cosmic Activities - Kidz Runz Cosmic Adventures{% endblock %}
+{% block og_description %}Join Kidz Runz in London for fun, space-themed activities that inspire creativity and joy in children.{% endblock %}
+{% block twitter_title %}Explore Kids’ Cosmic Activities - Kidz Runz Cosmic Adventures{% endblock %}
+{% block twitter_description %}Explore thrilling, space-themed activities with Kidz Runz in London that create lasting memories for kids.{% endblock %}
+{% block breadcrumb_items %}
+    ,{"@type": "ListItem", "position": 2, "name": "Explore", "item": "{% url 'frontend:explore' %}"}
+{% endblock %}
+
+{% block extra_head %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Explore Kids’ Cosmic Activities - Kidz Runz Cosmic Adventures",
+        "description": "Discover exciting space-themed activities for children with Kidz Runz in London, sparking imagination and creating stellar memories.",
+        "url": "{% url 'frontend:explore' %}",
+        "datePublished": "2023-01-01T00:00:00+00:00",
+        "dateModified": "2025-05-28T13:19:00+01:00",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{% static 'images/logo.webp' %}"
+            }
+        },
+        "mainEntity": {
+            "@type": "Service",
+            "name": "Kidz Runz Cosmic Exploration Activities",
+            "description": "Fun, space-themed activities for children including theme parks, museums, and more, fostering creativity and joy in London.",
+            "provider": {
+                "@type": "Organization",
+                "name": "Kidz Runz",
+                "url": "{% url 'frontend:home' %}"
+            }
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": "{% url 'frontend:home' %}"},
+                {"@type": "ListItem", "position": 2, "name": "Explore", "item": "{% url 'frontend:explore' %}"}
+            ]
+        }
+    }
+    </script>
+{% endblock %}
 
 {% block content %}
-    <section class="container explore__section explore__section--intro text-center py-5">
-        <h1 class="display-4 fw-bold explore__title">Explore Activities</h1>
-        <p class="lead explore__text">Embarking on exciting activities is a wonderful way for children to explore the world and create lasting memories.</p>
+    <section class="container explore__section explore__section--intro text-center py-5" aria-labelledby="explore-hero-heading">
+        <div class="container">
+            <h1 id="explore-hero-heading" class="display-4 fw-bold explore__title">Explore Fun Cosmic Activities at Kidz Runz</h1>
+            <p class="lead explore__text">Embark on exciting space-themed adventures to create lasting stellar memories for your child.</p>
+        </div>
     </section>
 
-    <section class="container explore__section explore__section--content py-5">
+    <section class="container explore__section explore__section--content py-5" aria-labelledby="explore-content-heading">
         <div class="row">
             <div class="col-md-6">
-                <div class="card explore__card">
+                <div class="card explore__card shadow-sm h-100">
                     <div class="card-body explore__card-body">
                         <ul class="list-unstyled explore__card-list">
-                            <li class="explore__card-item"><span class="explore__card-icon">🎬</span> <strong>Unforgettable Experiences:</strong> Cinemas, theme parks, and more.</li>
-                            <li class="explore__card-item"><span class="explore__card-icon">📚</span> <strong>Enriching Education:</strong> Museums and zoos for learning.</li>
-                            <li class="explore__card-item"><span class="explore__card-icon">👮‍♂️</span> <strong>Safe and Supervised:</strong> CAMS ensures safety.</li>
-                            <li class="explore__card-item"><span class="explore__card-icon">🤝</span> <strong>Social Interaction:</strong> Promotes peer connections.</li>
+                            <li class="explore__card-item"><span class="explore__card-icon">🎬</span> <strong>Unforgettable Experiences:</strong> Cinemas, theme parks, and galactic attractions.</li>
+                            <li class="explore__card-item"><span class="explore__card-icon">📚</span> <strong>Enriching Education:</strong> Museums and cosmic zoos.</li>
+                            <li class="explore__card-item"><span class="explore__card-icon">👮‍♂️</span> <strong>Safe and Supervised:</strong> CAMS ensures safety across the stars.</li>
+                            <li class="explore__card-item"><span class="explore__card-icon">🤝</span> <strong>Social Interaction:</strong> Promotes peer connections in a stellar community.</li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="card explore__card">
+                <div class="card explore__card shadow-sm h-100">
                     <div class="card-body explore__card-body">
                         <ul class="list-unstyled explore__card-list">
-                            <li class="explore__card-item"><span class="explore__card-icon">🎨</span> <strong>Sparking Imagination:</strong> Encourages creativity.</li>
-                            <li class="explore__card-item"><span class="explore__card-icon">😄</span> <strong>Joy and Excitement:</strong> Thrilling rides and performances.</li>
-                            <li class="explore__card-item"><span class="explore__card-icon">🚗</span> <strong>Hassle-free Planning:</strong> We handle logistics.</li>
-                            <li class="explore__card-item"><span class="explore__card-icon">❤️</span> <strong>Bonding Opportunities:</strong> Strengthens family ties.</li>
+                            <li class="explore__card-item"><span class="explore__card-icon">🎨</span> <strong>Sparking Imagination:</strong> Encourages cosmic creativity.</li>
+                            <li class="explore__card-item"><span class="explore__card-icon">😄</span> <strong>Joy and Excitement:</strong> Thrilling rides and interstellar shows.</li>
+                            <li class="explore__card-item"><span class="explore__card-icon">🚗</span> <strong>Hassle-free Planning:</strong> We handle galactic logistics.</li>
+                            <li class="explore__card-item"><span class="explore__card-icon">❤️</span> <strong>Bonding Opportunities:</strong> Strengthens family ties in space.</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <p class="explore__paragraph">Join us at Kidz Runz for magical adventures that inspire your child!</p>
+        <p class="explore__paragraph">Join us at Kidz Runz for magical, space-themed adventures that inspire your child!</p>
+        <div class="text-center mt-4">
+            <a href="{% url 'frontend:activities' %}" class="btn btn-primary explore__cta-button" aria-label="View all cosmic activities">View All Cosmic Activities</a>
+        </div>
+    </section>
+
+    <section class="explore__section explore__section--gallery py-5" aria-labelledby="gallery-heading">
+        <div class="container">
+            <h2 id="gallery-heading" class="h3 mb-4 text-center explore__gallery-title">Gallery of Cosmic Kid-Friendly Adventures</h2>
+            <div id="exploreCarousel" class="carousel slide" data-bs-ride="carousel" aria-label="Activity gallery carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{% static 'images/explore-1.jpg' %}" class="d-block w-100" alt="Children at a space-themed theme park with Kidz Runz" loading="lazy">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'images/explore-2.jpg' %}" class="d-block w-100" alt="Kids exploring a cosmic museum with Kidz Runz" loading="lazy">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#exploreCarousel" data-bs-slide="prev" aria-label="Previous gallery image">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#exploreCarousel" data-bs-slide="next" aria-label="Next gallery image">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
     </section>
 {% endblock %}

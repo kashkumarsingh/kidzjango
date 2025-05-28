@@ -49,9 +49,9 @@
 {% endblock %}
 
 {% block content %}
-    <!-- Hero Section with Image, Gradient Overlay, and Carousel -->
-    <section class="hero home__hero page__section position-relative" style="background: url('{% static 'images/hero-image.jpg' %}') no-repeat center center/cover; background-attachment: fixed;" aria-labelledby="hero-heading">
-        <div class="position-absolute w-100 h-100" style="background: linear-gradient(180deg, rgba(0, 123, 255, 0.5) 0%, rgba(0, 196, 180, 0.5) 100%); top: 0; left: 0;"></div>
+    <!-- Hero Section with Image and Gradient Overlay -->
+    <section class="hero home__hero page__section position-relative" aria-labelledby="hero-heading">
+        <div class="position-absolute w-100 h-100 home__hero-overlay"></div>
         <div class="container position-relative">
             <div id="heroCarousel" class="carousel slide carousel--animated" data-bs-ride="carousel" aria-label="Hero carousel showcasing Kidz Runz activities">
                 <div class="carousel-inner">
@@ -88,38 +88,59 @@
     </section>
 
     <!-- Why Choose Kidz Runz Section -->
-    <section class="why-choose page__section py-5" style="background: linear-gradient(180deg, #F5F7FA 0%, #E0E7FF 100%);" aria-labelledby="why-choose-heading">
+    <section class="why-choose page__section py-5" aria-labelledby="why-choose-heading">
         <div class="container">
             <h2 id="why-choose-heading" class="h3 mb-4 text-center why-choose__title">Why Choose Kidz Runz?</h2>
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <div class="card why-choose__card shadow-sm">
-                        <div class="card-body why-choose__card-body text-center">
-                            <i class="fas fa-shield-alt why-choose__icon text-primary" aria-hidden="true"></i>
-                            <h3 class="card-title why-choose__card-title mt-3">Safety First</h3>
-                            <p class="why-choose__card-text">Our CAMS staff are DBS-checked and trained to ensure your child’s safety.</p>
-                            <a href="{% url 'frontend:safeguarding' %}" class="btn btn-outline-primary why-choose__card-button" aria-label="Learn more about safety measures">Learn More</a>
-                        </div>
+                    <div class="why-choose__item shadow-sm p-4 rounded">
+                        <svg class="why-choose__svg" width="50" height="50" viewBox="0 0 50 50">
+                            <defs>
+                                <linearGradient id="safetyGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#007bff;" />
+                                    <stop offset="100%" style="stop-color:#00c4b4;" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Shield shape for Safety First -->
+                            <path d="M25 2L5 10v15c0 12 20 23 20 23s20-11 20-23V10L25 2zm0 4l17 6v13c0 10-15 20-17 20s-17-10-17-20V14l17-6z" fill="url(#safetyGradient)" />
+                        </svg>
+                        <h3 class="why-choose__item-title mt-3">Safety First</h3>
+                        <p class="why-choose__item-text">Our CAMS staff are DBS-checked and trained to ensure your child’s safety.</p>
+                        <a href="{% url 'frontend:safeguarding' %}" class="btn btn-outline-primary why-choose__item-button" aria-label="Learn more about safety measures">Learn More</a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="card why-choose__card shadow-sm">
-                        <div class="card-body why-choose__card-body text-center">
-                            <i class="fas fa-star why-choose__icon text-primary" aria-hidden="true"></i>
-                            <h3 class="card-title why-choose__card-title mt-3">Expert Mentors</h3>
-                            <p class="why-choose__card-text">Our team specializes in supporting kids, including those with SEND.</p>
-                            <a href="{% url 'frontend:cams' %}" class="btn btn-outline-primary why-choose__card-button" aria-label="Meet our expert mentors">Meet Our Team</a>
-                        </div>
+                    <div class="why-choose__item shadow-sm p-4 rounded">
+                        <svg class="why-choose__svg" width="50" height="50" viewBox="0 0 50 50">
+                            <defs>
+                                <linearGradient id="mentorsGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#6f42c1;" />
+                                    <stop offset="100%" style="stop-color:#ffd700;" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Graduation cap for Expert Mentors -->
+                            <path d="M25 10L5 20l20 10 20-10-20-10zm-20 12v10c5 5 15 8 20 8s15-3 20-8v-10l-20 10-20-10z" fill="url(#mentorsGradient)" />
+                        </svg>
+                        <h3 class="why-choose__item-title mt-3">Expert Mentors</h3>
+                        <p class="why-choose__item-text">Our team specializes in supporting kids, including those with SEND.</p>
+                        <a href="{% url 'frontend:cams' %}" class="btn btn-outline-primary why-choose__item-button" aria-label="Meet our expert mentors">Meet Our Team</a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="card why-choose__card shadow-sm">
-                        <div class="card-body why-choose__card-body text-center">
-                            <i class="fas fa-heart why-choose__icon text-primary" aria-hidden="true"></i>
-                            <h3 class="card-title why-choose__card-title mt-3">Fun & Growth</h3>
-                            <p class="why-choose__card-text">Activities designed to promote physical, social, and emotional development.</p>
-                            <a href="{% url 'frontend:benefits' %}" class="btn btn-outline-primary why-choose__card-button" aria-label="See the benefits of our activities">See Benefits</a>
-                        </div>
+                    <div class="why-choose__item shadow-sm p-4 rounded">
+                        <svg class="why-choose__svg" width="50" height="50" viewBox="0 0 50 50">
+                            <defs>
+                                <linearGradient id="funGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#ff4500;" />
+                                    <stop offset="100%" style="stop-color:#ff6347;" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Starburst for Fun & Growth -->
+                            <path d="M25 2l5 15h15l-12 9 5 15-13-9-13 9 5-15-12-9h15l5-15z" fill="url(#funGradient)" />
+                        </svg>
+                        <h3 class="why-choose__item-title mt-3">Fun & Growth</h3>
+                        <p class="why-choose__item-text">Activities designed to promote physical, social, and emotional development.</p>
+                        <a href="{% url 'frontend:benefits' %}" class="btn btn-outline-primary why-choose__item-button" aria-label="See the benefits of our activities">See Benefits</a>
                     </div>
                 </div>
             </div>
@@ -127,13 +148,13 @@
     </section>
 
     <!-- Pricing Packages Section with Tabs -->
-    <section class="pricing page__section py-5" id="pricing" style="background: linear-gradient(180deg, #E6F0FA 0%, #B3CDE0 100%);" aria-labelledby="pricing-heading">
+    <section class="pricing page__section py-5" id="pricing" aria-labelledby="pricing-heading">
         <div class="container">
             <h2 id="pricing-heading" class="h3 mb-4 text-center pricing__title">Choose the Perfect Package for Your Child</h2>
-            <p class="mb-4 text-center pricing__description">Flexible pricing to suit your needs, with everything included – from activities to mentor support.</p>
+            <p class="mb-5 text-center pricing__description">Flexible pricing to suit your needs, with everything included – from activities to mentor support.</p>
 
             <!-- Tabs Navigation -->
-            <ul class="nav nav-tabs mb-4 pricing__tabs" id="pricingTabs" role="tablist">
+            <ul class="nav nav-tabs mb-5 pricing__tabs justify-content-center" id="pricingTabs" role="tablist">
                 <li class="nav-item pricing__tab" role="presentation">
                     <button class="nav-link active pricing__tab-link" id="single-session-tab" data-bs-toggle="tab" data-bs-target="#single-session" type="button" role="tab" aria-controls="single-session" aria-selected="true">Single Sessions</button>
                 </li>
@@ -146,20 +167,45 @@
             <div class="tab-content pricing__content" id="pricingTabsContent">
                 <!-- Single Session Packages -->
                 <div class="tab-pane fade show active pricing__pane" id="single-session" role="tabpanel" aria-labelledby="single-session-tab">
-                    <div class="row">
+                    <div class="row justify-content-center g-4">
                         {% for package in pricing_packages %}
                             {% if package.type == 'single' %}
-                                <div class="col-12 col-md-4 mb-4">
-                                    <div class="card pricing__card shadow-sm">
-                                        <div class="card-body pricing__card-body">
-                                            <h3 class="pricing__card-title">{{ package.name }}</h3>
-                                            <p class="pricing__card-price">{{ package.price }}</p>
-                                            <p class="pricing__card-description">{{ package.description }}</p>
-                                            <div class="pricing__card-features">
-                                                {{ package.features|safe }}
-                                            </div>
-                                            <a href="{% url 'core:choose_package' package.id %}" class="btn btn-primary pricing__card-button" aria-label="Choose the {{ package.name }} package">Choose Package</a>
+                                <div class="col-12 col-md-4">
+                                    <div class="pricing__item shadow-sm p-4 rounded position-relative" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ package.description|truncatechars:50 }}">
+                                        {% if package.name == 'Venus' %}
+                                            <span class="pricing__badge">Popular</span>
+                                        {% endif %}
+                                        {% if package.name == 'Mercury' %}
+                                            <svg class="pricing__svg mb-3" width="80" height="80" viewBox="0 0 80 80">
+                                                <defs><linearGradient id="mercuryGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a9a9a9;" /><stop offset="100%" style="stop-color:#696969;" /></linearGradient></defs>
+                                                <circle cx="40" cy="40" r="30" fill="url(#mercuryGradient)" />
+                                                <circle cx="30" cy="30" r="5" fill="#555" /><circle cx="50" cy="35" r="4" fill="#555" /><circle cx="45" cy="50" r="3" fill="#555" />
+                                                <path class="pricing__orbit" d="M40 10 A30 30 0 0 1 40 70 A30 30 0 0 1 40 10" stroke="#00aeef" stroke-width="1" fill="none" opacity="0.3" />
+                                            </svg>
+                                        {% elif package.name == 'Venus' %}
+                                            <svg class="pricing__svg mb-3" width="80" height="80" viewBox="0 0 80 80">
+                                                <defs><linearGradient id="venusGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd700;" /><stop offset="100%" style="stop-color:#ff8c00;" /></linearGradient></defs>
+                                                <circle cx="40" cy="40" r="30" fill="url(#venusGradient)" />
+                                                <path d="M30 30 Q35 25 40 30 T50 30" fill="none" stroke="#fff" stroke-width="2" opacity="0.5" />
+                                                <path d="M35 45 Q40 40 45 45 T55 45" fill="none" stroke="#fff" stroke-width="2" opacity="0.5" />
+                                                <path class="pricing__orbit" d="M40 10 A30 30 0 0 1 40 70 A30 30 0 0 1 40 10" stroke="#00aeef" stroke-width="1" fill="none" opacity="0.3" />
+                                            </svg>
+                                        {% elif package.name == 'Earth' %}
+                                            <svg class="pricing__svg mb-3" width="80" height="80" viewBox="0 0 80 80">
+                                                <defs><linearGradient id="earthGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#00b7eb;" /><stop offset="100%" style="stop-color:#008000;" /></linearGradient></defs>
+                                                <circle cx="40" cy="40" r="30" fill="url(#earthGradient)" />
+                                                <path d="M35 30 Q40 25 45 30 Q50 35 45 40 Q40 45 35 40 Z" fill="#008000" opacity="0.8" />
+                                                <path d="M50 45 Q55 40 60 45 Q55 50 50 45 Z" fill="#008000" opacity="0.8" />
+                                                <path class="pricing__orbit" d="M40 10 A30 30 0 0 1 40 70 A30 30 0 0 1 40 10" stroke="#00aeef" stroke-width="1" fill="none" opacity="0.3" />
+                                            </svg>
+                                        {% endif %}
+                                        <h3 class="pricing__item-title mt-3">{{ package.name }}</h3>
+                                        <p class="pricing__item-price">{{ package.price }}</p>
+                                        <p class="pricing__item-description">{{ package.description }}</p>
+                                        <div class="pricing__item-features">
+                                            {{ package.features|safe }}
                                         </div>
+                                        <a href="{% url 'core:choose_package' package.id %}" class="btn btn-primary pricing__item-button mt-3" aria-label="Select {{ package.name }} Package">Select Package</a>
                                     </div>
                                 </div>
                             {% endif %}
@@ -173,20 +219,50 @@
 
                 <!-- Multi-Session Packages -->
                 <div class="tab-pane fade pricing__pane" id="multi-session" role="tabpanel" aria-labelledby="multi-session-tab">
-                    <div class="row">
+                    <div class="row justify-content-center g-4">
                         {% for package in pricing_packages %}
                             {% if package.type == 'multi' %}
-                                <div class="col-12 col-md-4 mb-4">
-                                    <div class="card pricing__card shadow-sm">
-                                        <div class="card-body pricing__card-body">
-                                            <h3 class="pricing__card-title">{{ package.name }}</h3>
-                                            <p class="pricing__card-price">{{ package.price }}</p>
-                                            <p class="pricing__card-description">{{ package.description }}</p>
-                                            <div class="pricing__card-features">
-                                                {{ package.features|safe }}
-                                            </div>
-                                            <a href="{% url 'core:choose_package' package.id %}" class="btn btn-primary pricing__card-button" aria-label="Choose the {{ package.name }} package">Choose Package</a>
+                                <div class="col-12 col-md-4">
+                                    <div class="pricing__item shadow-sm p-4 rounded position-relative" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ package.description|truncatechars:50 }}">
+                                        {% if package.name == 'Jupiter' %}
+                                            <span class="pricing__badge">Popular</span>
+                                        {% endif %}
+                                        {% if package.name == 'Jupiter' %}
+                                            <svg class="pricing__svg mb-3" width="80" height="80" viewBox="0 0 80 80">
+                                                <defs><linearGradient id="jupiterGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ff8c00;" /><stop offset="100%" style="stop-color:#8b4513;" /></linearGradient></defs>
+                                                <circle cx="40" cy="40" r="30" fill="url(#jupiterGradient)" />
+                                                <path d="M20 35 H60" stroke="#fff" stroke-width="2" opacity="0.5" />
+                                                <path d="M20 45 H60" stroke="#fff" stroke-width="2" opacity="0.5" />
+                                                <ellipse cx="50" cy="40" rx="5" ry="3" fill="#ff0000" opacity="0.8" />
+                                                <path class="pricing__orbit" d="M40 10 A30 30 0 0 1 40 70 A30 30 0 0 1 40 10" stroke="#00aeef" stroke-width="1" fill="none" opacity="0.3" />
+                                            </svg>
+                                        {% elif package.name == 'Saturn' %}
+                                            <svg class="pricing__svg mb-3" width="80" height="80" viewBox="0 0 80 80">
+                                                <defs><linearGradient id="saturnGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd700;" /><stop offset="100%" style="stop-color:#daa520;" /></linearGradient></defs>
+                                                <circle cx="40" cy="40" r="25" fill="url(#saturnGradient)" />
+                                                <ellipse cx="40" cy="40" rx="40" ry="10" fill="none" stroke="url(#saturnGradient)" stroke-width="2" opacity="0.7" />
+                                                <path class="pricing__orbit" d="M40 10 A30 30 0 0 1 40 70 A30 30 0 0 1 40 10" stroke="#00aeef" stroke-width="1" fill="none" opacity="0.3" />
+                                            </svg>
+                                        {% elif package.name == 'Neptune' %}
+                                            <svg class="pricing__svg mb-3" width="80" height="80" viewBox="0 0 80 80" aria-hidden="true">
+                                                <defs>
+                                                    <linearGradient id="neptuneGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                        <stop offset="0%" style="stop-color:#1E90FF;" />
+                                                        <stop offset="100%" style="stop-color:#00B7EB;" />
+                                                    </linearGradient>
+                                                </defs>
+                                                <circle cx="40" cy="40" r="30" fill="url(#neptuneGradient)" />
+                                                <path d="M35 35 Q40 30 45 35 Q50 40 45 45 Q40 50 35 45 Z" fill="#87CEEB" opacity="0.8" />
+                                                <path class="pricing__orbit" d="M40 10 A30 30 0 0 1 40 70 A30 30 0 0 1 40 10" stroke="#00aeef" stroke-width="1" fill="none" opacity="0.3" />
+                                            </svg>
+                                        {% endif %}
+                                        <h3 class="pricing__item-title mt-3">{{ package.name }}</h3>
+                                        <p class="pricing__item-price">{{ package.price }}</p>
+                                        <p class="pricing__item-description">{{ package.description }}</p>
+                                        <div class="pricing__item-features">
+                                            {{ package.features|safe }}
                                         </div>
+                                        <a href="{% url 'core:choose_package' package.id %}" class="btn btn-primary pricing__item-button mt-3" aria-label="Select {{ package.name }} Package">Select Package</a>
                                     </div>
                                 </div>
                             {% endif %}
@@ -198,48 +274,40 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center mt-4">
-                <a href="{% url 'frontend:pricing_packages' %}" class="btn btn-outline-primary pricing__more-button" aria-label="View all pricing packages">View All Packages</a>
-            </div>
+
         </div>
     </section>
 
-    <!-- Special Offer Section with Text Gradient -->
-    <section class="special-offer page__section py-5" id="special-offer" style="background: linear-gradient(180deg, #F0F8FF 0%, #C0D8EF 100%);" aria-labelledby="special-offer-heading">
+    <!-- Special Offer Section -->
+    <section class="special-offer page__section py-5" id="special-offer" aria-labelledby="special-offer-heading">
         <div class="container">
-            <div class="card special-offer__card shadow-sm">
-                <div class="card-body special-offer__card-body text-center">
-                    <h2 id="special-offer-heading" class="h3 mb-4 special-offer__title" style="background: linear-gradient(135deg, #28a745 0%, #00c4b4 100%); -webkit-background-clip: text; color: transparent;">Limited-Time Special Offer</h2>
-                    <p class="mb-4 special-offer__text">Get an extra <span class="special-offer__highlight">10% on any Activity Voucher</span> when you purchase a package! For example, a £200 voucher becomes £220.</p>
-                    <a href="{% url 'frontend:bookings' %}" class="btn btn-primary special-offer__button" aria-label="Claim this special offer">Claim This Offer</a>
-                </div>
+            <div class="special-offer__content p-4 rounded text-center">
+                <h2 id="special-offer-heading" class="text-white h3 mb-4 special-offer__title">Limited-Time Special Offer</h2>
+                <p class="mb-4 special-offer__text">Get an extra <span class="special-offer__highlight">10% on any Activity Voucher</span> when you purchase a package! For example, a £200 voucher becomes £220.</p>
+                <a href="{% url 'frontend:bookings' %}" class="btn btn-primary special-offer__button" aria-label="Claim this special offer">Claim This Offer</a>
             </div>
         </div>
     </section>
 
     <!-- Activities Highlight Section with Images -->
-    <section class="activities page__section py-5" style="background: linear-gradient(180deg, #E6F0FA 0%, #B3CDE0 100%);" aria-labelledby="activities-heading">
+    <section class="activities page__section py-5" aria-labelledby="activities-heading">
         <div class="container">
             <h2 id="activities-heading" class="h3 mb-4 text-center activities__title">Activities Your Child Will Love</h2>
             <div class="row">
                 <div class="col-md-6 mb-4">
-                    <div class="card activities__card shadow-sm">
-                        <img src="{% static 'images/sports.jpg' %}" class="card-img-top" alt="Children playing sports and games at Kidz Runz" style="height: 200px; object-fit: cover;">
-                        <div class="card-body activities__card-body">
-                            <h3 class="card-title activities__card-title">Sports & Games</h3>
-                            <p class="activities__card-text">From football to treasure hunts, we offer a variety of sports and games to keep your child active.</p>
-                            <a href="{% url 'frontend:explore' %}" class="btn btn-outline-primary activities__card-button" aria-label="Explore more sports and games">Explore More</a>
-                        </div>
+                    <div class="activities__item shadow-sm p-4 rounded">
+                        <img src="{% static 'images/sports.jpg' %}" class="img-fluid rounded mb-3" alt="Children playing sports and games at Kidz Runz" style="height: 200px; object-fit: cover;">
+                        <h3 class="activities__item-title">Sports & Games</h3>
+                        <p class="activities__item-text">From football to treasure hunts, we offer a variety of sports and games to keep your child active.</p>
+                        <a href="{% url 'frontend:explore' %}" class="btn btn-outline-primary activities__item-button" aria-label="Explore more sports and games">Explore More</a>
                     </div>
                 </div>
                 <div class="col-md-6 mb-4">
-                    <div class="card activities__card shadow-sm">
-                        <img src="{% static 'images/educational-outings.jpg' %}" class="card-img-top" alt="Children on educational outings to museums and zoos with Kidz Runz" style="height: 200px; object-fit: cover;">
-                        <div class="card-body activities__card-body">
-                            <h3 class="card-title activities__card-title">Educational Outings</h3>
-                            <p class="activities__card-text">Visit museums, zoos, and more to spark your child’s curiosity and learning.</p>
-                            <a href="{% url 'frontend:explore' %}" class="btn btn-outline-primary activities__card-button" aria-label="Discover educational outings">Discover Outings</a>
-                        </div>
+                    <div class="activities__item shadow-sm p-4 rounded">
+                        <img src="{% static 'images/educational-outings.jpg' %}" class="img-fluid rounded mb-3" alt="Children on educational outings to museums and zoos with Kidz Runz" style="height: 200px; object-fit: cover;">
+                        <h3 class="activities__item-title">Educational Outings</h3>
+                        <p class="activities__item-text">Visit museums, zoos, and more to spark your child’s curiosity and learning.</p>
+                        <a href="{% url 'frontend:explore' %}" class="btn btn-outline-primary activities__item-button" aria-label="Discover educational outings">Discover Outings</a>
                     </div>
                 </div>
             </div>
@@ -247,8 +315,8 @@
     </section>
 
     <!-- Testimonials Section with Background Image -->
-    <section class="testimonials page__section py-5 position-relative" style="background: url('{% static 'images/testimonials-bg.jpg' %}') no-repeat center center/cover;" aria-labelledby="testimonials-heading">
-        <div class="position-absolute w-100 h-100" style="background: linear-gradient(180deg, rgba(0, 123, 255, 0.7) 0%, rgba(0, 196, 180, 0.7) 100%); top: 0; left: 0;"></div>
+    <section class="testimonials page__section py-5 position-relative" aria-labelledby="testimonials-heading">
+        {% comment %} <div class="position-absolute w-100 h-100 testimonials__overlay"></div> {% endcomment %}
         <div class="container position-relative">
             <h2 id="testimonials-heading" class="h3 mb-4 text-center text-white">What Parents Say About Us</h2>
             <div class="row">
@@ -281,9 +349,9 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="faqs page__section py-5" style="background: linear-gradient(180deg, #F5F7FA 0%, #E0E7FF 100%);" aria-labelledby="faqs-heading">
+    <section class="faqs page__section py-5" aria-labelledby="faqs-heading">
         <div class="container">
-            <h2 id="faqs-heading" class="h3 mb-4 text-center faqs__title">Common Questions from Parents</h2>
+            <h2 id="faqs-heading" class="text-white h3 mb-4 text-center faqs__title">Common Questions from Parents</h2>
             <div class="accordion" id="faqAccordion">
                 {% for faq in faqs %}
                     <div class="accordion-item faqs__item shadow-sm">
@@ -311,14 +379,12 @@
     </section>
 
     <!-- CTA Section with Gradient Background -->
-    <section class="cta page__section py-5 position-relative" style="background: linear-gradient(135deg, #007bff 0%, #00c4b4 100%);" aria-labelledby="cta-heading">
+    <section class="cta page__section py-5 position-relative" aria-labelledby="cta-heading">
         <div class="container text-center">
-            <div class="card cta__card bg-transparent border-0">
-                <div class="card-body cta__card-body">
-                    <h2 id="cta-heading" class="h3 mb-4 cta__title text-white">Ready to Get Started?</h2>
-                    <p class="mb-4 cta__text text-white">Book a session today and let your child experience the joy of Kidz Runz!</p>
-                    <a href="{% url 'frontend:bookings' %}" class="btn btn-light cta__button text-primary" aria-label="Book a session now">Book Now</a>
-                </div>
+            <div class="cta__content p-4 rounded">
+                <h2 id="cta-heading" class="h3 mb-4 cta__title text-white">Ready to Get Started?</h2>
+                <p class="mb-4 cta__text text-white">Book a session today and let your child experience the joy of Kidz Runz!</p>
+                <a href="{% url 'frontend:bookings' %}" class="btn btn-light cta__button text-primary" aria-label="Book a session now">Book Now</a>
             </div>
         </div>
     </section>

@@ -1,23 +1,67 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Welcome to Kidz Runz{% endblock %}
-{% block meta_description %}Welcome to Kidz Runz, where we create fun and enriching experiences for children.{% endblock %}
-{% block og_title %}Welcome to Kidz Runz{% endblock %}
-{% block og_description %}Learn about Kidz Runz and how we support children’s growth through fun activities.{% endblock %}
-{% block twitter_title %}Welcome to Kidz Runz{% endblock %}
-{% block twitter_description %}Discover Kidz Runz, a place for kids to learn, play, and grow.{% endblock %}
+{% block title %}Welcome to Kidz Runz Cosmic Adventures{% endblock %}
+{% block meta_description %}Welcome to Kidz Runz in London, your partner in fun, safe, and supportive space-themed children’s activities.{% endblock %}
+{% block og_title %}Welcome to Kidz Runz Cosmic Adventures{% endblock %}
+{% block og_description %}Join Kidz Runz in London for a warm welcome to our world of safe, fun, space-themed activities for kids.{% endblock %}
+{% block twitter_title %}Welcome to Kidz Runz Cosmic Adventures{% endblock %}
+{% block twitter_description %}Get started with Kidz Runz in London for safe and fun, space-themed children’s activities.{% endblock %}
+{% block breadcrumb_items %}
+    ,{"@type": "ListItem", "position": 1, "name": "Welcome", "item": "{% url 'frontend:welcome' %}"}
+{% endblock %}
+
+{% block extra_head %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Welcome to Kidz Runz Cosmic Adventures",
+        "description": "Welcome to Kidz Runz in London, your partner in fun, safe, and supportive space-themed children’s activities.",
+        "url": "{% url 'frontend:welcome' %}",
+        "datePublished": "2023-01-01T00:00:00+00:00",
+        "dateModified": "2025-05-28T13:19:00+01:00",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{% static 'images/logo.webp' %}"
+            }
+        },
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "Kidz Runz",
+            "url": "{% url 'frontend:home' %}",
+            "description": "Kidz Runz welcomes families in London with safe, fun, space-themed activities and expert mentorship."
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Welcome", "item": "{% url 'frontend:welcome' %}"}
+            ]
+        }
+    }
+    </script>
+{% endblock %}
 
 {% block content %}
-    <section class="container welcome__section welcome__section--intro text-center py-5">
-        <h1 class="display-4 fw-bold welcome__title">Welcome to Kidz Runz</h1>
-        <p class="lead welcome__text">A place where children thrive through play and adventure.</p>
+    <section class="hero welcome__hero page__section position-relative" aria-labelledby="welcome-hero-heading">
+        <div class="position-absolute w-100 h-100 welcome__hero-overlay" style="background: rgba(0,0,0,0.5);"></div>
+        <div class="container position-relative text-center py-5">
+            <h1 id="welcome-hero-heading" class="display-4 fw-bold welcome__title text-white">Welcome to Kidz Runz Cosmic Adventures</h1>
+            <p class="lead welcome__text text-white">Your partner in fun and safe space-themed children’s activities in London.</p>
+            <a href="{% url 'frontend:bookings' %}" class="btn btn-primary welcome__button mt-3" aria-label="Start your cosmic journey">Start Your Cosmic Journey</a>
+        </div>
     </section>
 
-    <section class="container welcome__section welcome__section--content py-5">
-        <p class="welcome__paragraph">At Kidz Runz, we are dedicated to providing a safe and nurturing environment where children can explore, learn, and grow. Our team of passionate professionals is committed to creating unforgettable experiences that foster physical, social, and emotional development. Join us on this exciting journey to unlock your child’s full potential!</p>
-        <div class="text-center welcome__cta">
-            <a href="{% url 'frontend:about' %}" class="btn btn-primary welcome__cta-button">Back to About Us</a>
+    <section class="welcome__section py-5" aria-labelledby="welcome-content-heading">
+        <div class="container">
+            <h2 id="welcome-content-heading" class="h3 mb-4 text-center welcome__subtitle">Why Choose Us?</h2>
+            <p class="welcome__paragraph">At Kidz Runz, we offer expert mentorship, safe cosmic environments, and exciting space-themed activities to help your child thrive in London. Join our stellar community today!</p>
+            <div class="text-center mt-4">
+                <a href="{% url 'frontend:about' %}" class="btn btn-outline-primary welcome__button" aria-label="Learn more about us">Learn More</a>
+            </div>
         </div>
     </section>
 {% endblock %}
