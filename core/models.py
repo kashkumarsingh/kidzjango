@@ -55,6 +55,10 @@ class Booking(models.Model):
         default=uuid.uuid4, editable=False, unique=True,
         help_text="Unique reference ID for this booking"
     )
+    payment_intent_id = models.CharField(
+        max_length=255, null=True, blank=True,
+        help_text="Stripe Payment Intent ID associated with this booking"
+    )
     name = models.CharField(max_length=255, help_text="Visitor's full name")
     email = models.EmailField(help_text="Visitor's email for confirmation")
     phone = models.CharField(max_length=20, help_text="Visitor's phone number")
@@ -70,8 +74,14 @@ class Booking(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     status = models.CharField(
         max_length=20,
-        choices=[('pending', 'Pending'), ('completed', 'Completed'), ('expired', 'Expired')],
-        default='pending'
+        choices=[
+            ('pending_payment', 'Pending Payment'),
+            ('pending', 'Pending'),
+            ('completed', 'Completed'),
+            ('expired', 'Expired'),
+            ('cancelled', 'Cancelled')
+        ],
+        default='pending_payment'
     )
 
     def save(self, *args, **kwargs):

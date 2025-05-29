@@ -15,7 +15,7 @@
             <h1 class="display-4 fw-bold thank-you__title" id="thank-you-title">Thank You for Booking!</h1>
             <p class="lead thank-you__text">Your booking has been confirmed. We've sent a confirmation email to {{ booking.email }}.</p>
             <div class="progress mt-3" style="max-width: 300px; margin: 0 auto;">
-                <div class="progress-bar" role="progressbar" style="width: 100%; background: #ffffff;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Step 2 of 2</div>
+                <div class="progress-bar" role="progressbar" style="width: 100%; background: #ffffff;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Step 3 of 3</div>
             </div>
         </div>
     </section>
@@ -31,7 +31,14 @@
                         <li class="thank-you__detail-item"><strong>Email:</strong> {{ booking.email }}</li>
                         <li class="thank-you__detail-item"><strong>Phone:</strong> {{ booking.phone }}</li>
                         <li class="thank-you__detail-item"><strong>Package:</strong> {{ booking.package.name }}</li>
-                        <li class="thank-you__detail-item"><strong>Date and Time:</strong> {{ booking.start_date }}</li>
+                        <li class="thank-you__detail-item"><strong>Start Date and Time:</strong> {{ booking.start_date|date:"Y-m-d H:i" }}</li>
+                        <li class="thank-you__detail-item"><strong>End Date and Time:</strong>
+                            {% if booking.end_date %}
+                                {{ booking.end_date|date:"Y-m-d H:i" }}
+                            {% else %}
+                                Not calculated
+                            {% endif %}
+                        </li>
                         <li class="thank-you__detail-item"><strong>Additional Information:</strong> {{ booking.description|default:"None" }}</li>
                     </ul>
                     <div class="text-center mt-4">

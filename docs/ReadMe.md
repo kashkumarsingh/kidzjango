@@ -1,9 +1,13 @@
 kidzjango/
 ├── config/
 │   ├── __pycache__/
+│   ├── settings/
+│           ├── __init__.py
+│           ├── base.py
+│           ├── development.py
+│           ├── production.py
 │   ├── __init__.py (artifact_id: config_init_j9t0u1v2-3w4x-5y6z-7a8b, version_id: v1)
 │   ├── asgi.py (artifact_id: asgi_k0u1v2w3-4x5y-6z7a-8b9c, version_id: v1)
-│   ├── settings.py (artifact_id: settings_l1v2w3x4-5y6z-7a8b-9c0d, version_id: v3)
 │   ├── urls.py (artifact_id: urls_m2w3x4y5-6z7a-8b9c-0d1e, version_id: v2)
 │   ├── wsgi.py (artifact_id: wsgi_n3x4y5z6-7a8b-9c0d-1e2f, version_id: v1)
 core/
@@ -17,6 +21,7 @@ core/
 │   ├── __init__.py                          # Makes services a Python package (artifact_id: 45822422-409d-45a2-bc28-b523ee46e015)
 │   ├── booking.py                           # BookingService for booking-related business logic (artifact_id: svc_booking_3456-789a-bcde-f012)
 │   ├── email.py                             # EmailService for email-related business logic (artifact_id: svc_email_4567-89ab-cdef-0123)
+│   ├── payment.py                          # PaymentService for payment-related business logic (artifact_id: needed to assign)
 ├── templates/
 │   ├── core/
 │       ├── base_email.html                  # Base template for emails (artifact_id: 54d6ee60-0ed4-42f3-a429-8430d1407fa0)
@@ -27,7 +32,7 @@ core/
 │       ├── email_visitor_cancellation.html  # Email template for visitor cancellation confirmation (artifact_id: 66234b72-92e3-4b9d-9262-fe48d11c274f)
 │       ├── email_visitor_confirmation.html  # Email template for visitor booking confirmation (artifact_id: 0f20a3ab-ab9a-4fc2-bfbd-81790b268011)
 │       ├── error.html                       # Template for error messages (artifact_id: c4c72a4b-5067-44ac-a50f-55aa9165f224)
-│       ├── thank_you.html                   # Template for booking confirmation (artifact_id: b9caeace-44ab-4e37-a6ec-f864df615e2d)
+│       ├── payment.html                   # Template for booking confirmation (artifact_id: b9caeace-44ab-4e37-a6ec-f864df615e2d)
 ├── utils/
 │   ├── __init__.py                          # Makes utils a Python package (artifact_id: 45822422-409d-45a2-bc28-b523ee46e015)
 │   ├── view_helpers.py                      # Utility functions for views (artifact_id: 9e12aa1a-f52a-41b6-9600-a13a1925a1dd)

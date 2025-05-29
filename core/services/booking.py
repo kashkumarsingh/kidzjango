@@ -11,7 +11,7 @@ class BookingService:
     @staticmethod
     def create_booking(package_id, name, email, phone, date_time, description=""):
         """
-        Creates a new booking with the provided details.
+        Creates a new booking with the provided details, initially in 'pending_payment' status.
 
         Args:
             package_id (int): ID of the selected package.
@@ -38,8 +38,40 @@ class BookingService:
             date_time=date_time_obj,
             start_date=date_time_obj,
             description=description,
-            status='completed'
+            status='pending_payment'
         )
+        return booking
+
+    @staticmethod
+    def confirm_booking(booking, payment_intent_id):
+        """
+        Confirms a booking by updating its status and associating the payment intent.
+
+        Args:
+            booking (Booking): The booking object to confirm.
+            payment_intent_id (str): Stripe Payment Intent ID.
+
+        Returns:
+            Booking: The confirmed booking object.
+        """
+        booking.status = 'completed'
+        booking.payment_intent_id = payment_intent_id
+        booking.save()
+        return booking
+
+    @staticmethod
+    def fail_booking(booking):
+        """
+        Marks a booking as failed due to payment issues.
+
+        Args:
+            booking (Booking): The booking object to mark as failed.
+
+        Returns:
+            Booking: The updated booking object.
+        """
+        booking.status = 'failed'
+        booking.save()
         return booking
 
     @staticmethod
@@ -61,7 +93,7 @@ class BookingService:
         booking = Booking.objects.get(reference_id=reference_id)
         if current_time >= booking.start_date:
             raise ValueError("Cannot cancel booking after the start date.")
-        booking.status = 'expired'
+        booking.status = 'cancelled'
         booking.save()
         return booking
 

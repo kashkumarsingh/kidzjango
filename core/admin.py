@@ -15,9 +15,9 @@ class PricingPackageAdmin(admin.ModelAdmin):
 
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ['reference_id', 'name', 'email', 'package', 'start_date', 'status', 'created_at']
+    list_display = ['reference_id', 'name', 'email', 'package', 'start_date', 'status', 'payment_intent_id', 'created_at']
     list_filter = ['status', 'created_at']
-    search_fields = ['name', 'email', 'package__name', 'reference_id']
+    search_fields = ['name', 'email', 'package__name', 'reference_id', 'payment_intent_id']
 
 @admin.register(EmailConfiguration)
 class EmailConfigurationAdmin(admin.ModelAdmin):

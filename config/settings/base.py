@@ -6,18 +6,13 @@ Contains common configurations shared between development and production environ
 
 import os
 from pathlib import Path
-# from django.core.exceptions import ImproperlyConfigured
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent  # Adjusted for settings/ subdirectory
 
 # Load SECRET_KEY from environment
-SECRET_KEY = os.getenv('SECRET_KEY')
-# print(f"Loaded SECRET_KEY: {SECRET_KEY}")  # Keep for debugging
-# if not SECRET_KEY:
-#     raise ImproperlyConfigured(
-#         "The SECRET_KEY setting must not be empty. Set it in your .env file or environment variables."
-#     )
+SECRET_KEY = config('SECRET_KEY')
 
 # Application definition
 INSTALLED_APPS = [
@@ -56,6 +51,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'core.context_processors.faq_pricing_context',
+                'core.context_processors.stripe_keys',  # Add this line
             ],
         },
     },
@@ -116,9 +112,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Email Configuration (Base settings)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = os.getenv('EMAIL_HOST')
-EMAIL_PORT = int(os.getenv('EMAIL_PORT', 587))
-EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True').lower() == 'true'
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-EMAIL_TIMEOUT = int(os.getenv('EMAIL_TIMEOUT', 10))
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_TIMEOUT = config('EMAIL_TIMEOUT', cast=int)
+
+# Stripe Configuration
+STRIPE_PUBLISHABLE_KEY = config('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
+
+# Ensure Stripe keys are set
+if not STRIPE_PUBLISHABLE_KEY or not STRIPE_SECRET_KEY:
+    raise ValueError("Stripe API keys must be set in environment variables (STRIPE_PUBLISHABLE_KEY and STRIPE_SECRET_KEY).")
