@@ -22,11 +22,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'csp',
     'tinymce',
     'core',
     'frontend',
 ]
-
+# 'django_ratelimit',
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -35,6 +36,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'csp.middleware.CSPMiddleware',  # Added for CSP
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -66,6 +68,20 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# # Caches Configuration
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+#         'LOCATION': 'default-cache',
+#     },
+#     'cache-for-ratelimiting': {
+#         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+#     },
+# }
+
+# # Configure django-ratelimit to use the dedicated cache
+# RATELIMIT_USE_CACHE = 'cache-for-ratelimiting'
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -106,6 +122,37 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# Security headers
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+X_FRAME_OPTIONS = 'DENY'
+SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
+
+# Content Security Policy (CSP) - Updated to new format
+CONTENT_SECURITY_POLICY = {
+    'DIRECTIVES': {
+        'default-src': ("'self'",),
+        'script-src': (
+            "'self'",
+            'https://js.stripe.com',
+            "'nonce-{{ request.csp_nonce }}'",
+        ),
+        'style-src': (
+            "'self'",
+            "'unsafe-inline'",  # Temporary for inline styles in loader SVG
+        ),
+        'connect-src': (
+            "'self'",
+            'https://api.stripe.com',
+        ),
+        'img-src': ("'self'", 'data:'),  # Allow data URLs for SVGs if needed
+    }
+}
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

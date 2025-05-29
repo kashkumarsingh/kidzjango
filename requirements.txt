@@ -1,4 +1,5 @@
 Django 
+django-csp
 django-browser-reload 
 django-ratelimit
 python-dotenv

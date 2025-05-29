@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+# from django_ratelimit.decorators import ratelimit
 from django.http import HttpResponse, HttpResponseForbidden, JsonResponse
 from django.utils import timezone
 from django.conf import settings
@@ -45,7 +46,7 @@ def choose_package(request, package_id):
 
     form = BookingForm(initial=initial_data)
     return render(request, 'core/choose_package.html', {'package': package, 'form': form})
-
+# @ratelimit(key='ip', rate='10/m', method='POST', block=True)
 def bookings(request):
     redirect_response = require_post_method(request, 'frontend:bookings')
     if redirect_response:
@@ -114,7 +115,7 @@ def bookings(request):
         return redirect('core:process_payment', reference_id=booking.reference_id)
     except Exception as e:
         return handle_view_error(f"Failed to process booking for {form.cleaned_data['name']}", e)
-
+# @ratelimit(key='ip', rate='5/m', method='POST', block=True)
 def process_payment(request, reference_id):
     booking = fetch_object_or_error(
         Booking,
@@ -230,7 +231,7 @@ def thank_you(request, reference_id):
     if 'booking_reference_id' in request.session:
         del request.session['booking_reference_id']
     return render(request, 'core/thank_you.html', {'booking': booking})
-
+# @ratelimit(key='ip', rate='5/m', method='POST', block=True)
 def cancel_booking(request, reference_id):
     booking = fetch_object_or_error(
         Booking,

@@ -9,49 +9,53 @@
 {% block twitter_description %}Pay {{ booking.package.price }} for your {{ booking.package.name }} package and explore the cosmos with Kidz Runz!{% endblock %}
 
 {% block content %}
-<section class="payment__section text-center py-5">
+<section class="payment__section text-center py-5 position-relative" aria-label="Payment Introduction">
     <div class="container">
-        <h1 class="display-4 fw-bold">Secure Your Cosmic Adventure</h1>
-        <p class="lead">Pay <strong class="text-warning">{{ booking.package.price }}</strong> for the <strong class="text-warning">{{ booking.package.name }}</strong> package.</p>
-
-        <div class="card text-white bg-dark mb-4 mx-auto" style="max-width: 350px;">
+        <h1 class="display-4 fw-bold" id="payment-title">Secure Your Cosmic Adventure</h1>
+        <p class="lead">Pay <span class="fw-bold text-warning">{{ booking.package.price }}</span> for your <span class="fw-bold text-warning">{{ booking.package.name }}</span> package!</p>
+        <div class="card bg-transparent text-white mb-4 mx-auto" style="max-width: 300px;">
             <div class="card-body">
                 <p>Booking Reference: <strong>{{ booking.reference_id }}</strong></p>
                 <p>Date & Time: <strong>{{ booking.start_date|date:"Y-m-d H:i" }}</strong></p>
             </div>
         </div>
-
-        <div class="progress mb-4 mx-auto" style="max-width: 350px;">
-            <div class="progress-bar bg-warning" role="progressbar" style="width: 66%;">Step 2 of 3</div>
+        <div class="progress mt-3 mx-auto" style="max-width: 300px;">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 66%;" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100">Step 2 of 3</div>
         </div>
+    </div>
+</section>
 
-        <div class="alert alert-warning">Debug: Stripe Publishable Key = {{ stripe_publishable_key|default:"Not set" }}</div>
-
+<section class="payment__section py-5" aria-labelledby="payment-form-title">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-5">
                 <div class="card shadow-lg">
                     <div class="card-body p-4">
-                        <h2 class="h4 mb-4">Payment Details</h2>
+                        <h2 class="h3 mb-4" id="payment-form-title">Payment Details</h2>
 
                         {% if error %}
-                        <div class="alert alert-danger">{{ error }}</div>
+                        <div class="alert alert-danger" role="alert">{{ error }}</div>
+                        {% endif %}
+
+                        {% if not stripe_publishable_key %}
+                        <div class="alert alert-danger">Stripe key not found. Please contact support.</div>
                         {% endif %}
 
                         <div class="alert alert-info">
-                            If the payment form doesn’t load, disable ad blockers or allow <code>js.stripe.com</code>.
+                            If the payment form doesn’t load, disable ad blockers or allow <code>r.stripe.com</code> and <code>js.stripe.com</code>.
                         </div>
 
-                        <form id="payment-form" method="POST" action="{% url 'core:process_payment' booking.reference_id %}">
+                        <form id="payment-form" method="POST" action="{% url 'core:process_payment' booking.reference_id %}" data-name="{{ booking.name|escapejs }}" data-email="{{ booking.email|escapejs }}" data-phone="{{ booking.phone|escapejs }}">
                             {% csrf_token %}
                             <input type="hidden" name="client_secret" value="{{ client_secret }}">
-                            <div id="card-element" class="mb-4"></div>
-                            <div id="card-errors" class="text-danger mb-3"></div>
-                            <button type="submit" class="btn btn-primary w-100" id="submitButton">
-                                <span>Pay {{ booking.package.price }} for {{ booking.package.name }}</span>
+                            <div id="card-element" class="mb-4" aria-describedby="card-errors"></div>
+                            <div id="card-errors" class="text-danger mb-4" role="alert" aria-live="polite"></div>
+                            <button type="submit" class="btn btn-primary w-100 py-2 position-relative" id="submitButton">
+                                Pay {{ booking.package.price }} for {{ booking.package.name }}
                                 <span class="loader d-none position-absolute top-50 start-50 translate-middle">
-                                    <svg width="24" height="24" viewBox="0 0 24 24">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <circle cx="12" cy="12" r="10" stroke="#ffffff" stroke-width="4" fill="none">
-                                            <animate attributeName="stroke-dasharray" from="0 62.8" to="62.8 0" dur="1s" repeatCount="indefinite"/>
+                                            <animate attributeName="stroke-dasharray" from="0 62.83" to="62.83 0" dur="1s" repeatCount="indefinite"/>
                                         </circle>
                                     </svg>
                                 </span>
@@ -60,10 +64,10 @@
 
                         <div class="text-center mt-4">
                             {% if booking.status == 'failed' %}
-                            <form method="POST" action="{% url 'core:process_payment' booking.reference_id %}" class="d-inline">
+                            <form method="POST" action="{% url 'core:process_payment' booking.reference_id %}" class="d-inline-block me-2">
                                 {% csrf_token %}
                                 <input type="hidden" name="retry_payment" value="true">
-                                <button type="submit" class="btn btn-warning me-2">Retry with New Card</button>
+                                <button type="submit" class="btn btn-warning">Retry with New Card</button>
                             </form>
                             {% endif %}
                             <a href="{% url 'core:choose_package' booking.package.id %}" class="btn btn-warning me-2">Update Booking</a>
@@ -77,60 +81,8 @@
 </section>
 
 <script src="https://js.stripe.com/v3/"></script>
-<script>
-    (function () {
-        const stripe = Stripe('{{ stripe_publishable_key }}');
-        const elements = stripe.elements();
-        const card = elements.create('card', {
-            style: {
-                base: {
-                    fontSize: '16px',
-                    color: '#333',
-                    '::placeholder': { color: '#aab7c4' },
-                },
-                invalid: { color: '#dc3545' },
-            },
-            hidePostalCode: true,
-        });
-        card.mount('#card-element');
-
-        const form = document.getElementById('payment-form');
-        const submitButton = document.getElementById('submitButton');
-        const loader = submitButton.querySelector('.loader');
-        const errorElement = document.getElementById('card-errors');
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            submitButton.disabled = true;
-            loader.classList.remove('d-none');
-
-            const clientSecret = document.querySelector('input[name="client_secret"]').value;
-
-            const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-                payment_method: {
-                    card: card,
-                    billing_details: {
-                        name: '{{ booking.name }}',
-                        email: '{{ booking.email }}',
-                        phone: '{{ booking.phone }}',
-                        address: { city: 'London', country: 'GB' }
-                    }
-                }
-            });
-
-            if (error) {
-                errorElement.textContent = error.message;
-                console.error(error);
-                submitButton.disabled = false;
-                loader.classList.add('d-none');
-            } else if (paymentIntent.status === 'succeeded') {
-                form.submit();
-            } else {
-                errorElement.textContent = `Payment status: ${paymentIntent.status}`;
-                submitButton.disabled = false;
-                loader.classList.add('d-none');
-            }
-        });
-    })();
+<script nonce="{{ request.csp_nonce }}">
+    window.STRIPE_PUBLISHABLE_KEY = '{{ stripe_publishable_key }}';
 </script>
+<script src="{% static 'js/payment.js' %}" defer nonce="{{ request.csp_nonce }}"></script>
 {% endblock %}
